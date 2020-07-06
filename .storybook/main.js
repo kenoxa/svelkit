@@ -8,7 +8,7 @@ module.exports = {
     '@storybook/addon-viewport/register',
     '@storybook/addon-storysource',
     '@storybook/addon-a11y/register',
-    '@storybook/addon-links/register'
+    '@storybook/addon-links/register',
   ],
 
   webpackFinal: (config) => {
@@ -28,9 +28,9 @@ module.exports = {
           loader: require.resolve('ts-loader'),
         },
       ],
-    });
-    config.resolve.extensions.push('.ts', '.tsx');
+    })
+    config.resolve.extensions.push('.ts', '.tsx')
 
     return config
-  }
-};
+  },
+}

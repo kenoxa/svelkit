@@ -900,30 +900,6 @@
     prettier-plugin-packagejson "^2.2.5"
     prettier-plugin-svelte "^1.1.0"
 
-"@carv/snowpack-plugin-rollup@^1.3.11":
-  version "1.3.11"
-  resolved "https://registry.npmjs.org/@carv/snowpack-plugin-rollup/-/snowpack-plugin-rollup-1.3.11.tgz#5f4ac9f38835e760360db80ed20e33302886b69c"
-  integrity sha512-nW0mFNqQTVkk5Jxr/unZZxsGoa1AFn/oENpQ5aIH0F7clHYpx1NH2qfAxHOgduzttg1bbuDNubMldtPCLJSpHg==
-  dependencies:
-    "@rollup/plugin-commonjs" "^13.0.0"
-    "@rollup/plugin-json" "^4.1.0"
-    "@rollup/plugin-node-resolve" "^8.1.0"
-    "@rollup/plugin-yaml" "^2.1.1"
-    "@rollup/pluginutils" "^3.1.0"
-    ast-matcher "^1.1.1"
-    execa "^4.0.1"
-    find-up "^4.1.0"
-    fs-extra "^9.0.1"
-    globby "^11.0.1"
-    magic-string "^0.25.7"
-    micromatch "^4.0.2"
-    npm-run-path "^4.0.1"
-    rimraf "^3.0.2"
-    rollup "^2.18.0"
-    rollup-plugin-dts "^1.4.7"
-    rollup-plugin-esbuild "^2.1.0"
-    rollup-plugin-svelte "^5.2.3"
-
 "@carv/snowpack-plugin-rollup@^1.3.12":
   version "1.3.12"
   resolved "https://registry.npmjs.org/@carv/snowpack-plugin-rollup/-/snowpack-plugin-rollup-1.3.12.tgz#380c28c42700d728dcd4191267acb834eb53f35c"
@@ -948,54 +924,10 @@
     rollup-plugin-esbuild "^2.1.0"
     rollup-plugin-svelte "^5.2.3"
 
-"@carv/snowpack-scripts@^1.3.19":
-  version "1.3.19"
-  resolved "https://registry.npmjs.org/@carv/snowpack-scripts/-/snowpack-scripts-1.3.19.tgz#044a4426577c04e69f221cc50869fa1d9bfb0118"
-  integrity sha512-5xShriOuNkiztKgVmc+NTHNkpd4KvncaHkTba7wsbqT2zyI9nTPCkjZsOeB63CsoSBZFPYI/ZOB5vIFgJ3zfVg==
-  dependencies:
-    "@babel/core" "^7.10.3"
-    "@babel/preset-env" "^7.10.3"
-    "@babel/preset-typescript" "^7.10.3"
-    "@carv/eslint-config" "^1.2.5"
-    "@carv/prettier-config" "^1.0.2"
-    "@carv/snowpack-plugin-rollup" "^1.3.11"
-    "@snowpack/app-scripts-svelte" "^1.0.2"
-    "@snowpack/plugin-svelte" "^1.2.0"
-    "@testing-library/jest-dom" "^5.11.0"
-    at-least-node "^1.0.0"
-    babel-plugin-dynamic-import-node "^2.3.3"
-    cosmiconfig "^6.0.0"
-    doctoc "^1.4.0"
-    envinfo "^7.5.1"
-    eslint "^7.3.1"
-    find-up "^4.1.0"
-    graphql "^15.2.0"
-    identity-obj-proxy "^3.0.0"
-    is-ci "^2.0.0"
-    jest "^26.1.0"
-    jest-environment-jsdom-sixteen "^1.0.3"
-    jest-extended "^0.11.5"
-    manage-path "^2.0.0"
-    nps "^5.9.12"
-    pkg-dir "^4.2.0"
-    prettier "^2.0.5"
-    rimraf "^3.0.2"
-    rollup-plugin-node-polyfills "^0.2.1"
-    rollup-plugin-svelte "^5.2.3"
-    snowpack "^2.5.0"
-    svelte "^3.21.0"
-    svelte-check "^0.1.37"
-    svelte-jester "^1.0.6"
-    svelte-preprocess "^3.9.10"
-    ts-graphql-plugin "^1.12.0"
-    typescript "^3.9.5"
-    typescript-eslint-language-service "^3.0.0"
-    update-notifier "^4.1.0"
-
-"@carv/snowpack-scripts@^1.3.20":
-  version "1.3.20"
-  resolved "https://registry.npmjs.org/@carv/snowpack-scripts/-/snowpack-scripts-1.3.20.tgz#d2a2045184e1e335a5f1710bd269681a3d4e8ee6"
-  integrity sha512-KLM2JarkRACGppWCGhW2tx0kYye5xA0AGqKPgtXajifRXNAni2Gi8ichSczF5Phh2iXLpYr4Y7DpT5WJ//30NQ==
+"@carv/snowpack-scripts@^1.3.21":
+  version "1.3.21"
+  resolved "https://registry.npmjs.org/@carv/snowpack-scripts/-/snowpack-scripts-1.3.21.tgz#df8505ca7a40243d5b4d8458cefb08a8addc0541"
+  integrity sha512-5gLagHHz7Nc0xY8kiBp5e1LzVOwLkp+skTjUT1z+EI1pfiAboa6hP0C1gb0hdUKnFYn0dHZvLlhZMQDnGCOyNA==
   dependencies:
     "@babel/core" "^7.10.3"
     "@babel/preset-env" "^7.10.3"
@@ -1660,13 +1592,6 @@
     core-js "^3.0.1"
     global "^4.3.2"
     util-deprecate "^1.0.2"
-
-"@storybook/addon-console@^1.2.1":
-  version "1.2.1"
-  resolved "https://registry.npmjs.org/@storybook/addon-console/-/addon-console-1.2.1.tgz#f338401661b4636118b13839848061e996d4e104"
-  integrity sha512-2iDbDTipWonvRpIqLLntfhCGvawFFvoG1xyErpyL7K/HRdQ1zzIvR1Qm83S7TK8Vg+RzZWm4wcDbxx7WOsFCNg==
-  dependencies:
-    global "^4.3.2"
 
 "@storybook/addon-info@^5.3.19":
   version "5.3.19"
@@ -10259,7 +10184,7 @@ react-dev-utils@^9.0.0:
     strip-ansi "5.2.0"
     text-table "0.2.0"
 
-react-dom@^16.8.3:
+react-dom@^16.13.1, react-dom@^16.8.3:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react-dom/-/react-dom-16.13.1.tgz#c1bd37331a0486c078ee54c4740720993b2e0e7f"
   integrity sha512-81PIMmVLnCNLO/fFOQxdQkvEq/+Hfpv24XNJfpyZhTRfO0QcmQIF/PgCa1zCOj2w1hrn12MFLyaJ/G0+Mxtfag==
@@ -10436,7 +10361,7 @@ react-transition-group@^4.3.0:
     loose-envify "^1.4.0"
     prop-types "^15.6.2"
 
-react@^16.8.3:
+react@^16.13.1, react@^16.8.3:
   version "16.13.1"
   resolved "https://registry.npmjs.org/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
   integrity sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w==
