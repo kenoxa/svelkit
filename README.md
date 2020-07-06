@@ -13,12 +13,26 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [Support](#support)
-- [Contribute](#contribute)
-- [License](#license)
+- [Svelkit](#svelkit)
+  - [Usage](#usage)
+    - [Baseline](#baseline)
+  - [Support](#support)
+  - [Contribute](#contribute)
+    - [Develop](#develop)
+  - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <!-- prettier-ignore-end -->
+
+## Usage
+
+[sveltik] components work in isolation. They are self-supporting, and will only inject the styles they need to display. They don't rely on any global style-sheets such as [normalize.css](normalize.css).
+
+You can use any of the components as demonstrated in the documentation. Please refer to each component's [demo page](https://sveltik.js.org) to see how they should be imported.
+
+### Baseline
+
+[sveltik] provides an optional [baseline](./packages/baseline/README.md) component. It fixes some inconsistencies across browsers and devices while providing slightly more opinionated resets to common HTML elements.
 
 ## Support
 
@@ -40,4 +54,5 @@ We are following the [Conventional Commits](https://www.conventionalcommits.org)
 
 `sveltik` is open source software [licensed as MIT](https://github.com/kenoxa/sveltik/blob/main/LICENSE).
 
+[sveltik]: https://sveltik.js.org/
 [svelte]: https://svelte.dev/
