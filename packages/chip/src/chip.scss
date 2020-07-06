@@ -1,5 +1,10 @@
-// https://github.com/picturepan2/spectre/blob/master/src/_chips.scss
-
+/**
+ * Source: https://github.com/picturepan2/spectre/blob/0.5.10/src/_chips.scss
+ *
+ * Changes:
+ * - `> :global(.avatar)`
+ * - `> :global(.btn-clear)`
+ */
 @import 'spectre.css/src/variables';
 @import 'spectre.css/src/mixins';
 
