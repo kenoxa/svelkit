@@ -1,6 +1,6 @@
 # @svelkit/delay
 
-> a delay component for [svelte]
+> a delay component for [svelte] (part of [sveltik])
 
 [![License](https://badgen.net/npm/license/@sveltik/delay)](https://github.com/kenoxa/@sveltik/delay/blob/main/LICENSE)
 [![Latest Release](https://badgen.net/npm/v/@sveltik/delay)](https://www.npmjs.com/package/@sveltik/delay)
@@ -15,16 +15,17 @@ A component that shows its content only after a delay.
 
 Sometimes content, like a loading indicator, may only be visible very briefly and result in a flickering experience. This component prevents that.
 
-> Part of [sveltik]: A [svelte] component library.
-
 <!-- prettier-ignore-start -->
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [Installation](#installation)
-- [Usage](#usage)
-- [License](#license)
+- [@svelkit/delay](#svelkitdelay)
+  - [What?](#what)
+  - [Why?](#why)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <!-- prettier-ignore-end -->

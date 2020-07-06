@@ -1,5 +1,5 @@
 {
-  "name": "@svelkit/delay",
+  "name": "@svelkit/chip",
   "version": "1.0.0-dev",
   "private": true,
   "homepage": "https://github.com/kenoxa/svelkit#readme",
@@ -9,22 +9,23 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kenoxa/svelkit.git",
-    "directory": "packages/delay"
+    "directory": "packages/chip"
   },
   "license": "MIT",
   "author": "Sascha Tandel <s.tandel@kenoxa.de>",
-  "main": "src/delay.svelte",
+  "main": "src/chip.svelte",
   "scripts": {
     "build": "nps build",
     "format": "nps format",
     "prepublishOnly": "echo 'Use `npm start release` instead of `npm publish`!' && exit 1",
+    "start": "nps",
     "test": "nps test"
   },
   "jest": {
     "preset": "@carv/snowpack-scripts"
   },
   "devDependencies": {
-    "@carv/snowpack-scripts": "^1.3.19",
+    "@carv/snowpack-scripts": "^1.3.20",
     "@testing-library/dom": "^7.20.0",
     "@testing-library/svelte": "^3.0.0",
     "@testing-library/user-event": "^12.0.11",
