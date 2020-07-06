@@ -1,6 +1,6 @@
 # Svelkit
 
-> Collection of packages to create svelte apps.
+> Collection of packages to create [svelte] apps.
 
 [![License](https://badgen.net/github/license/kenoxa/sveltik)](https://github.com/kenoxa/sveltik/blob/main/LICENSE)
 [![CI](https://github.com/kenoxa/sveltik/workflows/CI/badge.svg)](https://github.com/kenoxa/svelkit/actions?query=workflow%3Aci)
@@ -39,3 +39,5 @@ We are following the [Conventional Commits](https://www.conventionalcommits.org)
 ## License
 
 `sveltik` is open source software [licensed as MIT](https://github.com/kenoxa/sveltik/blob/main/LICENSE).
+
+[svelte]: https://svelte.dev/
