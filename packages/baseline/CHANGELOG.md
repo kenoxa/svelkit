@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/kenoxa/svelkit/compare/@svelkit/baseline@0.2.1...@svelkit/baseline@0.2.2) (2020-07-13)
+
+### Bug Fixes
+
+- export something ([a1e3883](https://github.com/kenoxa/svelkit/commit/a1e388349d4d24a582ba1aa7b804cee3f6f8e97a))
+
 ## [0.2.1](https://github.com/kenoxa/svelkit/compare/@svelkit/baseline@0.2.0...@svelkit/baseline@0.2.1) (2020-07-13)
 
 ### Bug Fixes
