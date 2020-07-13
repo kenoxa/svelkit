@@ -13,11 +13,11 @@
     "packages/*"
   ],
   "scripts": {
+    "build-storybook": "build-storybook -c .storybook -o docs",
     "format": "nps format && lerna exec -- nps format.package",
     "preinstall": "npx only-allow yarn",
     "publish": "lerna publish",
     "storybook": "start-storybook",
-    "build-storybook": "build-storybook -c .storybook -o docs",
     "test": "nps test",
     "preversion": "lerna exec -- nps prepare && nps test",
     "version": "lerna exec --since -- nps prettier.changelog"

@@ -9,12 +9,17 @@ export default {
     active: {
       description: 'Toggle the active state',
       defaultValue: 'false',
-      control: { type: 'boolean' }},
-    as: {  description: 'HTML tag name to render',defaultValue: 'span', control: { type: 'inline-radio', options: ['span', 'div'] }},
+      control: { type: 'boolean' },
+    },
+    as: {
+      description: 'HTML tag name to render',
+      defaultValue: 'span',
+      control: { type: 'inline-radio', options: ['span', 'div'] },
+    },
   },
   args: {
     active: false,
-    as: 'span'
+    as: 'span',
   },
   parameters: { layout: 'centered' },
 }

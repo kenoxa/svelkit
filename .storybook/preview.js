@@ -8,7 +8,7 @@ addParameters({
     // config: {},
     // axe-core optionsParameter (https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#options-parameter)
     // options: {},
-  }
+  },
 })
 
 export const controls = { expanded: true }
