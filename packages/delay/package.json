@@ -1,7 +1,11 @@
 {
   "name": "@svelkit/delay",
-  "version": "1.0.0-dev",
+  "version": "0.0.0-dev",
   "private": true,
+  "keywords": [
+    "sveltik",
+    "svelte"
+  ],
   "homepage": "https://github.com/kenoxa/svelkit#readme",
   "bugs": {
     "url": "https://github.com/kenoxa/svelkit/issues"
@@ -17,18 +21,17 @@
   "scripts": {
     "build": "nps build",
     "format": "nps format",
-    "prepublishOnly": "echo 'Use `npm start release` instead of `npm publish`!' && exit 1",
+    "prepublishOnly": "nps test doctoc.readme build",
     "test": "nps test"
   },
   "jest": {
     "preset": "@carv/snowpack-scripts"
   },
   "devDependencies": {
-    "nps": "^5.9.12",
-    "svelte": "^3.21.0"
+    "nps": "^5.9.12"
   },
   "peerDependencies": {
-    "svelte": "^3.21.0"
+    "svelte": "3.x"
   },
   "publishConfig": {
     "access": "public"

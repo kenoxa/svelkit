@@ -13,13 +13,11 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [Svelkit](#svelkit)
-  - [Usage](#usage)
-    - [Baseline](#baseline)
-  - [Support](#support)
-  - [Contribute](#contribute)
-    - [Develop](#develop)
-  - [License](#license)
+- [Usage](#usage)
+- [Packages](#packages)
+- [Support](#support)
+- [Contribute](#contribute)
+- [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <!-- prettier-ignore-end -->
@@ -33,6 +31,21 @@ You can use any of the components as demonstrated in the documentation. Please r
 ### Baseline
 
 [sveltik] provides an optional [baseline](./packages/baseline/README.md) component. It fixes some inconsistencies across browsers and devices while providing slightly more opinionated resets to common HTML elements.
+
+## Packages
+
+### Components
+
+- [@sveltik/baseline](./packages/baseline): A baseline component to kickstart an elegant, consistent, and simple baseline to build upon.
+- [@sveltik/chip](./packages/chip): A chip component
+- [@sveltik/delay](./packages/delay): A delay component
+- [@sveltik/scoped-baseline](./packages/scoped-baseline): A scoped baseline component to progressively kickstart an elegant, consistent, and simple baseline to build upon.
+
+### Service
+
+- [@sveltik/graphql](./packages/graphql): A lightweight [GraphQL] client
+
+### Hooks
 
 ## Support
 
@@ -56,3 +69,4 @@ We are following the [Conventional Commits](https://www.conventionalcommits.org)
 
 [sveltik]: https://sveltik.js.org/
 [svelte]: https://svelte.dev/
+[graphql]: https://graphql.org/

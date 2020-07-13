@@ -1,5 +1,5 @@
 {
-  "name": "@svelkit/chip",
+  "name": "@svelkit/baseline",
   "version": "0.0.0-dev",
   "private": true,
   "keywords": [
@@ -13,11 +13,11 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kenoxa/svelkit.git",
-    "directory": "packages/chip"
+    "directory": "packages/baseline"
   },
   "license": "MIT",
   "author": "Sascha Tandel <s.tandel@kenoxa.de>",
-  "main": "src/chip.svelte",
+  "main": "src/baseline.svelte",
   "scripts": {
     "build": "nps build",
     "format": "nps format",
