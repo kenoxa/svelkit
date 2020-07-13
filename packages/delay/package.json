@@ -21,8 +21,7 @@
     "build": "nps build",
     "format": "nps format",
     "prepublishOnly": "nps build.package",
-    "test": "nps test",
-    "version": "nps prettier.changelog"
+    "test": "nps test"
   },
   "jest": {
     "preset": "@carv/snowpack-scripts"

@@ -1,5 +1,6 @@
 {
-  "name": "svelkit-monorepo",
+  "name": "svelkit",
+  "version": "0.0.0-independent",
   "private": true,
   "homepage": "https://github.com/kenoxa/svelkit",
   "bugs": "https://github.com/kenoxa/svelkit/issues",
@@ -17,7 +18,8 @@
     "publish": "lerna publish",
     "storybook": "start-storybook",
     "test": "nps test",
-    "preversion": "nps test"
+    "preversion": "nps test",
+    "version": "nps prettier.write"
   },
   "prettier": "@carv/prettier-config",
   "eslintConfig": {

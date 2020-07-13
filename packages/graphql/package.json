@@ -22,8 +22,7 @@
     "format": "nps format",
     "prepublishOnly": "nps build.package",
     "test": "nps test",
-    "typedoc": "typedoc",
-    "version": "nps prettier.changelog"
+    "typedoc": "typedoc"
   },
   "jest": {
     "preset": "@carv/snowpack-scripts"
