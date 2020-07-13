@@ -11947,12 +11947,7 @@ svelte-dev-helper@^1.1.9:
   resolved "https://registry.npmjs.org/svelte-dev-helper/-/svelte-dev-helper-1.1.9.tgz#7d187db5c6cdbbd64d75a32f91b8998bde3273c3"
   integrity sha1-fRh9tcbNu9ZNdaMvkbiZi94yc8M=
 
-svelte-fragment-component@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.npmjs.org/svelte-fragment-component/-/svelte-fragment-component-1.1.0.tgz#22fec3bea4f2b34fb80d9a45cc0d6e6a1d0a435f"
-  integrity sha512-zL9t0DcAc7bVFDpp8kr8v8H7qivxhVXHKJ/yhhH/BFyyKCNYZ5xdH1CMJsDC4CLiHeWvyMS0GnkMPBDHxnA+UA==
-
-svelte-fragment-component@^1.2.0:
+svelte-fragment-component@^1.1.0, svelte-fragment-component@^1.2.0:
   version "1.2.0"
   resolved "https://registry.npmjs.org/svelte-fragment-component/-/svelte-fragment-component-1.2.0.tgz#36842c609a15c934b9d32a8bc99c460b0374d796"
   integrity sha512-rRstmz2oAy2Y/7X57tRaIAJdMYsa2K/MOx/YJN/ETb7Bj9U3vjgioz27dMG1hl2vAKFTtQpxDhC31ur7ECwpog==

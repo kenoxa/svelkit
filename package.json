@@ -63,6 +63,7 @@
     "spectre.css": "^0.5.9",
     "svelte": "^3.24.0",
     "svelte-check": "^0.1.45",
+    "svelte-fragment-component": "^1.2.0",
     "svelte-htm": "^1.1.0",
     "svelte-loader": "^2.13.6",
     "ts-loader": "^7.0.5",

@@ -8,6 +8,7 @@
     "**/.build/**",
     "**/build/**",
     "**/dist/**",
+    "**/docs/**",
     "**/node_modules/**",
     "**/__generated__/**",
     "**/generated/**",
