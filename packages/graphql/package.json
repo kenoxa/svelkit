@@ -1,0 +1,52 @@
+{
+  "name": "@svelkit/graphql",
+  "version": "0.0.0-dev",
+  "private": true,
+  "keywords": [
+    "sveltik",
+    "svelte",
+    "graphql"
+  ],
+  "homepage": "https://github.com/kenoxa/svelkit#readme",
+  "bugs": {
+    "url": "https://github.com/kenoxa/svelkit/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kenoxa/svelkit.git",
+    "directory": "packages/graphql"
+  },
+  "license": "MIT",
+  "author": "Sascha Tandel <s.tandel@kenoxa.de>",
+  "scripts": {
+    "build": "nps build",
+    "format": "nps format",
+    "prepublishOnly": "nps test doctoc.readme build",
+    "test": "nps test",
+    "typedoc": "typedoc"
+  },
+  "jest": {
+    "preset": "@carv/snowpack-scripts"
+  },
+  "dependencies": {
+    "plain-tag": "^0.1.2"
+  },
+  "devDependencies": {
+    "@types/node-fetch": "^2.5.7",
+    "cross-fetch": "^3.0.5",
+    "fetch-mock-jest": "^1.3.0",
+    "node-fetch": "^2.6.0",
+    "nps": "^5.9.12",
+    "svelte-fragment-component": "^1.2.0",
+    "typedoc": "0.17.0-3"
+  },
+  "peerDependencies": {
+    "svelte": "3.x"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "snowpack": {
+    "extends": "@carv/snowpack-scripts"
+  }
+}
