@@ -1,10 +1,9 @@
 module.exports = {
-  stories: ['../packages/**/src/**/*.stories.(js|mdx)'],
+  stories: ['../packages/**/src/**/*.stories.@(ts|js|mdx)'],
 
   addons: [
-    '@storybook/addon-actions/register',
-    '@storybook/addon-knobs/register',
-    '@storybook/addon-notes/register',
+    '@storybook/addon-docs',
+    '@storybook/addon-controls',
     '@storybook/addon-viewport/register',
     '@storybook/addon-storysource',
     '@storybook/addon-a11y/register',
@@ -19,17 +18,6 @@ module.exports = {
         Object.assign(rule.options, svelteConfig, compilerOptions, { dev: false })
       }
     }
-
-    // Enable typescript support
-    config.module.rules.push({
-      test: /\.(ts|tsx)$/,
-      use: [
-        {
-          loader: require.resolve('ts-loader'),
-        },
-      ],
-    })
-    config.resolve.extensions.push('.ts', '.tsx')
 
     return config
   },

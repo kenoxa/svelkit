@@ -1,4 +1,14 @@
-import { addDecorator } from '@storybook/svelte'
-import { withA11y } from '@storybook/addon-a11y'
+import { addParameters } from '@storybook/svelte'
 
-addDecorator(withA11y)
+addParameters({
+  a11y: {
+    // optional selector which element to inspect
+    element: '#root',
+    // axe-core configurationOptions (https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#parameters-1)
+    // config: {},
+    // axe-core optionsParameter (https://github.com/dequelabs/axe-core/blob/develop/doc/API.md#options-parameter)
+    // options: {},
+  }
+})
+
+export const controls = { expanded: true }
