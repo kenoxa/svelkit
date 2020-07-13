@@ -12,10 +12,9 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [@svelkit/chip](#svelkitchip)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [License](#license)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <!-- prettier-ignore-end -->

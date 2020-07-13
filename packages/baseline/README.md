@@ -16,12 +16,10 @@ It fixes some inconsistencies across browsers and devices while providing slight
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [@sveltik/baseline](#sveltikbaseline)
-  - [Why?](#why)
-  - [Installation](#installation)
-  - [Global reset](#global-reset)
-  - [Scoping on children](#scoping-on-children)
-  - [License](#license)
+- [Installation](#installation)
+- [Global reset](#global-reset)
+- [Scoping on children](#scoping-on-children)
+- [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <!-- prettier-ignore-end -->

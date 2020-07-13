@@ -13,7 +13,7 @@ Use [GraphQL] APIs in [svelte] the svelte way. Either as [readable store](https:
 
 ## Why?
 
-Existing solutions ([graphql-svelte](https://www.npmjs.com/package/graphql-svelte), [@urql/svelte](https://github.com/FormidableLabs/urql/tree/main/packages/svelte-urql), and [others](https://www.npmjs.com/search?q=svelte%20graphql)) didn't provide the API we were looking for, features we would not need or were to heavy.
+Existing solutions ([graphql-svelte](https://www.npmjs.com/package/graphql-svelte), [@urql/svelte](https://github.com/FormidableLabs/urql/tree/main/packages/svelte-urql), and [others](https://www.npmjs.com/search?q=svelte%20graphql)) didn't provide the API we were looking for, features we would not need or are to heavy.
 
 This solutions focuses on a _native_ svelte API using [svelte/store](https://svelte.dev/docs#svelte_store).
 
@@ -22,12 +22,9 @@ This solutions focuses on a _native_ svelte API using [svelte/store](https://sve
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [@svelkit/graphql](#svelkitgraphql)
-  - [What?](#what)
-  - [Why?](#why)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [License](#license)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <!-- prettier-ignore-end -->

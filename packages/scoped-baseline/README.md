@@ -16,11 +16,9 @@ It fixes some inconsistencies across browsers and devices while providing slight
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [@sveltik/scoped-baseline](#sveltikscoped-baseline)
-  - [Why?](#why)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [License](#license)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <!-- prettier-ignore-end -->

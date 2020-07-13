@@ -12,8 +12,8 @@
     "packages/*"
   ],
   "scripts": {
+    "format": "nps format && lerna run format",
     "preinstall": "npx only-allow yarn",
-    "format": "nps format",
     "publish": "lerna publish",
     "storybook": "start-storybook",
     "test": "nps test"
