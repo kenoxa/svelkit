@@ -1,11 +1,11 @@
 # @svelkit/chip
 
-> A chip component for [svelte] (part of [sveltik])
+> A chip component for [svelte] (part of [svelkit])
 
-[![License](https://badgen.net/npm/license/@sveltik/chip)](https://github.com/kenoxa/@sveltik/chip/blob/main/LICENSE)
-[![Latest Release](https://badgen.net/npm/v/@sveltik/chip)](https://www.npmjs.com/package/@sveltik/chip)
-[![View changelog](https://badgen.net/badge/%E2%80%8B/Explore%20Changelog/green?icon=awesome)](https://changelogs.xyz/@sveltik/chip)
-[![Bundle Size](https://badgen.net/bundlephobia/minzip/@sveltik/chip)](https://bundlephobia.com/result?p=@sveltik/chip)
+[![License](https://badgen.net/npm/license/@svelkit/chip)](https://github.com/kenoxa/@svelkit/chip/blob/main/LICENSE)
+[![Latest Release](https://badgen.net/npm/v/@svelkit/chip)](https://www.npmjs.com/package/@svelkit/chip)
+[![View changelog](https://badgen.net/badge/%E2%80%8B/Explore%20Changelog/green?icon=awesome)](https://changelogs.xyz/@svelkit/chip)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/@svelkit/chip)](https://bundlephobia.com/result?p=@svelkit/chip)
 
 <!-- prettier-ignore-start -->
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
@@ -22,25 +22,25 @@
 ## Installation
 
 ```sh
-npm install @sveltik/chip
+npm install @svelkit/chip
 ```
 
 And then import it:
 
 ```js
 // using es modules
-import Chip from '@sveltik/chip'
+import Chip from '@svelkit/chip'
 
 // common.js
-const Chip = require('@sveltik/chip')
+const Chip = require('@svelkit/chip')
 ```
 
-Alternatively use [UNPKG](https://unpkg.com/@sveltik/chip/) or [jsDelivr](https://cdn.jsdelivr.net/npm/@sveltik/chip/) packages.
+Alternatively use [UNPKG](https://unpkg.com/@svelkit/chip/) or [jsDelivr](https://cdn.jsdelivr.net/npm/@svelkit/chip/) packages.
 
 Hotlinking from unpkg: _(no build tool needed!)_
 
 ```js
-import chip from 'https://unpkg.com/@sveltik/chip?module'
+import chip from 'https://unpkg.com/@svelkit/chip?module'
 ```
 
 ## Usage
@@ -51,7 +51,7 @@ import chip from 'https://unpkg.com/@sveltik/chip?module'
 
 ## License
 
-`sveltik` is open source software [licensed as MIT](https://github.com/kenoxa/sveltik/blob/main/LICENSE).
+`svelkit` is open source software [licensed as MIT](https://github.com/kenoxa/svelkit/blob/main/LICENSE).
 
-[sveltik]: https://sveltik.js.org/
+[svelkit]: https://svelkit.js.org/
 [svelte]: https://svelte.dev/

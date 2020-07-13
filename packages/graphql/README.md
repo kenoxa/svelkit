@@ -2,10 +2,10 @@
 
 > A lightweight [GraphQL] client for [svelte]
 
-[![License](https://badgen.net/npm/license/@sveltik/graphql)](https://github.com/kenoxa/@sveltik/graphql/blob/main/LICENSE)
-[![Latest Release](https://badgen.net/npm/v/@sveltik/graphql)](https://www.npmjs.com/package/@sveltik/graphql)
-[![View changelog](https://badgen.net/badge/%E2%80%8B/Explore%20Changelog/green?icon=awesome)](https://changelogs.xyz/@sveltik/graphql)
-[![Bundle Size](https://badgen.net/bundlephobia/minzip/@sveltik/graphql)](https://bundlephobia.com/result?p=@sveltik/graphql)
+[![License](https://badgen.net/npm/license/@svelkit/graphql)](https://github.com/kenoxa/@svelkit/graphql/blob/main/LICENSE)
+[![Latest Release](https://badgen.net/npm/v/@svelkit/graphql)](https://www.npmjs.com/package/@svelkit/graphql)
+[![View changelog](https://badgen.net/badge/%E2%80%8B/Explore%20Changelog/green?icon=awesome)](https://changelogs.xyz/@svelkit/graphql)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/@svelkit/graphql)](https://bundlephobia.com/result?p=@svelkit/graphql)
 
 ## What?
 
@@ -32,32 +32,32 @@ This solutions focuses on a _native_ svelte API using [svelte/store](https://sve
 ## Installation
 
 ```sh
-npm install @sveltik/graphql
+npm install @svelkit/graphql
 ```
 
 And then import it:
 
 ```js
 // using es modules
-import { useQuery, gql } from '@sveltik/graphql'
+import { useQuery, gql } from '@svelkit/graphql'
 
 // common.js
-const { useQuery, gql } = require('@sveltik/graphql')
+const { useQuery, gql } = require('@svelkit/graphql')
 ```
 
-Alternatively use [UNPKG](https://unpkg.com/@sveltik/graphql/) or [jsDelivr](https://cdn.jsdelivr.net/npm/@sveltik/graphql/) packages.
+Alternatively use [UNPKG](https://unpkg.com/@svelkit/graphql/) or [jsDelivr](https://cdn.jsdelivr.net/npm/@svelkit/graphql/) packages.
 
 Hotlinking from unpkg: _(no build tool needed!)_
 
 ```js
-import { useQuery, gql } from 'https://unpkg.com/@sveltik/graphql?module'
+import { useQuery, gql } from 'https://unpkg.com/@svelkit/graphql?module'
 ```
 
 ## Usage
 
 ```html
 <script>
-  import { initGraphQLClient, useQuery, gql } from '@sveltik/graphql'
+  import { initGraphQLClient, useQuery, gql } from '@svelkit/graphql'
 
   initGraphQLClient({ url: 'https://swapi.graph.cool/' })
 
@@ -83,8 +83,8 @@ import { useQuery, gql } from 'https://unpkg.com/@sveltik/graphql?module'
 
 ## License
 
-`sveltik` is open source software [licensed as MIT](https://github.com/kenoxa/sveltik/blob/main/LICENSE).
+`svelkit` is open source software [licensed as MIT](https://github.com/kenoxa/svelkit/blob/main/LICENSE).
 
-[sveltik]: https://sveltik.js.org/
+[svelkit]: https://svelkit.js.org/
 [svelte]: https://svelte.dev/
 [graphql]: https://graphql.org/

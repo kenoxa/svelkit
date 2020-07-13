@@ -1,11 +1,11 @@
-# @sveltik/baseline
+# @svelkit/baseline
 
 > A baseline component to kickstart an elegant, consistent, and simple baseline to build upon.
 
-[![License](https://badgen.net/npm/license/@sveltik/baseline)](https://github.com/kenoxa/@sveltik/baseline/blob/main/LICENSE)
-[![Latest Release](https://badgen.net/npm/v/@sveltik/baseline)](https://www.npmjs.com/package/@sveltik/baseline)
-[![View changelog](https://badgen.net/badge/%E2%80%8B/Explore%20Changelog/green?icon=awesome)](https://changelogs.xyz/@sveltik/baseline)
-[![Bundle Size](https://badgen.net/bundlephobia/minzip/@sveltik/baseline)](https://bundlephobia.com/result?p=@sveltik/baseline)
+[![License](https://badgen.net/npm/license/@svelkit/baseline)](https://github.com/kenoxa/@svelkit/baseline/blob/main/LICENSE)
+[![Latest Release](https://badgen.net/npm/v/@svelkit/baseline)](https://www.npmjs.com/package/@svelkit/baseline)
+[![View changelog](https://badgen.net/badge/%E2%80%8B/Explore%20Changelog/green?icon=awesome)](https://changelogs.xyz/@svelkit/baseline)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/@svelkit/baseline)](https://bundlephobia.com/result?p=@svelkit/baseline)
 
 ## Why?
 
@@ -27,25 +27,25 @@ It fixes some inconsistencies across browsers and devices while providing slight
 ## Installation
 
 ```sh
-npm install @sveltik/baseline
+npm install @svelkit/baseline
 ```
 
 And then import it:
 
 ```js
 // using es modules
-import Baseline from '@sveltik/baseline'
+import Baseline from '@svelkit/baseline'
 
 // common.js
-const Baseline = require('@sveltik/baseline')
+const Baseline = require('@svelkit/baseline')
 ```
 
-Alternatively use [UNPKG](https://unpkg.com/@sveltik/baseline/) or [jsDelivr](https://cdn.jsdelivr.net/npm/@sveltik/baseline/) packages.
+Alternatively use [UNPKG](https://unpkg.com/@svelkit/baseline/) or [jsDelivr](https://cdn.jsdelivr.net/npm/@svelkit/baseline/) packages.
 
 Hotlinking from unpkg: _(no build tool needed!)_
 
 ```js
-import Baseline from 'https://unpkg.com/@sveltik/baseline?module'
+import Baseline from 'https://unpkg.com/@svelkit/baseline?module'
 ```
 
 ## Global reset
@@ -59,11 +59,11 @@ You might be familiar with [normalize.css](https://github.com/necolas/normalize.
 
 ## Scoping on children
 
-However, you might be progressively migrating a website to [sveltik], using a global reset might not be an option. It's possible to apply the baseline only to the children by using the [ScopedBaseline](../scoped-baseline/README.md) component.
+However, you might be progressively migrating a website to [svelkit], using a global reset might not be an option. It's possible to apply the baseline only to the children by using the [ScopedBaseline](../scoped-baseline/README.md) component.
 
 ```html
 <script>
-  import ScopedBaseline from '@sveltik/scoped-baseline'
+  import ScopedBaseline from '@svelkit/scoped-baseline'
   import MyApp from './MyApp'
 </script>
 
@@ -77,7 +77,7 @@ However, you might be progressively migrating a website to [sveltik], using a gl
 
 ## License
 
-`sveltik` is open source software [licensed as MIT](https://github.com/kenoxa/sveltik/blob/main/LICENSE).
+`svelkit` is open source software [licensed as MIT](https://github.com/kenoxa/svelkit/blob/main/LICENSE).
 
-[sveltik]: https://sveltik.js.org/
+[svelkit]: https://svelkit.js.org/
 [svelte]: https://svelte.dev/

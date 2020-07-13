@@ -1,11 +1,11 @@
-# @sveltik/scoped-baseline
+# @svelkit/scoped-baseline
 
 > A scoped baseline component to progressively kickstart an elegant, consistent, and simple baseline to build upon.
 
-[![License](https://badgen.net/npm/license/@sveltik/scoped-baseline)](https://github.com/kenoxa/@sveltik/scoped-baseline/blob/main/LICENSE)
-[![Latest Release](https://badgen.net/npm/v/@sveltik/scoped-baseline)](https://www.npmjs.com/package/@sveltik/scoped-baseline)
-[![View changelog](https://badgen.net/badge/%E2%80%8B/Explore%20Changelog/green?icon=awesome)](https://changelogs.xyz/@sveltik/scoped-baseline)
-[![Bundle Size](https://badgen.net/bundlephobia/minzip/@sveltik/scoped-baseline)](https://bundlephobia.com/result?p=@sveltik/scoped-baseline)
+[![License](https://badgen.net/npm/license/@svelkit/scoped-baseline)](https://github.com/kenoxa/@svelkit/scoped-baseline/blob/main/LICENSE)
+[![Latest Release](https://badgen.net/npm/v/@svelkit/scoped-baseline)](https://www.npmjs.com/package/@svelkit/scoped-baseline)
+[![View changelog](https://badgen.net/badge/%E2%80%8B/Explore%20Changelog/green?icon=awesome)](https://changelogs.xyz/@svelkit/scoped-baseline)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/@svelkit/scoped-baseline)](https://bundlephobia.com/result?p=@svelkit/scoped-baseline)
 
 ## Why?
 
@@ -26,34 +26,34 @@ It fixes some inconsistencies across browsers and devices while providing slight
 ## Installation
 
 ```sh
-npm install @sveltik/scoped-baseline
+npm install @svelkit/scoped-baseline
 ```
 
 And then import it:
 
 ```js
 // using es modules
-import ScopedBaseline from '@sveltik/scoped-baseline'
+import ScopedBaseline from '@svelkit/scoped-baseline'
 
 // common.js
-const ScopedBaseline = require('@sveltik/scoped-baseline')
+const ScopedBaseline = require('@svelkit/scoped-baseline')
 ```
 
-Alternatively use [UNPKG](https://unpkg.com/@sveltik/scoped-baseline/) or [jsDelivr](https://cdn.jsdelivr.net/npm/@sveltik/scoped-baseline/) packages.
+Alternatively use [UNPKG](https://unpkg.com/@svelkit/scoped-baseline/) or [jsDelivr](https://cdn.jsdelivr.net/npm/@svelkit/scoped-baseline/) packages.
 
 Hotlinking from unpkg: _(no build tool needed!)_
 
 ```js
-import ScopedBaseline from 'https://unpkg.com/@sveltik/scoped-baseline?module'
+import ScopedBaseline from 'https://unpkg.com/@svelkit/scoped-baseline?module'
 ```
 
 ## Usage
 
-Progressively migrate a website to [sveltik], using a [global reset](../baseline/README.md) might not be an option. It's possible to apply the baseline only to the children by using the `ScopedBaseline` component.
+Progressively migrate a website to [svelkit], using a [global reset](../baseline/README.md) might not be an option. It's possible to apply the baseline only to the children by using the `ScopedBaseline` component.
 
 ```html
 <script>
-  import ScopedBaseline from '@sveltik/scoped-baseline'
+  import ScopedBaseline from '@svelkit/scoped-baseline'
   import MyApp from './MyApp'
 </script>
 
@@ -67,7 +67,7 @@ Progressively migrate a website to [sveltik], using a [global reset](../baseline
 
 ## License
 
-`sveltik` is open source software [licensed as MIT](https://github.com/kenoxa/sveltik/blob/main/LICENSE).
+`svelkit` is open source software [licensed as MIT](https://github.com/kenoxa/svelkit/blob/main/LICENSE).
 
-[sveltik]: https://sveltik.js.org/
+[svelkit]: https://svelkit.js.org/
 [svelte]: https://svelte.dev/

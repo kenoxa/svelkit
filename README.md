@@ -2,9 +2,9 @@
 
 > Collection of packages to create [svelte] apps.
 
-[![License](https://badgen.net/github/license/kenoxa/sveltik)](https://github.com/kenoxa/sveltik/blob/main/LICENSE)
-[![CI](https://github.com/kenoxa/sveltik/workflows/CI/badge.svg)](https://github.com/kenoxa/svelkit/actions?query=workflow%3Aci)
-[![Coverage Status](https://badgen.net/coveralls/c/github/kenoxa/sveltik/main)](https://coveralls.io/github/kenoxa/sveltik?branch=main)
+[![License](https://badgen.net/github/license/kenoxa/svelkit)](https://github.com/kenoxa/svelkit/blob/main/LICENSE)
+[![CI](https://github.com/kenoxa/svelkit/workflows/CI/badge.svg)](https://github.com/kenoxa/svelkit/actions?query=workflow%3Aci)
+[![Coverage Status](https://badgen.net/coveralls/c/github/kenoxa/svelkit/main)](https://coveralls.io/github/kenoxa/svelkit?branch=main)
 [![PRs Welcome](https://badgen.net/badge/PRs/welcome/purple)](http://makeapullrequest.com)
 [![Conventional Commits](https://badgen.net/badge/Conventional%20Commits/1.0.0/cyan)](https://conventionalcommits.org)
 
@@ -24,32 +24,32 @@
 
 ## Usage
 
-[sveltik] components work in isolation. They are self-supporting, and will only inject the styles they need to display. They don't rely on any global style-sheets such as [normalize.css](normalize.css).
+[svelkit] components work in isolation. They are self-supporting, and will only inject the styles they need to display. They don't rely on any global style-sheets such as [normalize.css](normalize.css).
 
-You can use any of the components as demonstrated in the documentation. Please refer to each component's [demo page](https://sveltik.js.org) to see how they should be imported.
+You can use any of the components as demonstrated in the documentation. Please refer to each component's [demo page](https://svelkit.js.org) to see how they should be imported.
 
 ### Baseline
 
-[sveltik] provides an optional [baseline](./packages/baseline/README.md) component. It fixes some inconsistencies across browsers and devices while providing slightly more opinionated resets to common HTML elements.
+[svelkit] provides an optional [baseline](./packages/baseline/README.md) component. It fixes some inconsistencies across browsers and devices while providing slightly more opinionated resets to common HTML elements.
 
 ## Packages
 
 ### Components
 
-- [@sveltik/baseline](./packages/baseline): A baseline component to kickstart an elegant, consistent, and simple baseline to build upon.
-- [@sveltik/chip](./packages/chip): A chip component
-- [@sveltik/delay](./packages/delay): A delay component
-- [@sveltik/scoped-baseline](./packages/scoped-baseline): A scoped baseline component to progressively kickstart an elegant, consistent, and simple baseline to build upon.
+- [@svelkit/baseline](./packages/baseline): A baseline component to kickstart an elegant, consistent, and simple baseline to build upon.
+- [@svelkit/chip](./packages/chip): A chip component
+- [@svelkit/delay](./packages/delay): A delay component
+- [@svelkit/scoped-baseline](./packages/scoped-baseline): A scoped baseline component to progressively kickstart an elegant, consistent, and simple baseline to build upon.
 
 ### Service
 
-- [@sveltik/graphql](./packages/graphql): A lightweight [GraphQL] client
+- [@svelkit/graphql](./packages/graphql): A lightweight [GraphQL] client
 
 ### Hooks
 
 ## Support
 
-This project is free and open-source, so if you think this project can help you or anyone else, you may [star it on GitHub](https://github.com/kenoxa/sveltik). Feel free to [open an issue](https://github.com/kenoxa/sveltik/issues) if you have any idea, question, or you've found a bug.
+This project is free and open-source, so if you think this project can help you or anyone else, you may [star it on GitHub](https://github.com/kenoxa/svelkit). Feel free to [open an issue](https://github.com/kenoxa/svelkit/issues) if you have any idea, question, or you've found a bug.
 
 ## Contribute
 
@@ -68,8 +68,8 @@ We are following the [Conventional Commits](https://www.conventionalcommits.org)
 
 ## License
 
-`sveltik` is open source software [licensed as MIT](https://github.com/kenoxa/sveltik/blob/main/LICENSE).
+`svelkit` is open source software [licensed as MIT](https://github.com/kenoxa/svelkit/blob/main/LICENSE).
 
-[sveltik]: https://sveltik.js.org/
+[svelkit]: https://svelkit.js.org/
 [svelte]: https://svelte.dev/
 [graphql]: https://graphql.org/

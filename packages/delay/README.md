@@ -1,11 +1,11 @@
 # @svelkit/delay
 
-> a delay component for [svelte] (part of [sveltik])
+> a delay component for [svelte] (part of [svelkit])
 
-[![License](https://badgen.net/npm/license/@sveltik/delay)](https://github.com/kenoxa/@sveltik/delay/blob/main/LICENSE)
-[![Latest Release](https://badgen.net/npm/v/@sveltik/delay)](https://www.npmjs.com/package/@sveltik/delay)
-[![View changelog](https://badgen.net/badge/%E2%80%8B/Explore%20Changelog/green?icon=awesome)](https://changelogs.xyz/@sveltik/delay)
-[![Bundle Size](https://badgen.net/bundlephobia/minzip/@sveltik/delay)](https://bundlephobia.com/result?p=@sveltik/delay)
+[![License](https://badgen.net/npm/license/@svelkit/delay)](https://github.com/kenoxa/@svelkit/delay/blob/main/LICENSE)
+[![Latest Release](https://badgen.net/npm/v/@svelkit/delay)](https://www.npmjs.com/package/@svelkit/delay)
+[![View changelog](https://badgen.net/badge/%E2%80%8B/Explore%20Changelog/green?icon=awesome)](https://changelogs.xyz/@svelkit/delay)
+[![Bundle Size](https://badgen.net/bundlephobia/minzip/@svelkit/delay)](https://bundlephobia.com/result?p=@svelkit/delay)
 
 ## What?
 
@@ -30,25 +30,25 @@ Sometimes content, like a loading indicator, may only be visible very briefly an
 ## Installation
 
 ```sh
-npm install @sveltik/delay
+npm install @svelkit/delay
 ```
 
 And then import it:
 
 ```js
 // using es modules
-import Delay from '@sveltik/delay'
+import Delay from '@svelkit/delay'
 
 // common.js
-const Delay = require('@sveltik/delay')
+const Delay = require('@svelkit/delay')
 ```
 
-Alternatively use [UNPKG](https://unpkg.com/@sveltik/delay/) or [jsDelivr](https://cdn.jsdelivr.net/npm/@sveltik/delay/) packages.
+Alternatively use [UNPKG](https://unpkg.com/@svelkit/delay/) or [jsDelivr](https://cdn.jsdelivr.net/npm/@svelkit/delay/) packages.
 
 Hotlinking from unpkg: _(no build tool needed!)_
 
 ```js
-import Delay from 'https://unpkg.com/@sveltik/delay?module'
+import Delay from 'https://unpkg.com/@svelkit/delay?module'
 ```
 
 ## Usage
@@ -71,7 +71,7 @@ The `show` property (default `true`) is used to determine if the content should 
 
 ## License
 
-`sveltik` is open source software [licensed as MIT](https://github.com/kenoxa/sveltik/blob/main/LICENSE).
+`svelkit` is open source software [licensed as MIT](https://github.com/kenoxa/svelkit/blob/main/LICENSE).
 
-[sveltik]: https://sveltik.js.org/
+[svelkit]: https://svelkit.js.org/
 [svelte]: https://svelte.dev/
