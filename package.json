@@ -35,7 +35,7 @@
     "@babel/core": "^7.10.4",
     "@carv/eslint-config": "^1.2.5",
     "@carv/prettier-config": "^1.0.2",
-    "@carv/snowpack-scripts": "^1.3.26",
+    "@carv/snowpack-scripts": "^1.3.27",
     "@carv/types": "^1.1.1",
     "@storybook/addon-a11y": "^5.3.19",
     "@storybook/addon-actions": "^5.3.19",

@@ -62,6 +62,9 @@ We are following the [Conventional Commits](https://www.conventionalcommits.org)
 ### Develop
 
 - `yarn test`: Run test suite including linting
+- `yarn format`: Ensure consistent code style
+- `yarn storybook`: Start the component showroom
+- `yarn publish`: To publish all changed packages
 
 ## License
 
