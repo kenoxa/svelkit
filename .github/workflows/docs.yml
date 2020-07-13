@@ -1,0 +1,51 @@
+name: docs
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          registry-url: https://registry.npmjs.org/
+
+      - name: Cache ~/.npm
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: npm-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            npm-${{ runner.os }}
+            npm-
+
+      - name: Cache ./node_modules
+        if: ${{ steps.release.outputs.release_created }}
+        id: cache-modules
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: node_modules-${{ runner.os }}-14.x-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install
+        run: yarn install --frozen-lockfile
+
+      - name: Generate website
+        run: yarn build-storybook
+
+      - name: Deploy website
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BASE_BRANCH: main
+          BRANCH: gh-pages
+          FOLDER: docs
+          CLEAN: true
+          CLEAN_EXCLUDE: '["CNAME", ".nojekyll"]'
