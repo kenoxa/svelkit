@@ -13,13 +13,13 @@
     "packages/*"
   ],
   "scripts": {
-    "format": "nps format",
+    "format": "nps format && lerna exec -- nps format.package",
     "preinstall": "npx only-allow yarn",
     "publish": "lerna publish",
     "storybook": "start-storybook",
     "test": "nps test",
-    "preversion": "nps test",
-    "version": "nps prettier.write"
+    "preversion": "lerna exec -- nps prepare && nps test",
+    "version": "lerna exec --since -- nps prettier.changelog"
   },
   "prettier": "@carv/prettier-config",
   "eslintConfig": {
