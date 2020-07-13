@@ -35,6 +35,7 @@
   "publishConfig": {
     "access": "public"
   },
+  "gitHead": "e6b3e2926a3d89f27736ed29c02c3d0508584d0b",
   "snowpack": {
     "extends": "@carv/snowpack-scripts"
   }
