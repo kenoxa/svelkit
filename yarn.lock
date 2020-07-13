@@ -892,6 +892,27 @@
     eslint-plugin-tsdoc "^0.2.5"
     eslint-plugin-unicorn "^20.1.0"
 
+"@carv/eslint-config@^1.2.6":
+  version "1.2.6"
+  resolved "https://registry.npmjs.org/@carv/eslint-config/-/eslint-config-1.2.6.tgz#cb05e3c332e78c47b8365f82795ce37665ce8541"
+  integrity sha512-VXhT24kCCEFIvz39/g3ip/XWGkQ9xPL0jpfOHrPc8PU71wl1jBu38U4jN55xE4aJFhnicd0iJij/o7nPafygtQ==
+  dependencies:
+    "@rushstack/eslint-patch" "^1.0.2"
+    "@typescript-eslint/eslint-plugin" ""
+    "@typescript-eslint/parser" "^3.4.0"
+    eslint-config-prettier "^6.11.0"
+    eslint-config-xo "^0.31.0"
+    eslint-plugin-eslint-comments "^3.2.0"
+    eslint-plugin-jest "^23.13.2"
+    eslint-plugin-jest-dom "^3.0.1"
+    eslint-plugin-no-use-extend-native "^0.5.0"
+    eslint-plugin-prettier "^3.1.3"
+    eslint-plugin-promise "^4.2.1"
+    eslint-plugin-svelte3 "^2.7.3"
+    eslint-plugin-testing-library "^3.3.1"
+    eslint-plugin-tsdoc "^0.2.5"
+    eslint-plugin-unicorn "^20.1.0"
+
 "@carv/prettier-config@^1.0.2":
   version "1.0.2"
   resolved "https://registry.npmjs.org/@carv/prettier-config/-/prettier-config-1.0.2.tgz#2fe2b07c65df8a0000a5dea071a967d02422c298"
@@ -900,10 +921,10 @@
     prettier-plugin-packagejson "^2.2.5"
     prettier-plugin-svelte "^1.1.0"
 
-"@carv/snowpack-plugin-rollup@^1.3.13":
-  version "1.3.13"
-  resolved "https://registry.npmjs.org/@carv/snowpack-plugin-rollup/-/snowpack-plugin-rollup-1.3.13.tgz#0f03919c9702f5098e22cb392bdb30add00f4e92"
-  integrity sha512-LaKSYICsBW6tuKDpQJJtO8YBzTpSbyQRum1j/PSVqpI4Y1vK0DvfGTdLUoFfPcCAtC8SDsDym4mxNFV0dvg3+w==
+"@carv/snowpack-plugin-rollup@^1.3.16":
+  version "1.3.16"
+  resolved "https://registry.npmjs.org/@carv/snowpack-plugin-rollup/-/snowpack-plugin-rollup-1.3.16.tgz#212c7412bda869d7d97d47d3795e8aac18bb99e4"
+  integrity sha512-kAOFk0Dw+3hKDohoKqeYKiV9yzlRYGTv2JuHc/G9QpxEr9fuELhGBwdOLFUr78LyUWNacq+a4DZyXjpXicqVYw==
   dependencies:
     "@rollup/plugin-commonjs" "^13.0.0"
     "@rollup/plugin-json" "^4.1.0"
@@ -916,25 +937,25 @@
     fs-extra "^9.0.1"
     globby "^11.0.1"
     magic-string "^0.25.7"
-    micromatch "^4.0.2"
     npm-run-path "^4.0.1"
+    project-root-directory "^1.0.2"
     rimraf "^3.0.2"
     rollup "^2.18.0"
     rollup-plugin-dts "^1.4.7"
     rollup-plugin-esbuild "^2.1.0"
     rollup-plugin-svelte "^5.2.3"
 
-"@carv/snowpack-scripts@^1.3.23":
-  version "1.3.23"
-  resolved "https://registry.npmjs.org/@carv/snowpack-scripts/-/snowpack-scripts-1.3.23.tgz#37aa4375a49c242414c1a2664dae2e29f3f0b531"
-  integrity sha512-bHJ7piShVR85seHutf5XPUp994/Rd9y86a7tLvVqLSzpqpgQoRRhEG0md3RRilEDm9nQrX4t9sIW6O2b28yoAw==
+"@carv/snowpack-scripts@^1.3.26":
+  version "1.3.26"
+  resolved "https://registry.npmjs.org/@carv/snowpack-scripts/-/snowpack-scripts-1.3.26.tgz#2283a9ec1471d27d148a6ae7b2336160899e807a"
+  integrity sha512-qJIh3Ce9cKL8D6ZqOPgNzKTw/bYvqbu1yvKKELMi1r6RAqu7bGY1V4Zym/g52ibe48nEfes5rqMxnyFfSS+CmQ==
   dependencies:
     "@babel/core" "^7.10.3"
     "@babel/preset-env" "^7.10.3"
     "@babel/preset-typescript" "^7.10.3"
-    "@carv/eslint-config" "^1.2.5"
+    "@carv/eslint-config" "^1.2.6"
     "@carv/prettier-config" "^1.0.2"
-    "@carv/snowpack-plugin-rollup" "^1.3.13"
+    "@carv/snowpack-plugin-rollup" "^1.3.16"
     "@snowpack/app-scripts-svelte" "^1.0.2"
     "@snowpack/plugin-svelte" "^1.2.0"
     "@testing-library/jest-dom" "^5.11.0"
@@ -955,6 +976,7 @@
     nps "^5.9.12"
     pkg-dir "^4.2.0"
     prettier "^2.0.5"
+    project-root-directory "^1.0.2"
     rimraf "^3.0.2"
     rollup-plugin-node-polyfills "^0.2.1"
     rollup-plugin-svelte "^5.2.3"
@@ -10016,6 +10038,13 @@ progress@^2.0.0, progress@^2.0.3:
   version "2.0.3"
   resolved "https://registry.npmjs.org/progress/-/progress-2.0.3.tgz#7e8cf8d8f5b8f239c1bc68beb4eb78567d572ef8"
   integrity sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
+
+project-root-directory@^1.0.2:
+  version "1.0.3"
+  resolved "https://registry.npmjs.org/project-root-directory/-/project-root-directory-1.0.3.tgz#b83f25a76fa4aeb64f69a95cc9c83035c96ee045"
+  integrity sha512-GVRoyflCe4VYlGwtEVcQngm1FMuu9q9KJfEK85g5OWGUTxc+iYvnMT64ixvxEgN48chvBWe2fc2ZGATSJMRyqQ==
+  dependencies:
+    resolve-from "^5.0.0"
 
 promise-inflight@^1.0.1:
   version "1.0.1"

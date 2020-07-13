@@ -20,9 +20,10 @@
   "scripts": {
     "build": "nps build",
     "format": "nps format",
-    "prepublishOnly": "nps test doctoc.readme build",
+    "prepublishOnly": "nps build.package",
     "test": "nps test",
-    "typedoc": "typedoc"
+    "typedoc": "typedoc",
+    "version": "nps prettier.changelog"
   },
   "jest": {
     "preset": "@carv/snowpack-scripts"
@@ -44,7 +45,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "e6b3e2926a3d89f27736ed29c02c3d0508584d0b",
+  "gitHead": "307181b36c3444ea4c5abba3e73cfe5dbbaaaa77",
   "snowpack": {
     "extends": "@carv/snowpack-scripts"
   }
