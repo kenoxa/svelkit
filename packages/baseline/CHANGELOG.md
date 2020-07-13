@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/kenoxa/svelkit/compare/@svelkit/baseline@0.2.0...@svelkit/baseline@0.2.1) (2020-07-13)
+
+### Bug Fixes
+
+- move format on version to root ([7cfc429](https://github.com/kenoxa/svelkit/commit/7cfc4290fb9ee89699ccd4ad0e4168d3f35f3b45))
+
 # 0.2.0 (2020-07-13)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.3](https://github.com/kenoxa/svelkit/compare/@svelkit/scoped-baseline@0.1.2...@svelkit/scoped-baseline@0.1.3) (2020-07-13)
+
+### Bug Fixes
+
+- move format on version to root ([7cfc429](https://github.com/kenoxa/svelkit/commit/7cfc4290fb9ee89699ccd4ad0e4168d3f35f3b45))
+
 ## 0.1.2 (2020-07-13)
 
 ### Bug Fixes
