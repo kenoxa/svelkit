@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0](https://github.com/kenoxa/svelkit/compare/@svelkit/graphql@0.0.0-dev.0...@svelkit/graphql@0.1.0) (2020-07-13)
+
+
+### Features
+
+* prepare release ([1acebb3](https://github.com/kenoxa/svelkit/commit/1acebb301731f940010f89eedafca730711b2b13))
+
+
+
+
+
 # 0.0.0-dev.0 (2020-07-13)
 
 
