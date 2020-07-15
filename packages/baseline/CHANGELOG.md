@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.4](https://github.com/kenoxa/svelkit/compare/@svelkit/baseline@0.2.3...@svelkit/baseline@0.2.4) (2020-07-15)
+
+### Bug Fixes
+
+- add typescript definitions ([4d5bacd](https://github.com/kenoxa/svelkit/commit/4d5bacdb2ed6c0a36f0b0f9599f94cc5a11bf9c3))
+
 ## [0.2.3](https://github.com/kenoxa/svelkit/compare/@svelkit/baseline@0.2.2...@svelkit/baseline@0.2.3) (2020-07-15)
 
 **Note:** Version bump only for package @svelkit/baseline
