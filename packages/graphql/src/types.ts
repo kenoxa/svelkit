@@ -1,5 +1,6 @@
 import type { Readable } from 'svelte/store'
 import type {
+  // Fetch,
   AbortSignal,
   RequestCache,
   RequestCredentials,
@@ -92,16 +93,38 @@ export interface GraphQLResponse<T = any> {
   readonly extensions?: GraphQLExtensions
 }
 
-export interface GraphQLStore<T = any>
+export interface GraphQLStore<T = any, V extends GraphQLVariables = GraphQLVariables>
   extends Readable<GraphQLResponse<T>>,
-    PromiseLike<GraphQLResponse<T>> {}
+    PromiseLike<GraphQLResponse<T>> {
+  fetch(variables?: Partial<V> | undefined, options?: GraphQLRequestOptions): GraphQLStore<T, V>
+}
 
 export interface GraphQLExecutor<T = any, V extends GraphQLVariables = GraphQLVariables>
-  extends GraphQLStore<T> {
-  (variables?: Partial<V>, options?: GraphQLRequestOptions): GraphQLStore<T>
+  extends GraphQLStore<T, V> {
+  (variables?: Partial<V> | undefined, options?: GraphQLRequestOptions): GraphQLStore<T, V>
 }
 
 export interface GraphQLRequestOptions extends Record<string, any> {
+  /**
+   * The URI key is a string endpoint or function resolving to an endpoint -- will default to "/graphql" if not specified
+   */
+  readonly uri?: string
+
+  /**
+   * If you are running on react-native, or modern browsers, this should be no problem.
+   * If you are targeting an environment without fetch such as older browsers or the server,
+   * you will need to pass your own fetch to the link through the options.
+   *
+   * We recommend [unfetch](https://github.com/developit/unfetch) for older browsers
+   * and [node-fetch](https://github.com/bitinn/node-fetch) for running in Node.
+   */
+  readonly fetch?: typeof fetch
+
+  /**
+   * Set to `true` to prefer the HTTP GET method for queries (but not for mutations).
+   */
+  readonly preferGetForQueries?: boolean
+
   /**
    * Returns the cache mode associated with request, which is a string indicating how the request will interact with the browser's cache when fetching.
    */
@@ -166,10 +189,11 @@ export interface GraphQLOperation {
 }
 
 export interface GraphQLRequest<V extends GraphQLVariables = GraphQLVariables> {
-  readonly query: string
-  readonly variables: Readonly<V>
-  readonly options: GraphQLExchangeOptions
   readonly operation: GraphQLOperation
+  readonly query: string
+  readonly variables: Readonly<NonNullable<V>>
+  readonly extensions: GraphQLExtensions
+  readonly options: GraphQLExchangeOptions
 }
 
 export type GraphQLExchangeNext = (request?: GraphQLRequest) => Promise<GraphQLServerResult>

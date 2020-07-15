@@ -24,6 +24,8 @@ This solutions focuses on a _native_ svelte API using [svelte/store](https://sve
 
 - [Installation](#installation)
 - [Usage](#usage)
+- [Features](#features)
+- [Polyfills](#polyfills)
 - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -80,6 +82,20 @@ import { useQuery, gql } from 'https://unpkg.com/@svelkit/graphql?module'
 </ol>
 {/if}
 ```
+
+## Features
+
+- [readable store](https://svelte.dev/docs#svelte_store) or [promises](https://svelte.dev/docs#await)
+- optional use [GET request](https://graphql.org/learn/serving-over-http/#get-request) for queries for cachablity
+- query minification to reduce request size
+
+## Polyfills
+
+- URL
+- URL#searchParams
+- Object.entries
+- fetch
+- globalThis
 
 ## License
 

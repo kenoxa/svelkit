@@ -14,7 +14,7 @@ beforeEach(() => {
 })
 
 test('result is promise like', async () => {
-  const url = 'http://test.local/graphql'
+  const uri = 'http://test.local/graphql'
   const query = `query {
     hero(episode: $episode) {
       name
@@ -26,12 +26,12 @@ test('result is promise like', async () => {
   }`
   const variables = { episode: 10 }
 
-  fetchMock.post(url, { data: { hero: [] } })
+  fetchMock.post(uri, { data: { hero: [] } })
 
   let request: GraphQLExecutor | undefined
   render(Fragment, {
     onCreate() {
-      initGraphQLClient({ url })
+      initGraphQLClient({ uri })
       request = useRequest(query, variables)
     },
   })
@@ -44,7 +44,7 @@ test('result is promise like', async () => {
     error: undefined,
   })
 
-  expect(fetchMock.lastOptions(url)).toMatchObject({
+  expect(fetchMock.lastOptions(uri)).toMatchObject({
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ query: minimize(query), variables }),
@@ -52,7 +52,7 @@ test('result is promise like', async () => {
 })
 
 test('result is a readable store', async () => {
-  const url = 'http://test.local/graphql'
+  const uri = 'http://test.local/graphql'
   const query = `query {
     hero(episode: $episode) {
       name
@@ -64,12 +64,12 @@ test('result is a readable store', async () => {
   }`
   const variables = { episode: 10 }
 
-  fetchMock.post(url, { data: { hero: [] } })
+  fetchMock.post(uri, { data: { hero: [] } })
 
   let request: GraphQLExecutor | undefined
   render(Fragment, {
     onCreate() {
-      initGraphQLClient({ url })
+      initGraphQLClient({ uri })
       request = useRequest(query, variables)
     },
   })
@@ -83,7 +83,7 @@ test('result is a readable store', async () => {
     expect(update).toHaveBeenCalledWith({ fetching: false, data: { hero: [] }, error: undefined }),
   )
 
-  expect(fetchMock.lastOptions(url)).toMatchObject({
+  expect(fetchMock.lastOptions(uri)).toMatchObject({
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ query: minimize(query), variables }),
@@ -91,7 +91,7 @@ test('result is a readable store', async () => {
 })
 
 test('result is a function returning a promise like', async () => {
-  const url = 'http://test.local/graphql'
+  const uri = 'http://test.local/graphql'
   const query = `query {
     hero(episode: $episode) {
       name
@@ -103,12 +103,12 @@ test('result is a function returning a promise like', async () => {
   }`
   const variables = { episode: 10 }
 
-  fetchMock.post(url, { data: { hero: [] } })
+  fetchMock.post(uri, { data: { hero: [] } })
 
   let request: GraphQLExecutor | undefined
   render(Fragment, {
     onCreate() {
-      initGraphQLClient({ url })
+      initGraphQLClient({ uri })
       request = useRequest(query, variables)
     },
   })
@@ -121,7 +121,7 @@ test('result is a function returning a promise like', async () => {
     error: undefined,
   })
 
-  expect(fetchMock.lastOptions(url)).toMatchObject({
+  expect(fetchMock.lastOptions(uri)).toMatchObject({
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ query: minimize(query), variables: { episode: 5 } }),
@@ -129,7 +129,7 @@ test('result is a function returning a promise like', async () => {
 })
 
 test('result is a function returning an readable store', async () => {
-  const url = 'http://test.local/graphql'
+  const uri = 'http://test.local/graphql'
   const query = `query {
     hero(episode: $episode) {
       name
@@ -141,12 +141,12 @@ test('result is a function returning an readable store', async () => {
   }`
   const variables = { episode: 10 }
 
-  fetchMock.post(url, { data: { hero: [] } })
+  fetchMock.post(uri, { data: { hero: [] } })
 
   let request: GraphQLExecutor | undefined
   render(Fragment, {
     onCreate() {
-      initGraphQLClient({ url })
+      initGraphQLClient({ uri })
       request = useRequest(query, variables)
     },
   })
@@ -160,7 +160,7 @@ test('result is a function returning an readable store', async () => {
     expect(update).toHaveBeenCalledWith({ fetching: false, data: { hero: [] }, error: undefined }),
   )
 
-  expect(fetchMock.lastOptions(url)).toMatchObject({
+  expect(fetchMock.lastOptions(uri)).toMatchObject({
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ query: minimize(query), variables: { episode: 7 } }),

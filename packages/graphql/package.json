@@ -28,6 +28,7 @@
     "preset": "@carv/snowpack-scripts"
   },
   "dependencies": {
+    "fast-json-stable-stringify": "^2.1.0",
     "plain-tag": "^0.1.2"
   },
   "devDependencies": {

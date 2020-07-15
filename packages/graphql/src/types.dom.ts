@@ -313,7 +313,11 @@ export interface RequestInit {
   window?: any
 }
 
-interface Body {
+export type RequestInfo = Request | string
+
+export declare function fetch(input: RequestInfo, init?: RequestInit): Promise<Response>
+
+export interface Body {
   readonly body: ReadableStream | null
   readonly bodyUsed: boolean
   arrayBuffer(): Promise<ArrayBuffer>

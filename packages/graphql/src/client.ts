@@ -52,9 +52,6 @@ interface StoreData<T> extends GraphQLServerResult<T> {
 }
 
 export interface GraphQLClientOptions extends GraphQLRequestOptions {
-  /** Setting this will add the fetch exchange */
-  readonly url?: string
-
   /** Defaults to the default exchanges */
   readonly exchanges?: (null | undefined | false | GraphQLExchange)[]
 }
@@ -64,16 +61,15 @@ export class Client implements GraphQLClient {
   private exchanges: GraphQLExchange[]
   private options: GraphQLRequestOptions
 
-  constructor({ url, exchanges = defaultExchanges, ...options }: GraphQLClientOptions) {
-    if (url) exchanges = [...exchanges, fetch(url)]
-
+  constructor({ exchanges = defaultExchanges, ...options }: GraphQLClientOptions) {
     this.exchanges = exchanges.filter(Boolean) as GraphQLExchange[]
+    this.exchanges.push(fetch())
     this.options = options
   }
 
   request<T = any, V extends GraphQLVariables = GraphQLVariables>(
     query: string,
-    variables: V,
+    variables?: V,
     options: GraphQLRequestOptions = {},
   ): Readable<GraphQLResponse<T>> {
     const store = writable<StoreData<T>>({}, (set) => {
@@ -90,7 +86,7 @@ export class Client implements GraphQLClient {
         if (exchange) {
           return exchange(
             request,
-            (nextRequest) => callExchange(nextRequest || request, index + 1),
+            (nextRequest = request) => callExchange(nextRequest, index + 1),
             store.update,
           )
         }
@@ -105,11 +101,12 @@ export class Client implements GraphQLClient {
       callExchange(
         {
           query,
-          variables,
+          variables: (variables || {}) as NonNullable<GraphQLVariables>,
           operation: {
-            id: ++this.lastId,
             ...getOperation(query),
+            id: ++this.lastId,
           },
+          extensions: {},
           options: {
             ...this.options,
             ...options,

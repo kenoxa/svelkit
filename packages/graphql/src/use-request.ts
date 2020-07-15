@@ -12,35 +12,35 @@ import { useGraphQLClient } from './client'
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export const useRequest = <T = any, V extends GraphQLVariables = GraphQLVariables>(
   query: string,
-  variables?: Partial<V>,
-  options?: GraphQLRequestOptions,
+  variables: Partial<V> | undefined = {},
+  options: GraphQLRequestOptions | undefined = {},
 ): GraphQLExecutor<T, V> => {
   const client = useGraphQLClient()
 
   const request = (
-    additionalVariables?: Partial<V>,
-    additonalOptions?: GraphQLRequestOptions,
-  ): Readable<GraphQLResponse<T>> =>
-    client.request(query, { ...variables, ...additionalVariables } as V, {
-      ...options,
-      ...additonalOptions,
-    })
+    additionalVariables?: Partial<V> | undefined,
+    additionalOptions?: GraphQLRequestOptions,
+  ): GraphQLStore<T, V> => {
+    const store = client.request(
+      query,
+      { ...variables, ...additionalVariables },
+      { ...options, ...additionalOptions },
+    ) as GraphQLStore<T, V>
+
+    store.then = then
+
+    store.fetch = (moreVariables, moreOptions) =>
+      request(
+        { ...additionalVariables, ...moreVariables },
+        { ...additionalOptions, ...moreOptions },
+      )
+
+    return store
+  }
 
   const store = request()
 
-  const executor: GraphQLExecutor<T, V> = (
-    additionalVariables?: Partial<V>,
-    additonalOptions?: GraphQLRequestOptions,
-  ): GraphQLStore<T> => {
-    const readable = request(additionalVariables, additonalOptions) as GraphQLStore<T>
-    readable.then = then
-    return readable
-  }
-
-  executor.subscribe = store.subscribe
-  executor.then = then
-
-  return executor
+  return Object.assign(store.fetch, store) as GraphQLExecutor<T, V>
 }
 
 function then<T, TResult1 = GraphQLResponse<T>, TResult2 = never>(

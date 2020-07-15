@@ -9,7 +9,7 @@ beforeEach(() => {
 })
 
 test('basic query', async () => {
-  const url = 'http://test.local/graphql'
+  const uri = 'http://test.local/graphql'
   const query = `query {
     hero(episode: $episode) {
       name
@@ -21,9 +21,9 @@ test('basic query', async () => {
   }`
   const variables = { episode: 10 }
 
-  fetchMock.post(url, { data: { hero: [] } })
+  fetchMock.post(uri, { data: { hero: [] } })
 
-  const client = new Client({ url })
+  const client = new Client({ uri })
 
   const result = await toPromise(client.request(query, variables))
 
@@ -33,7 +33,7 @@ test('basic query', async () => {
     error: undefined,
   })
 
-  expect(fetchMock.lastOptions(url)).toMatchObject({
+  expect(fetchMock.lastOptions(uri)).toMatchObject({
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ query: minimize(query), variables }),
