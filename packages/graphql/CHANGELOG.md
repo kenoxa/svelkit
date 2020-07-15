@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/kenoxa/svelkit/compare/@svelkit/graphql@0.2.1...@svelkit/graphql@0.3.0) (2020-07-15)
+
+### Bug Fixes
+
+- fetch exchange test ([1ae22e0](https://github.com/kenoxa/svelkit/commit/1ae22e078ca19a75cedb934a4e4424c181f83115))
+
+### Features
+
+- store.fetch() helper ([9e71f45](https://github.com/kenoxa/svelkit/commit/9e71f45ee9128c5b9e2d9440984e4afdf073de2f))
+
 ## [0.2.1](https://github.com/kenoxa/svelkit/compare/@svelkit/graphql@0.2.0...@svelkit/graphql@0.2.1) (2020-07-13)
 
 ### Bug Fixes
