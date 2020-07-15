@@ -17,6 +17,9 @@
   "license": "MIT",
   "author": "Sascha Tandel <s.tandel@kenoxa.de>",
   "main": "src/scoped-baseline.svelte",
+  "files": [
+    "index.d.ts"
+  ],
   "scripts": {
     "build": "nps build",
     "format": "nps format",
