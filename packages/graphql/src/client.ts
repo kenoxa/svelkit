@@ -1,5 +1,5 @@
-import { Readable, derived } from 'svelte/store'
-import { writable } from 'svelte/store'
+import type { Readable } from 'svelte/store'
+import { writable, derived } from 'svelte/store'
 import { setContext, getContext } from 'svelte'
 
 import type {
@@ -126,7 +126,7 @@ export class Client implements GraphQLClient {
   }
 }
 
-const CLIENT_CONTEXT_KEY = Symbol.for('@carv/runtime/graphql')
+const CLIENT_CONTEXT_KEY = Symbol.for('@sveltik/graphql/client')
 
 export const initGraphQLClient = (options: GraphQLClientOptions): GraphQLClient => {
   const client = new Client(options)

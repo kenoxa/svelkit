@@ -16,8 +16,9 @@ export class GraphQLFetchError extends Error {
   }
 }
 
-const emptyToUndefined = <T extends Record<string, unknown>>(object: undefined | T): undefined | T =>
-  object && Object.keys(object).length > 0 ? object : undefined
+const emptyToUndefined = <T extends Record<string, unknown>>(
+  object: undefined | T,
+): undefined | T => (object && Object.keys(object).length > 0 ? object : undefined)
 
 const MAX_URL_LENGTH = 2000
 
@@ -34,6 +35,7 @@ const fetchExchange = (config: GraphQLRequestOptions = {}): GraphQLExchange => a
       ...config,
       ...options,
       headers: {
+        Accept: 'application/json',
         ...config.headers,
         ...options.headers,
       },
