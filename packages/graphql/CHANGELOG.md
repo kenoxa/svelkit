@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.2](https://github.com/kenoxa/svelkit/compare/@svelkit/graphql@0.4.1...@svelkit/graphql@0.4.2) (2020-07-16)
+
+### Bug Fixes
+
+- do not send persistedQuery extension after PersistedQueryNotFound ([bc90585](https://github.com/kenoxa/svelkit/commit/bc9058554ad9d5f37f0881a5a9153c8966caa023))
+
 ## [0.4.1](https://github.com/kenoxa/svelkit/compare/@svelkit/graphql@0.4.0...@svelkit/graphql@0.4.1) (2020-07-16)
 
 ### Bug Fixes
