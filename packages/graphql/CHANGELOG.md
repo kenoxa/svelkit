@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/kenoxa/svelkit/compare/@svelkit/graphql@0.3.0...@svelkit/graphql@0.4.0) (2020-07-16)
+
+### Features
+
+- automatic persisted queries ([9595d0a](https://github.com/kenoxa/svelkit/commit/9595d0ab53c89592348058f1c8fffc21941d86e4))
+
 # [0.3.0](https://github.com/kenoxa/svelkit/compare/@svelkit/graphql@0.2.1...@svelkit/graphql@0.3.0) (2020-07-15)
 
 ### Bug Fixes
