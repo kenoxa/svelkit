@@ -95,8 +95,8 @@ test('persisted query not found', async () => {
   expect(next).toHaveBeenLastCalledWith(
     expect.objectContaining({
       query,
-      extensions: expect.objectContaining({
-        persistedQuery: { version: -1, fnv1a128Hash: 'bd05d1f7d9d0529cfba185ac3ca46a22' },
+      extensions: expect.not.objectContaining({
+        persistedQuery: expect.anything(),
       }),
       options: expect.not.objectContaining({
         preferGetForQueries: expect.anything(),
@@ -156,8 +156,8 @@ test('persisted query not found (code: 400)', async () => {
   expect(next).toHaveBeenLastCalledWith(
     expect.objectContaining({
       query,
-      extensions: expect.objectContaining({
-        persistedQuery: { version: -1, fnv1a128Hash: 'bd05d1f7d9d0529cfba185ac3ca46a22' },
+      extensions: expect.not.objectContaining({
+        persistedQuery: expect.anything(),
       }),
       options: expect.not.objectContaining({
         preferGetForQueries: expect.anything(),

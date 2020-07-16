@@ -79,20 +79,14 @@ const automaticPersistedQueriesExchange = ({
 
     if (result.errors) {
       // If the server doesn't support persisted queries, don't try anymore
-      supportsPersistedQueries = !result.errors.some((error) => error.message === notSupportedError)
+      supportsPersistedQueries = result.errors.every((error) => error.message !== notSupportedError)
 
       // If it's not found, we can try it again including the query, otherwise just report the error
       if (
         !supportsPersistedQueries ||
         result.errors.some((error) => error.message === notFoundError)
       ) {
-        return next({
-          ...request,
-          query,
-          // Send the persistedQuery again to allow the server to store this hash
-          extensions: supportsPersistedQueries ? { ...extensions, persistedQuery } : extensions,
-          options,
-        })
+        return next({ ...request, query, extensions, options })
       }
     }
 
