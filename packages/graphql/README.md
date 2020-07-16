@@ -74,7 +74,7 @@ import { useQuery, gql } from 'https://unpkg.com/@svelkit/graphql?module'
   `)
 </script>
 
-{#if $films.fetching} Loading ... {:else if $films.error} Ups... {$films.error.message} {:else}
+{#if $films.fetching} Loading .. {:else if $films.error} Ups... {$films.error.message} {:else}
 <ol>
   {#each $films.data.allFilms as film (film.id)}
   <li>{film.title} - {file.releaseDate}</li>
@@ -88,6 +88,7 @@ import { useQuery, gql } from 'https://unpkg.com/@svelkit/graphql?module'
 - [readable store](https://svelte.dev/docs#svelte_store) or [promises](https://svelte.dev/docs#await)
 - optional use [GET request](https://graphql.org/learn/serving-over-http/#get-request) for queries for cachablity
 - query minification to reduce request size
+- automatic persisted queries
 
 ## Polyfills
 

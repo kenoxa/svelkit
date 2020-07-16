@@ -30,14 +30,14 @@ test('basic query', async () => {
       operation: {
         id: 1,
         type: 'query',
-        name: undefined
+        name: undefined,
       },
       query,
       variables,
       extensions: {},
       options: {
         headers: {},
-        signal: new AbortController().signal
+        signal: new AbortController().signal,
       },
     },
     () => {
@@ -54,7 +54,7 @@ test('basic query', async () => {
 
   expect(fetchMock.lastOptions(uri)).toMatchObject({
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', Accept: 'application/json', },
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
     body: JSON.stringify({ query, variables }),
   })
 })
@@ -85,14 +85,14 @@ test('prefer get for queries', async () => {
       operation: {
         id: 1,
         type: 'query',
-        name: undefined
+        name: undefined,
       },
       query,
       variables,
       extensions: {},
       options: {
         headers: {},
-        signal: new AbortController().signal
+        signal: new AbortController().signal,
       },
     },
     () => {
@@ -109,6 +109,6 @@ test('prefer get for queries', async () => {
 
   expect(fetchMock.lastOptions(url.href)).toMatchObject({
     method: 'GET',
-    headers: { Accept: 'application/json', },
+    headers: { Accept: 'application/json' },
   })
 })

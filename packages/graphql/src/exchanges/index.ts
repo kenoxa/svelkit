@@ -1,3 +1,4 @@
+export * from './automatic-persisted-queries'
 export * from './fetch'
 export * from './minimize'
 
