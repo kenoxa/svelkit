@@ -1,5 +1,7 @@
-import type { GraphQLExchange } from '../types'
+import type { GraphQLExchange, GraphQLServerResult } from '../types'
 import { fnv1a128 } from '../internal/fnv1a'
+import { GraphQLFetchError } from './fetch'
+import { isString } from '../internal/is'
 
 export interface AutomaticPersistedQuery extends Record<string, string | number> {
   version: number
@@ -57,6 +59,7 @@ const automaticPersistedQueriesExchange = ({
     }
 
     const persistedQuery = cachedPersistedQuery(query)
+
     const result = await next({
       ...request,
       query: '',
@@ -65,7 +68,15 @@ const automaticPersistedQueriesExchange = ({
         ...options,
         preferGetForQueries: preferGETForHashedQueries || options.preferGetForQueries,
       },
-    })
+    }).catch(
+      (error: GraphQLFetchError): GraphQLServerResult => {
+        if (error.message === notFoundError || error.message === notSupportedError) {
+          return { errors: [error] }
+        }
+
+        throw error
+      },
+    )
 
     if (result.errors) {
       // If the server doesn't support persisted queries, don't try anymore

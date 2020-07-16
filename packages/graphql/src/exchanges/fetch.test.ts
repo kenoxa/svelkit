@@ -112,3 +112,61 @@ test('prefer get for queries', async () => {
     headers: { Accept: 'application/json' },
   })
 })
+
+test('send 400 with errors', async () => {
+  const uri = 'http://test.local/graphql'
+
+  const query = `query {
+    hero(episode: $episode) {
+      name
+      heroFriends: friends {
+        id
+        name
+      }
+    }
+  }`
+
+  const variables = { episode: 10 }
+
+  fetchMock.post(uri, {
+    status: 400,
+    body: { errors: [{ message: 'PersistedQueryNotFound' }], data: null },
+  })
+
+  const fetch = fetchExchange({ uri })
+
+  const result = fetch(
+    {
+      operation: {
+        id: 1,
+        type: 'query',
+        name: undefined,
+      },
+      query,
+      variables,
+      extensions: {},
+      options: {
+        headers: {},
+        signal: new AbortController().signal,
+      },
+    },
+    () => {
+      throw new Error('no next')
+    },
+    () => {
+      throw new Error('no update')
+    },
+  )
+
+  await expect(result).rejects.toThrow('PersistedQueryNotFound')
+  await expect(result).rejects.toMatchObject({
+    status: 400,
+    body: { errors: [{ message: 'PersistedQueryNotFound' }], data: null },
+  })
+
+  expect(fetchMock.lastOptions(uri)).toMatchObject({
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify({ query, variables }),
+  })
+})

@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
+import type { Response } from '../types.dom'
 import { automaticPersistedQueries } from './automatic-persisted-queries'
+import { GraphQLFetchError } from './fetch'
 
 test('already persisted query', async () => {
   const query = '{ viewer { name } }'
@@ -52,6 +54,67 @@ test('persisted query not found', async () => {
   const next = jest
     .fn()
     .mockResolvedValueOnce({ errors: [{ message: 'PersistedQueryNotFound' }] })
+    .mockResolvedValue(response)
+
+  const apq = automaticPersistedQueries()
+
+  const result = await apq(
+    {
+      operation: {
+        id: 1,
+        type: 'query',
+        name: undefined,
+      },
+      query,
+      variables: {},
+      extensions: {},
+      options: {
+        headers: {},
+        signal: new AbortController().signal,
+      },
+    },
+    next,
+    () => {
+      throw new Error('no update')
+    },
+  )
+
+  expect(result).toBe(response)
+
+  expect(next).toHaveBeenCalledTimes(2)
+
+  expect(next.mock.calls[0]).toMatchObject([
+    {
+      query: '',
+      extensions: {
+        persistedQuery: { version: -1, fnv1a128Hash: 'bd05d1f7d9d0529cfba185ac3ca46a22' },
+      },
+    },
+  ])
+
+  expect(next).toHaveBeenLastCalledWith(
+    expect.objectContaining({
+      query,
+      extensions: expect.objectContaining({
+        persistedQuery: { version: -1, fnv1a128Hash: 'bd05d1f7d9d0529cfba185ac3ca46a22' },
+      }),
+      options: expect.not.objectContaining({
+        preferGetForQueries: expect.anything(),
+      }),
+    }),
+  )
+})
+
+test('persisted query not found (code: 400)', async () => {
+  const query = '{ viewer { name } }'
+  const response = { data: { viewer: { name: 'X' } } }
+  const next = jest
+    .fn()
+    .mockRejectedValueOnce(
+      new GraphQLFetchError({ status: 400 } as Response, {
+        errors: [{ message: 'PersistedQueryNotFound' }],
+      }),
+    )
     .mockResolvedValue(response)
 
   const apq = automaticPersistedQueries()

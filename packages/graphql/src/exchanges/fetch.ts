@@ -1,18 +1,22 @@
-import type { Response } from '../types.dom'
-import type { GraphQLExchange, GraphQLRequestOptions } from '../types'
+import type { Response, Headers } from '../types.dom'
+import type { GraphQLExchange, GraphQLRequestOptions, GraphQLServerResult } from '../types'
 import stableStringify from 'fast-json-stable-stringify'
+import { isString } from '../internal/is'
 
 export class GraphQLFetchError extends Error {
-  readonly url: string
-  readonly request: GraphQLRequestOptions
-  readonly response: Response
+  readonly status: number
+  readonly body: string | GraphQLServerResult
+  readonly headers: Headers
 
-  constructor(url: string, request: GraphQLRequestOptions, response: Response, message?: string) {
-    super(`fetch failed (code: ${response.status}): ${message || response.statusText}`)
+  constructor(response: Response, body: string | GraphQLServerResult) {
+    super(
+      (isString(body) ? body : (body.errors || [])[0]?.message) ||
+        `[${response.status}] ${response.statusText}`,
+    )
     this.name = 'GraphQLFetchError'
-    this.url = url
-    this.request = request
-    this.response = response
+    this.status = response.status
+    this.body = body
+    this.headers = response.headers
   }
 }
 
@@ -21,6 +25,9 @@ const emptyToUndefined = <T extends Record<string, unknown>>(
 ): undefined | T => (object && Object.keys(object).length > 0 ? object : undefined)
 
 const MAX_URL_LENGTH = 2000
+
+const isJsonResponse = (response: Response): boolean | undefined =>
+  response.headers.get('Content-Type')?.startsWith('application/json')
 
 /**
  * A default exchange for fetching GraphQL requests.
@@ -56,7 +63,7 @@ const fetchExchange = (config: GraphQLRequestOptions = {}): GraphQLExchange => a
       // Add all defined args as search parameters
       for (const [key, value] of Object.entries(args)) {
         if (value) {
-          url.searchParams.set(key, typeof value === 'string' ? value : stableStringify(value))
+          url.searchParams.set(key, isString(value) ? value : stableStringify(value))
         }
       }
 
@@ -77,11 +84,14 @@ const fetchExchange = (config: GraphQLRequestOptions = {}): GraphQLExchange => a
       })
     }
 
-    if (response.ok && response.headers.get('Content-Type')?.startsWith('application/json')) {
+    if (response.ok && isJsonResponse(response)) {
       return response.json()
     }
 
-    throw new GraphQLFetchError(uri, init, response, await response.text())
+    throw new GraphQLFetchError(
+      response,
+      await (isJsonResponse(response) ? response.json() : response.text()),
+    )
   }
 
   return next()
