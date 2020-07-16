@@ -1,7 +1,6 @@
 import type { GraphQLExchange, GraphQLServerResult } from '../types'
 import { fnv1a128 } from '../internal/fnv1a'
 import { GraphQLFetchError } from './fetch'
-import { isString } from '../internal/is'
 
 export interface AutomaticPersistedQuery extends Record<string, string | number> {
   version: number
