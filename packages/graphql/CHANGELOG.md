@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.1](https://github.com/kenoxa/svelkit/compare/@svelkit/graphql@0.4.0...@svelkit/graphql@0.4.1) (2020-07-16)
+
+### Bug Fixes
+
+- handle 400 responses for missing persisted queries ([760818b](https://github.com/kenoxa/svelkit/commit/760818bf8da08c53b7ecbddb425b2af62763cab2))
+
 # [0.4.0](https://github.com/kenoxa/svelkit/compare/@svelkit/graphql@0.3.0...@svelkit/graphql@0.4.0) (2020-07-16)
 
 ### Features
