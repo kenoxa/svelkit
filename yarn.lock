@@ -6272,7 +6272,7 @@ fast-glob@^3.0.3, fast-glob@^3.1.1:
     micromatch "^4.0.2"
     picomatch "^2.2.1"
 
-fast-json-stable-stringify@^2.0.0:
+fast-json-stable-stringify@^2.0.0, fast-json-stable-stringify@^2.1.0:
   version "2.1.0"
   resolved "https://registry.npmjs.org/fast-json-stable-stringify/-/fast-json-stable-stringify-2.1.0.tgz#874bf69c6f404c2b5d99c481341399fd55892633"
   integrity sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==
@@ -12622,9 +12622,9 @@ supports-hyperlinks@^2.0.0:
     supports-color "^7.0.0"
 
 svelte-check@^0.1.45:
-  version "0.1.45"
-  resolved "https://registry.npmjs.org/svelte-check/-/svelte-check-0.1.45.tgz#6c748b3924ae1eb62541bbe45c77a753bf20b297"
-  integrity sha512-FB2kOo44ADbn4qSvAPq22cxd4qgOHddE6e70CfiwjpQtU1iMLMTLpvyDk7lJRcrlrjdsVuJSY9UsWLgRUoGV4A==
+  version "0.1.58"
+  resolved "https://registry.yarnpkg.com/svelte-check/-/svelte-check-0.1.58.tgz#76c97ba245820c8c44fb189bf07c867f89590e88"
+  integrity sha512-iwYv/gTPhh78I46aejJjJBTPh+SCPD3N+/RSVDsgcjZnxcJQqCSC7aC4pD79jdsdLJA1T1XFyxrEHc0raEtx8w==
   dependencies:
     chalk "^4.0.0"
     glob "^7.1.6"
