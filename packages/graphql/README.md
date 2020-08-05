@@ -61,7 +61,7 @@ import { useQuery, gql } from 'https://unpkg.com/@svelkit/graphql?module'
 <script>
   import { initGraphQLClient, useQuery, gql } from '@svelkit/graphql'
 
-  initGraphQLClient({ url: 'https://swapi.graph.cool/' })
+  initGraphQLClient({ uri: 'https://swapi.graph.cool/' })
 
   const films = useQuery(gql`
     query {
