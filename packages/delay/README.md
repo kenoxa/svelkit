@@ -57,10 +57,10 @@ import Delay from 'https://unpkg.com/@svelkit/delay?module'
 <Delay>content</Delay>
 ```
 
-Increasing the default delay of `200`:
+Increasing the default delay of `200` ms:
 
 ```html
-<Delay delay="{500}">content</Delay>
+<Delay ms="{500}">content</Delay>
 ```
 
 The `show` property (default `true`) is used to determine if the content should be shown. Each change of its value cause the internal timer to reset, eg restarting the delay.
