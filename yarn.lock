@@ -1065,28 +1065,7 @@
   resolved "https://registry.npmjs.org/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
-"@carv/eslint-config@^1.2.5":
-  version "1.2.5"
-  resolved "https://registry.npmjs.org/@carv/eslint-config/-/eslint-config-1.2.5.tgz#99b6553141c7931a01b758a4fd7918683b3800d0"
-  integrity sha512-UfGg/6IBH2UReBBmWlS8TGRWim3f+DP+ratEYPBr75azClGI2HdpX+TY2Ma/Y0/8++MUfAiJhC2lpkJxXyg13A==
-  dependencies:
-    "@rushstack/eslint-patch" "^1.0.2"
-    "@typescript-eslint/eslint-plugin" ""
-    "@typescript-eslint/parser" "^3.4.0"
-    eslint-config-prettier "^6.11.0"
-    eslint-config-xo "^0.31.0"
-    eslint-plugin-eslint-comments "^3.2.0"
-    eslint-plugin-jest "^23.13.2"
-    eslint-plugin-jest-dom "^3.0.1"
-    eslint-plugin-no-use-extend-native "^0.5.0"
-    eslint-plugin-prettier "^3.1.3"
-    eslint-plugin-promise "^4.2.1"
-    eslint-plugin-svelte3 "^2.7.3"
-    eslint-plugin-testing-library "^3.3.1"
-    eslint-plugin-tsdoc "^0.2.5"
-    eslint-plugin-unicorn "^20.1.0"
-
-"@carv/eslint-config@^1.2.6":
+"@carv/eslint-config@^1.2.5", "@carv/eslint-config@^1.2.6":
   version "1.2.6"
   resolved "https://registry.npmjs.org/@carv/eslint-config/-/eslint-config-1.2.6.tgz#cb05e3c332e78c47b8365f82795ce37665ce8541"
   integrity sha512-VXhT24kCCEFIvz39/g3ip/XWGkQ9xPL0jpfOHrPc8PU71wl1jBu38U4jN55xE4aJFhnicd0iJij/o7nPafygtQ==
@@ -1115,10 +1094,10 @@
     prettier-plugin-packagejson "^2.2.5"
     prettier-plugin-svelte "^1.1.0"
 
-"@carv/snowpack-plugin-rollup@^1.3.17":
-  version "1.3.17"
-  resolved "https://registry.npmjs.org/@carv/snowpack-plugin-rollup/-/snowpack-plugin-rollup-1.3.17.tgz#a01579530f122277994a1bd057ea883b9eb554ba"
-  integrity sha512-RJ21nvwl2guQ+SMcAZeSH3RtkB/QJHZpy9AJHd3JB5TozRvaJiE4QvWNJrEj58iZK6h05J+c12Mhbh3gXK3T4g==
+"@carv/snowpack-plugin-rollup@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@carv/snowpack-plugin-rollup/-/snowpack-plugin-rollup-1.4.1.tgz#a66c4c70204c48f52aa1da00ba0c7fe8b00fad17"
+  integrity sha512-vFC3qghNgk8YRnPyr4VbZq06cyc7e1s3ZfCA9Pl7GsDbiItBlTJbv9Nhe6zKt8az68Pug0+vr+zpfz+Ylf3vQg==
   dependencies:
     "@rollup/plugin-commonjs" "^13.0.0"
     "@rollup/plugin-json" "^4.1.0"
@@ -1140,16 +1119,16 @@
     rollup-plugin-svelte "^5.2.3"
 
 "@carv/snowpack-scripts@^1.3.28":
-  version "1.3.28"
-  resolved "https://registry.npmjs.org/@carv/snowpack-scripts/-/snowpack-scripts-1.3.28.tgz#d92aa4732d628ba08b8953407344fd7008d9f30f"
-  integrity sha512-5f7/E3Eg2mNO16cYXARUqOYxGrNpxun8+BbbV3xF6Pw4uy0hPM1+xAE6TUJsoNfhemhZJygiCmbphxsZWznrSQ==
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/@carv/snowpack-scripts/-/snowpack-scripts-1.4.1.tgz#e4be1e9fe912506aea3e064f5dd1244425695ade"
+  integrity sha512-pAs5Pgzoz41/EA84miBe22aBfP9S3kZ7Tj7XjXzQdv/5EtG9+YdTXnV/MSe4Iq9hXAajDG6YAx293i29wi0vDw==
   dependencies:
     "@babel/core" "^7.10.3"
     "@babel/preset-env" "^7.10.3"
     "@babel/preset-typescript" "^7.10.3"
     "@carv/eslint-config" "^1.2.6"
     "@carv/prettier-config" "^1.0.2"
-    "@carv/snowpack-plugin-rollup" "^1.3.17"
+    "@carv/snowpack-plugin-rollup" "^1.4.1"
     "@snowpack/app-scripts-svelte" "^1.0.2"
     "@snowpack/plugin-svelte" "^1.2.0"
     "@testing-library/jest-dom" "^5.11.0"
