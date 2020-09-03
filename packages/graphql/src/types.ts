@@ -157,6 +157,8 @@ export interface GraphQLRequestOptions extends Record<string, any> {
 }
 
 export interface GraphQLClient {
+  setHeader(name: string, value: string | false | null | undefined): string | undefined
+
   request<T = any, V extends GraphQLVariables = GraphQLVariables>(
     gql: string,
     variables: V,
