@@ -67,6 +67,16 @@ export class Client implements GraphQLClient {
     this.options = options
   }
 
+  setHeader(name: string, value: string | false | null | undefined): string | undefined {
+    const headers = { ...this.options.headers, [name]: value || '' }
+
+    if (!value) delete headers[name]
+
+    this.options = { ...this.options, headers }
+
+    return headers[name]
+  }
+
   request<T = any, V extends GraphQLVariables = GraphQLVariables>(
     query: string,
     variables?: V,
