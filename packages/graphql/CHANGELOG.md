@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/kenoxa/svelkit/compare/@svelkit/graphql@0.4.2...@svelkit/graphql@0.5.0) (2020-09-03)
+
+### Bug Fixes
+
+- update docs ([5c2aaa8](https://github.com/kenoxa/svelkit/commit/5c2aaa88b765dbf4b361053888e93fb4d19710ee))
+
+### Features
+
+- allow to set header ([9f95ed4](https://github.com/kenoxa/svelkit/commit/9f95ed4bf016aa7f696a84367e2b204f6c7d3575))
+
 ## [0.4.2](https://github.com/kenoxa/svelkit/compare/@svelkit/graphql@0.4.1...@svelkit/graphql@0.4.2) (2020-07-16)
 
 ### Bug Fixes
