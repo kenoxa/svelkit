@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/kenoxa/svelkit/compare/@svelkit/graphql@0.5.0...@svelkit/graphql@0.5.1) (2020-09-03)
+
+### Bug Fixes
+
+- types ([121c90a](https://github.com/kenoxa/svelkit/commit/121c90a706a29d7071b3df648c119bb4188aa57d))
+
 # [0.5.0](https://github.com/kenoxa/svelkit/compare/@svelkit/graphql@0.4.2...@svelkit/graphql@0.5.0) (2020-09-03)
 
 ### Bug Fixes
