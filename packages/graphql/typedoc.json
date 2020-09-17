@@ -1,6 +1,6 @@
 {
   "mode": "library",
-  "entryPoint": "\"packages/graphql/src/index\"",
+  "entryPoint": "\"index\"",
   "includeVersion": true,
   "out": "docs",
   "excludeExternals": true,

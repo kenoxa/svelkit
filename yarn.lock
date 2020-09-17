@@ -283,10 +283,10 @@
   resolved "https://registry.npmjs.org/@carv/cdn-css-loader/-/cdn-css-loader-1.1.0.tgz#b06cdce63905d1ea7d06a253536dfe4b85dc26d1"
   integrity sha512-FNAThnOZAP3HtlOwTVGKJDbeV1JSieDUCJHcnWaJCL1CW6J42HKxFY1yyFRqpEEwX+qbtKEf24XiNjmpvEXCmg==
 
-"@carv/eslint-config@^1.4.0":
-  version "1.4.0"
-  resolved "https://registry.npmjs.org/@carv/eslint-config/-/eslint-config-1.4.0.tgz#3bc75c6d3031fc6e16cf55bb688655778c2efd3a"
-  integrity sha512-TA9E/Acu2U09TmXbB7uuVDgtR9T5fyBbqj2PZrRW5x7NXlZfbQEwzTpSSE/MlNox/VROJpNsYbF+yt8M20ng9g==
+"@carv/eslint-config@^1.4.1":
+  version "1.4.1"
+  resolved "https://registry.npmjs.org/@carv/eslint-config/-/eslint-config-1.4.1.tgz#23813733a2fcb798e5a8ca955b3eb3991de6d124"
+  integrity sha512-iYfwWrVnL/odmlqgIG1Qtgu7Vsfbu1eN5xYfU5uQWFJuwoOIuHUvxyAEtDucUIYqXa1t7x/yyRSwca7+qB5rzw==
   dependencies:
     "@rushstack/eslint-patch" "^1.0.2"
     "@typescript-eslint/eslint-plugin" "^4.0.1"
@@ -320,10 +320,10 @@
     prettier-plugin-packagejson "^2.2.5"
     prettier-plugin-svelte "^1.1.0"
 
-"@carv/scripts@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.npmjs.org/@carv/scripts/-/scripts-1.2.0.tgz#9952bae37d9b2cbe7f5b6161b640cb4fc4b348b2"
-  integrity sha512-Q+Seibb313yy+m1WckpIGWMPkqJLjVCN3PkGerYOAVv504hUojYZErkqm4D5+x1Zqb05iw2t/nLSMA4Qh765yQ==
+"@carv/scripts@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.npmjs.org/@carv/scripts/-/scripts-1.2.1.tgz#3292f9140c9cf1a8b30283fa633ddc490650d1b2"
+  integrity sha512-8P0ixmXCvR73BzmTdmhHtkzmqtoG/I29cgN5XpSTYuw16ZSRCfD4BlJW7Z4GaUXiL4LBewsTqqBhv1W2wiBEvg==
   dependencies:
     "@carv/cdn-css-loader" "^1.1.0"
     "@carv/polyfills" "^1.1.3"
@@ -10210,7 +10210,7 @@ rollup-plugin-hot-nollup@^0.1.0:
   dependencies:
     "@rollup/pluginutils" "^3.1.0"
 
-"rollup-plugin-hot@github:sastan/rollup-plugin-hot#open-and-proxy":
+rollup-plugin-hot@sastan/rollup-plugin-hot#open-and-proxy:
   version "0.1.0"
   resolved "https://codeload.github.com/sastan/rollup-plugin-hot/tar.gz/90dfa55517a3c1ea0a91c101d2ed51c4b8a87f15"
   dependencies:
