@@ -4,15 +4,18 @@
   "private": true,
   "workspaces": {
     "nohoist": [
-      "@svelte-docs/**"
+      "@svelte-docs/**",
+      "rollup",
+      "rollup-*",
+      "@rollup/**"
     ]
   },
   "scripts": {
     "build": "rollup -c node_modules/@svelte-docs/core/rollup.config.js",
     "build:watch": "rollup -c node_modules/@svelte-docs/core/rollup.config.js -w",
-    "deploy": "npm run build && node node_modules/@svelte-docs/publisher",
     "format": "nps",
     "start": "run-p start:dev start:pagewatch build:watch",
+    "start:dist": "sirv dist --single",
     "start:dev": "node node_modules/@svelte-docs/server --dev --single",
     "start:pagewatch": "node node_modules/@svelte-docs/core/watcher"
   },
@@ -31,7 +34,8 @@
     "@svelte-docs/themes": "^1.0.1",
     "npm-run-all": "^4.1.5",
     "nps": "^5.9.12",
-    "rollup": "^2.27.0",
-    "rollup-plugin-terser": "^7.0.2"
+    "rollup": "^1.32.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "sirv-cli": "^1.0.6"
   }
 }

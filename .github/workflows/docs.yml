@@ -17,10 +17,12 @@ jobs:
           node-version: 14.x
           registry-url: https://registry.npmjs.org/
 
-      - name: Cache ~/.npm
+      - run: yarn cache dir
+
+      - name: Cache ~/.cache/yarn/v6
         uses: actions/cache@v2
         with:
-          path: ~/.npm
+          path: ~/.cache/yarn/v6
           key: npm-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             npm-${{ runner.os }}
@@ -38,7 +40,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Generate website
-        run: yarn build-storybook
+        run: yarn build
 
       - name: Deploy website
         uses: JamesIves/github-pages-deploy-action@releases/v3
@@ -46,6 +48,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BASE_BRANCH: main
           BRANCH: gh-pages
-          FOLDER: docs
+          FOLDER: docs/dist
           CLEAN: true
           CLEAN_EXCLUDE: '["CNAME", ".nojekyll"]'

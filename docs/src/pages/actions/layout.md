@@ -1,7 +1,7 @@
 # Layout
 
-https://getbootstrap.com/docs/4.5/layout/grid/#how-it-works
-https://styled-system.com/responsive-styles
+- https://getbootstrap.com/docs/4.5/layout/grid/#how-it-works
+- https://styled-system.com/responsive-styles
 
 ```example
 <script>

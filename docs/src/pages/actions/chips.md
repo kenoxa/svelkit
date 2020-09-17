@@ -16,7 +16,7 @@ My chip component
   <input type=checkbox bind:checked={active}>
 </label>
 
-<div use:chip="{{ active }}">may be active</div>
+<div use:chip={{ active }}>may be active</div>
 
 <div use:chip>not active</div>
 ```
