@@ -1,20 +1,20 @@
-<script lang="typescript">
+<script>
   import { onDestroy } from 'svelte'
 
   /**
-   * The slot is shown when `show` becomes truthy.
+   * The slot is shown when `show` becomes truthy. Default: `true`
    *
    * Additionally this is used as a key for the delay. A different `show` value resets the timeout.
    */
   export let show: unknown = true
 
   /**
-   * minimum delay in msecs for showing the loading slot. Default: 200
-   **/
+   * minimum delay in msecs for showing the loading slot. Default: `200`
+   */
   export let ms: number = 200
 
   let visible: boolean
-  let timeoutRef: number
+  let timeoutRef: ReturnType<typeof setTimeout>
 
   onDestroy(() => clearTimeout(timeoutRef))
 

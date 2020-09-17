@@ -1,1 +1,1 @@
-module.exports = require('@carv/snowpack-scripts/nps-preset')
+module.exports = require('../../package-scripts')

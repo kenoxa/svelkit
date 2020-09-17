@@ -1,0 +1,26 @@
+/**
+ * Source: https://github.com/picturepan2/spectre/blob/0.5.10/src/spectre.scss
+ */
+
+// Variables and mixins
+@import 'variables';
+@import 'mixins';
+
+// Reset and dependencies
+@import 'baseline';
+
+// Elements
+@import 'typography';
+
+// Layout
+@import 'layout';
+
+// Components
+@import 'cards';
+@import 'chips';
+
+// Utility classes
+@import 'text';
+
+// Markers
+@import 'global-markers';

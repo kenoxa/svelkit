@@ -1,0 +1,90 @@
+/**
+ * Source: https://github.com/picturepan2/spectre/blob/0.5.10/src/_base.scss
+ */
+
+.baseline {
+  // composes: baseline from global;
+
+  /**
+   * 1. Change the default font family in all browsers (opinionated).
+   * 2. Correct the line height in all browsers.
+   * 3. Prevent adjustments of font size after orientation changes in
+   *    IE on Windows Phone and in iOS.
+   */
+
+  /* Document
+   ========================================================================== */
+
+  & {
+    font-family: sans-serif; /* 1 */
+    -ms-text-size-adjust: 100%; /* 3 */
+    -webkit-text-size-adjust: 100%; /* 3 */
+  }
+
+  /* Sections
+     ========================================================================== */
+
+  /**
+   * Remove the margin in all browsers (opinionated).
+   */
+  &:not(html),
+  body {
+    margin: 0;
+  }
+
+  @import 'normalize';
+
+  // Base
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+
+  /**
+   * 1. Correct the line height in all browsers.
+   * 2. Prevent adjustments of font size after orientation changes in iOS.
+   */
+  & {
+    box-sizing: border-box;
+    font-size: $html-font-size;
+    line-height: $html-line-height;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  &:not(html),
+  body {
+    background: $body-bg;
+    color: $body-font-color;
+    // -apple-system, system-ui, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+    // -apple-system, system-ui, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif, BlinkMacSystemFont, Helvetica Neue;
+    font-family: $body-font-family;
+    font-size: $font-size;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+  }
+
+  a {
+    color: $link-color;
+    outline: none;
+    text-decoration: none;
+
+    &:focus {
+      @include control-shadow();
+    }
+
+    &:focus,
+    &:hover,
+    &:active,
+    &.active {
+      color: $link-color-dark;
+      text-decoration: underline;
+    }
+
+    &:visited {
+      color: $link-color-light;
+    }
+  }
+
+  @import 'typography';
+}

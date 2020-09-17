@@ -1,0 +1,9 @@
+- [Getting Started](getting-started)
+- Actions
+  - [Baseline](actions/baseline)
+  - [Spectre](actions/spectre)
+  - [Text](actions/text)
+  - [Headings](actions/headings)
+  - [Cards](actions/cards)
+  - [Chips](actions/chips)
+- [Github](https://github.com/kenoxa/svelkit)

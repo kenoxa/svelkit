@@ -16,18 +16,21 @@
   },
   "license": "MIT",
   "author": "Sascha Tandel <s.tandel@kenoxa.de>",
-  "main": "src/delay.svelte",
-  "files": [
-    "index.d.ts"
-  ],
+  "main": "src/index.ts",
   "scripts": {
-    "build": "nps build",
-    "format": "nps format",
+    "build": "nps",
+    "format": "nps",
     "prepublishOnly": "nps build.package",
-    "test": "nps test"
+    "test": "nps",
+    "typedoc": "typedoc"
+  },
+  "prettier": "@carv/prettier-config",
+  "eslintConfig": {
+    "extends": "@carv/eslint-config",
+    "root": true
   },
   "jest": {
-    "preset": "@carv/snowpack-scripts"
+    "preset": "@carv/scripts"
   },
   "devDependencies": {
     "nps": "^5.9.12"
@@ -38,8 +41,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "307181b36c3444ea4c5abba3e73cfe5dbbaaaa77",
-  "snowpack": {
-    "extends": "@carv/snowpack-scripts"
-  }
+  "gitHead": "307181b36c3444ea4c5abba3e73cfe5dbbaaaa77"
 }

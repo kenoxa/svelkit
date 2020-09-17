@@ -1,0 +1,49 @@
+{
+  "name": "@svelkit/spectre",
+  "version": "0.1.0",
+  "description": "spectre components as svelte actions and css modules",
+  "keywords": [
+    "svelkit",
+    "svelte",
+    "spectre",
+    "ui",
+    "components"
+  ],
+  "homepage": "https://github.com/kenoxa/svelkit#readme",
+  "bugs": {
+    "url": "https://github.com/kenoxa/svelkit/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kenoxa/svelkit.git",
+    "directory": "packages/spectre"
+  },
+  "license": "MIT",
+  "author": "Sascha Tandel <s.tandel@kenoxa.de>",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "nps",
+    "format": "nps",
+    "prepublishOnly": "nps build.package",
+    "test": "nps"
+  },
+  "prettier": "@carv/prettier-config",
+  "eslintConfig": {
+    "extends": "@carv/eslint-config",
+    "root": true
+  },
+  "jest": {
+    "preset": "@carv/scripts"
+  },
+  "dependencies": {
+    "clsx": "^1.1.1"
+  },
+  "devDependencies": {
+    "nps": "^5.9.12",
+    "spectre.css": "^0.5.9"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "307181b36c3444ea4c5abba3e73cfe5dbbaaaa77"
+}

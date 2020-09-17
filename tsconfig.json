@@ -1,18 +1,5 @@
 {
   "$schema": "http://json.schemastore.org/tsconfig",
-  "extends": "./node_modules/@carv/snowpack-scripts/tsconfig-preset.json",
-  "include": ["types/**/*", "packages/**/src/**/*", "packages/**/*.d.ts"],
-  "exclude": [
-    "**/*.test-d.ts",
-    "**/.tmp/**",
-    "**/.build/**",
-    "**/build/**",
-    "**/dist/**",
-    "**/docs/**",
-    "**/node_modules/**",
-    "**/__generated__/**",
-    "**/generated/**",
-    "**/coverage/**",
-    "**/__fixtures__/**"
-  ]
+  "extends": "./node_modules/@carv/scripts/tsconfig-preset.json",
+  "include": ["types/**/*", "packages/**/src/**/*"]
 }

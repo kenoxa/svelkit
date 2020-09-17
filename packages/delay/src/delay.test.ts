@@ -1,4 +1,3 @@
-import '@carv/types'
 import { render, screen } from '@testing-library/svelte'
 import html from 'svelte-htm'
 

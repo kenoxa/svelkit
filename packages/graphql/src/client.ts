@@ -136,7 +136,7 @@ export class Client implements GraphQLClient {
   }
 }
 
-const CLIENT_CONTEXT_KEY = Symbol.for('@sveltik/graphql/client')
+const CLIENT_CONTEXT_KEY = Symbol.for('@svelkit/graphql/client')
 
 export const initGraphQLClient = (options: GraphQLClientOptions): GraphQLClient => {
   const client = new Client(options)
@@ -144,6 +144,6 @@ export const initGraphQLClient = (options: GraphQLClientOptions): GraphQLClient 
   return client
 }
 
-export const useGraphQLClient = (): GraphQLClient => getContext(CLIENT_CONTEXT_KEY) as GraphQLClient
+export const useGraphQLClient = (): GraphQLClient => getContext(CLIENT_CONTEXT_KEY)
 
 /* eslint-enable @typescript-eslint/no-explicit-any */

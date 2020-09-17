@@ -1,0 +1,97 @@
+/**
+ * Source: https://github.com/picturepan2/spectre/blob/0.5.10/src/_text.scss
+ */
+
+// Text
+// Text alignment utilities
+.text-left {
+  // composes: text-left from global;
+  text-align: left;
+}
+
+.text-right {
+  // composes: text-right from global;
+  text-align: right;
+}
+
+.text-center {
+  // composes: text-center from global;
+  text-align: center;
+}
+
+.text-justify {
+  // composes: text-justify from global;
+  text-align: justify;
+}
+
+// Text transform utilities
+.text-lowercase {
+  // composes: text-lowercase from global;
+  text-transform: lowercase;
+}
+
+.text-uppercase {
+  // composes: text-uppercase from global;
+  text-transform: uppercase;
+}
+
+.text-capitalize {
+  // composes: text-capitalize from global;
+  text-transform: capitalize;
+}
+
+// Text style utilities
+.text-normal {
+  // composes: text-normal from global;
+  font-weight: normal;
+}
+
+.text-bold {
+  // composes: text-bold from global;
+  font-weight: bold;
+}
+
+.text-italic {
+  // composes: text-italic from global;
+  font-style: italic;
+}
+
+.text-large {
+  // composes: text-large from global;
+  font-size: 1.2em;
+}
+
+.text-small {
+  // composes: text-small from global;
+  font-size: 0.9em;
+}
+
+.text-tiny {
+  // composes: text-tiny from global;
+  font-size: 0.8em;
+}
+
+.text-muted {
+  // composes: text-muted from global;
+  opacity: 0.8;
+}
+
+// Text overflow utilities
+.text-ellipsis {
+  // composes: text-ellipsis from global;
+  @include text-ellipsis();
+}
+
+.text-clip {
+  // composes: text-clip from global;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+}
+
+.text-break {
+  // composes: text-break from global;
+  hyphens: auto;
+  word-break: break-word;
+  word-wrap: break-word;
+}
