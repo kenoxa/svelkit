@@ -1,0 +1,47 @@
+@import 'spectre.css/src/utilities/colors';
+// @import "spectre.css/src/utilities/cursors";
+// @import "spectre.css/src/utilities/display";
+@import 'spectre.css/src/utilities/divider';
+@import 'spectre.css/src/utilities/loading';
+// @import "spectre.css/src/utilities/position";
+@import 'spectre.css/src/utilities/shapes';
+@import 'spectre.css/src/utilities/text';
+
+// https://github.com/picturepan2/spectre/blob/master/src/utilities/_display.scss
+.text-hide {
+  background: transparent;
+  border: 0;
+  color: transparent;
+  font-size: 0;
+  line-height: 0;
+  text-shadow: none;
+}
+
+.text-assistive {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+// https://github.com/picturepan2/spectre/blob/master/src/utilities/_position.scss
+.clearfix {
+  @include clearfix();
+}
+
+.p-centered {
+  display: block;
+  float: none;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex-centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

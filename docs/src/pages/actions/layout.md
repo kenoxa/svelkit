@@ -1,5 +1,7 @@
 # Layout
 
+Layout includes [flexbox](https://developer.mozilla.org/en-US/docs/Glossary/Flexbox) based responsive grid system with 12 columns.
+
 - https://getbootstrap.com/docs/4.5/layout/grid/#how-it-works
 - https://styled-system.com/responsive-styles
 

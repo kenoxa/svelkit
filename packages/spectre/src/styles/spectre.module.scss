@@ -4,23 +4,23 @@
 
 // Variables and mixins
 @import 'variables';
-@import 'mixins';
+@import 'spectre.css/src/mixins';
 
 // Reset and dependencies
 @import 'baseline';
 
 // Elements
 @import 'typography';
+@import 'spectre.css/src/tables';
+@import 'spectre.css/src/buttons';
+@import 'spectre.css/src/forms';
 
 // Layout
 @import 'layout';
 
 // Components
 @import 'cards';
-@import 'chips';
+@import 'spectre.css/src/chips';
 
 // Utility classes
-@import 'text';
-
-// Markers
-@import 'global-markers';
+@import 'utilities';

@@ -43,11 +43,13 @@ test.each([
   ['body', 'card-body'],
   ['footer', 'card-footer'],
 ])('card.%s', (property, className) => {
-  const action = (card[property as keyof typeof card] as unknown) as Action<undefined>
+  const action = (card[property as keyof typeof card] as unknown) as Action<boolean>
 
   render(html`<div use:action=${action}>content<//>`)
   expect(screen.getByText('content')).toHaveClass(...className.split(/\s+/g))
 
   expect(action.clsx()).toBe(className)
+  expect(action.clsx(true)).toBe(className)
+  expect(action.clsx(false)).toBe('')
   expect(action.class).toBe(className)
 })

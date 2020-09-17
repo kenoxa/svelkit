@@ -8,3 +8,12 @@ export interface Action<Options> {
   clsx: (options?: Options) => string
   class: string
 }
+
+export type ClassValue =
+  | string
+  | number
+  | null
+  | boolean
+  | undefined
+  | Record<string, unknown>
+  | ClassValue[]

@@ -7,6 +7,8 @@ export * from './baseline'
 
 // Elements
 export * from './headings'
+export * from './tables'
+export * from './buttons'
 
 // Layout
 export * from './layout'
@@ -16,4 +18,4 @@ export * from './cards'
 export * from './chips'
 
 // Utility classes
-export * from './text'
+export * from './utilities'

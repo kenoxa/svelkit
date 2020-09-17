@@ -1,54 +1,53 @@
 import type { ClassNameToggler } from './internal'
-import { define, stable } from './internal'
-
-import classNames from './styles/spectre.module.scss'
 import type { Action } from './types'
 
-export type Breakpoint = 'xl' | 'lg' | 'md' | 'sm' | 'xs'
+import { define, stable, classNamesToVariants, isString, isNumber } from './internal'
 
-export interface Breakpoints<Config> {
-  xs?: Config
-  sm?: Config
-  md?: Config
-  lg?: Config
-  xl?: Config
+const BREAKPOINTS = ['xs', 'sm', 'md', 'lg', 'xl'] as const
+
+export type Breakpoint = (typeof BREAKPOINTS)[number]
+
+
+export interface Breakpoints<Config> extends Partial<Record<Breakpoint, Config>> {
+  default?: Config
 }
 
 export type Responsive<Config> =
-  | [/* xs: */ Config]
-  | [/* xs: */ Config, /* sm: */ Config]
-  | [/* xs: */ Config, /* sm: */ Config, /* md: */ Config]
-  | [/* xs: */ Config, /* sm: */ Config, /* md: */ Config, /* lg: */ Config]
-  | [/* xs: */ Config, /* sm: */ Config, /* md: */ Config, /* lg: */ Config, /* xl: */ Config]
+  | [/* default: */ Config]
+  | [/* default: */ Config, /* xs: */ Config]
+  | [/* default: */ Config, /* xs: */ Config, /* sm: */ Config]
+  | [/* default: */ Config, /* xs: */ Config, /* sm: */ Config, /* md: */ Config]
+  | [/* default: */ Config, /* xs: */ Config, /* sm: */ Config, /* md: */ Config, /* lg: */ Config]
+  | [
+      /* Default: */ Config,
+      /* Xs: */ Config,
+      /* Sm: */ Config,
+      /* Md: */ Config,
+      /* Lg: */ Config,
+      /* Xl: */ Config,
+    ]
   | Config[]
 
 export const container = define((toggle: ClassNameToggler, breakpoint?: Breakpoint) => {
-  toggle(classNames.container, true)
-  toggle(classNames['grid-xl'], breakpoint === 'xl')
-  toggle(classNames['grid-lg'], breakpoint === 'lg')
-  toggle(classNames['grid-md'], breakpoint === 'md')
-  toggle(classNames['grid-sm'], breakpoint === 'sm')
-  toggle(classNames['grid-xs'], breakpoint === 'xs')
-}, {
-  xl: define(stable(classNames.container, classNames['grid-xl'])),
-  lg: define(stable(classNames.container, classNames['grid-lg'])),
-  md: define(stable(classNames.container, classNames['grid-md'])),
-  sm: define(stable(classNames.container, classNames['grid-sm'])),
-  xs: define(stable(classNames.container, classNames['grid-xs'])),
-})
+  toggle('container', true)
+
+  BREAKPOINTS.forEach((key) => {
+    toggle('grid-' + key, breakpoint === key)
+  })
+}, classNamesToVariants(BREAKPOINTS, 'container grid-'))
 
 export interface ColumnsOptions {
   gapless?: boolean
   oneline?: boolean
 }
 
-const gapless = stable(classNames.columns, classNames.colGapless)
-const oneline = stable(classNames.columns, classNames.colOneline)
+const gapless = stable('columns', 'col-gapless')
+const oneline = stable('columns', 'col-oneline')
 
 export const columns = define((toggle: ClassNameToggler, options?: ColumnsOptions) => {
-  toggle(classNames.columns, true)
-  toggle(classNames.colGapless, options?.gapless)
-  toggle(classNames.colOneline, options?.oneline)
+  toggle('columns', true)
+  toggle('col-gapless', options?.gapless)
+  toggle('col-oneline', options?.oneline)
 }, {
   gapless: define(gapless, { oneline: define(oneline) }),
   oneline: define(oneline, { gapless: define(gapless) }),
@@ -66,35 +65,28 @@ const applyColumnClasses = (
   size?: ColumnSize,
 ): void => {
   for (let index = 12; index; index--) {
-    toggle(classNames[`col${breakpoint}-${index}`], size === index)
+    toggle(`col${breakpoint}-${index}`, size === index)
   }
 
-  toggle(classNames[`col${breakpoint}-auto`], size === 'auto')
-  toggle(classNames[`hide${breakpoint}`], size === 'hide')
-  toggle(classNames[`show${breakpoint}`], size === 'show')
+  toggle(`col${breakpoint}-auto`, size === 'auto')
+  toggle(`hide${breakpoint}`, size === 'hide')
+  toggle(`show${breakpoint}`, size === 'show')
 }
 
 const updateColumnClasses = (
   toggle: ClassNameToggler,
-  size?: ColumnSize,
-  xs?: ColumnSize,
-  sm?: ColumnSize,
-  md?: ColumnSize,
-  lg?: ColumnSize,
-  xl?: ColumnSize,
+  breakpoints: Responsive<ColumnSize | undefined>,
 ): void => {
-  // eslint-disable-line max-params
-  applyColumnClasses('', toggle, size)
-  applyColumnClasses('-xs', toggle, xs)
-  applyColumnClasses('-sm', toggle, sm)
-  applyColumnClasses('-md', toggle, md)
-  applyColumnClasses('-lg', toggle, lg)
-  applyColumnClasses('-xl', toggle, xl)
+  applyColumnClasses('', toggle, breakpoints[0])
+
+  BREAKPOINTS.forEach((key, index) => {
+    applyColumnClasses('-' + key, toggle, breakpoints[index + 1])
+  })
 }
 
-export const columnBreakpoint = (key: string): Action<ColumnSize> =>
+const columnBreakpoint = (key: string): Action<ColumnSize> =>
   define((toggle: ClassNameToggler, size?: ColumnSize) => {
-    toggle(classNames.column, true)
+    toggle('column', true)
     applyColumnClasses('-' + key, toggle, size)
   })
 
@@ -102,16 +94,16 @@ export const column = define((
   toggle: ClassNameToggler,
   size?: ColumnSize | Responsive<ColumnSize> | Breakpoints<ColumnSize>,
 ) => {
-  toggle(classNames.column, true)
+  toggle('column', true)
 
   if (Array.isArray(size)) {
-    updateColumnClasses(toggle, undefined, ...size)
-  } else if (typeof size === 'number' || typeof size === 'string') {
     updateColumnClasses(toggle, size)
+  } else if (isNumber(size) || isString(size)) {
+    updateColumnClasses(toggle, [size])
   } else if (size) {
-    updateColumnClasses(toggle, undefined, size.xs, size.lg, size.md, size.lg, size.xl)
+    updateColumnClasses(toggle, [size.default, size.xs, size.sm, size.md, size.lg, size.xl])
   } else {
-    updateColumnClasses(toggle)
+    updateColumnClasses(toggle, [])
   }
 }, {
   xs: columnBreakpoint('xs'),
@@ -120,9 +112,9 @@ export const column = define((
   lg: columnBreakpoint('lg'),
   xl: columnBreakpoint('xl'),
   margin: define((toggle: ClassNameToggler, margin: ColumnMargin = 'auto') => {
-    toggle(classNames['col-mx-auto'], margin === 'auto')
-    toggle(classNames['col-ml-auto'], margin === 'left')
-    toggle(classNames['col-mr-auto'], margin === 'right')
+    toggle('col-mx-auto', margin === 'auto')
+    toggle('col-ml-auto', margin === 'left')
+    toggle('col-mr-auto', margin === 'right')
   }),
 })
 
