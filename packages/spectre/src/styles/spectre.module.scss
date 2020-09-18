@@ -13,14 +13,27 @@
 @import 'typography';
 @import 'spectre.css/src/tables';
 @import 'spectre.css/src/buttons';
-@import 'spectre.css/src/forms';
+@import 'forms';
+@import 'spectre.css/src/labels';
+@import 'spectre.css/src/media';
 
 // Layout
 @import 'layout';
+@import 'spectre.css/src/hero';
+@import 'spectre.css/src/navbar';
 
 // Components
+@import 'spectre.css/src/avatars';
+@import 'spectre.css/src/badges';
+@import 'spectre.css/src/bars';
+@import 'spectre.css/src/breadcrumbs';
 @import 'cards';
 @import 'spectre.css/src/chips';
+@import 'spectre.css/src/dropdowns';
+@import 'spectre.css/src/empty';
+@import 'menus';
+@import 'spectre.css/src/modals';
+@import 'spectre.css/src/navs';
 
 // Utility classes
 @import 'utilities';

@@ -5,8 +5,7 @@ import { define, stable, classNamesToVariants, isString, isNumber } from './inte
 
 const BREAKPOINTS = ['xs', 'sm', 'md', 'lg', 'xl'] as const
 
-export type Breakpoint = (typeof BREAKPOINTS)[number]
-
+export type Breakpoint = typeof BREAKPOINTS[number]
 
 export interface Breakpoints<Config> extends Partial<Record<Breakpoint, Config>> {
   default?: Config

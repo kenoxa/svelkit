@@ -1,5 +1,6 @@
+import type { Action } from './types'
 import type { ClassNameToggler } from './internal'
-import { define, defineWithClassNames } from './internal'
+import { define, defineWithClassNames, isBoolean } from './internal'
 
 // Use:text('primary center uppercase muted')
 export const text = defineWithClassNames((className) => 'text-' + className, [
@@ -70,13 +71,31 @@ export interface LoadingOptions {
   lg?: boolean
 }
 
-export const loading = define((toggle: ClassNameToggler, options?: boolean | LoadingOptions) => {
-  if (typeof options === 'boolean') {
+export const loading = define((
+  toggle: ClassNameToggler,
+  options?: boolean | 'lg' | LoadingOptions,
+) => {
+  if (isBoolean(options)) {
     toggle('loading', options !== false)
   } else {
+    if (options === 'lg') options = { enable: true, lg: true }
+
     toggle('loading', options?.enable !== false)
     toggle('loading-lg', options?.lg === true)
   }
+})
+
+const defineDivider = (className: string): Action<string> =>
+  define((toggle: ClassNameToggler, content?: string, node?: Element) => {
+    toggle(className, true)
+
+    if (content) {
+      ;(node as HTMLElement).dataset.content = content
+    }
+  })
+
+export const divider = Object.assign(defineDivider('divider'), {
+  vert: defineDivider('divider-vert'),
 })
 
 // Use:shape('rounded') || Use:shape('circle')

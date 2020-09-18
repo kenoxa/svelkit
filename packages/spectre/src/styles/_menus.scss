@@ -1,0 +1,31 @@
+/**
+ * Source: https://github.com/picturepan2/spectre/blob/0.5.10/src/_menus.scss
+ */
+
+@import 'spectre.css/src/menus';
+
+// Menus
+.menu-item > .btn {
+  // Same as for .menu-item > a
+  border-radius: $border-radius;
+  color: inherit;
+  display: block;
+  margin: 0 (-$unit-2);
+  padding: $unit-1 $unit-2;
+  text-decoration: none;
+
+  // Override .btn styles
+  background: transparent;
+  border: none;
+  box-sizing: content-box;
+  height: auto;
+  width: 100%;
+  text-align: left;
+
+  &:focus,
+  &:hover &:active,
+  &.active {
+    background: $secondary-color;
+    color: $primary-color;
+  }
+}

@@ -4,8 +4,34 @@ import type { Action, ActionResult, ClassValue } from '../types'
 
 import classNames from '../styles/spectre.module.scss'
 
-export const isString = (value: unknown): value is string => typeof value === 'string'
-export const isNumber = (value: unknown): value is number => typeof value === 'number'
+export const SIZES = ['sm', 'lg'] as const
+export const STATES = ['success', 'error'] as const
+export const PRESENCES = ['online', 'busy', 'away'] as const
+
+const is = (value: unknown, type: string): boolean => typeof value === type
+
+export const isString = (value: unknown): value is string => is(value, 'string')
+export const isNumber = (value: unknown): value is number => is(value, 'number')
+export const isBoolean = (value: unknown): value is boolean => is(value, 'boolean')
+
+const withoutPrefix = new Set([...PRESENCES, 'active', 'disabled', 'loading', 'divider'])
+
+const mapClassName = (key: string, mapper?: string | ((className: string) => string)): string => {
+  if (isString(mapper)) {
+    return withoutPrefix.has(key) ? key : mapper + key
+  }
+
+  return mapper?.(key) || key
+}
+
+export const forEach = <T extends readonly string[]>(
+  keys: T,
+  option: T[number] | undefined,
+  mapper: string | ((className: string) => string),
+  toggle: (className: string, force: boolean) => void,
+): void => {
+  keys.forEach((key) => toggle(mapClassName(key, mapper), option === key))
+}
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type ActionVariants = Record<string, Action<any>>
@@ -77,16 +103,6 @@ export const stable = (...classNames: string[]): ClassNameMapper<boolean> => (
 
 const uniq = (value: unknown, index: number, array: unknown[]): value is string =>
   value && array.indexOf(value) === index
-
-const withoutPrefix = new Set(['active', 'disabled', 'loading'])
-
-const mapClassName = (key: string, mapper?: string | ((className: string) => string)): string => {
-  if (isString(mapper)) {
-    return withoutPrefix.has(key) ? key : mapper + key
-  }
-
-  return mapper?.(key) || key
-}
 
 export const toClassNames = (
   classValue: undefined | ClassValue,
