@@ -1,5 +1,14 @@
-import type { ClassNameToggler } from './internal'
-import { define, isString, isNumber } from './internal'
+import {
+  define,
+  isString,
+  isNumber,
+  withPrefix,
+  ensureButtonType,
+  updateDatasetKey,
+  updateAttribute,
+} from './internal'
+
+import type { ButtonOptions } from './buttons'
 
 export interface BarOptions {
   size?: 'sm'
@@ -14,53 +23,39 @@ export interface BarItemOptions {
   tooltip?: string | false
 }
 
-export const bar = define((toggle: ClassNameToggler, options?: BarOptions['size'] | BarOptions) => {
-  toggle('bar', true)
+export interface BarSliderButtonOptions {
+  state?: ButtonOptions['state']
+  variant?: ButtonOptions['variant']
+}
 
-  if (isString(options)) options = { size: options }
+export const bar = define((options: BarOptions['size'] | 'slider' | BarOptions = {}) =>
+  ['bar', isString(options) ? withPrefix('bar-', options) :  withPrefix('bar-', options.size, options.slider && 'slider')]
+, {
+  slider: define((size?: BarOptions['size']) => ['bar bar-slider', withPrefix('bar-', size)], {
+    btn: define(({ state, variant }: BarSliderButtonOptions = {}, node?: Element) => {
+      ensureButtonType(node)
+      updateAttribute(node, 'role', 'slider')
 
-  toggle('bar-sm', options?.size)
-  toggle('bar-slider', options?.slider)
-}, {
-  slider: define((toggle: ClassNameToggler, size?: BarOptions['size']) => {
-    toggle('bar', true)
-    toggle('bar-sm', size)
-    toggle('bar-slider', true)
-  }, {
-    btn: define((toggle: ClassNameToggler, size?: BarOptions['size'], node?: Element) => {
-      toggle('btn', true)
-      toggle('bar-slider-btn', true)
-
-      if (node) {
-        if (node.tagName === 'BUTTON' && !(node as HTMLButtonElement).type) {
-          ;(node as HTMLButtonElement).type = 'button'
-        }
-
-        node.setAttribute('role', 'slider')
-      }
+      return ['btn bar-slider-btn', withPrefix('btn-', variant), state]
     }),
   }),
 
-  item: define((toggle: ClassNameToggler, options?: number | BarItemOptions, node?: Element) => {
-    toggle('bar-item', true)
+  item: define((options: number | BarItemOptions = 0, node?: Element) => {
+    const { value, min = 0, max = 100, tooltip = `${value}%`, role = 'progressbar' } = isNumber(options)
+      ? ({ value: options } as const)
+      : options
 
-    if (isNumber(options)) options = { value: options }
-
-    if (options && node) {
-      node.setAttribute('role', options.role || 'progressbar')
-
-      const { value, min = 0, max = 100, tooltip = String(value) } = options
-
+    if (node) {
       ;(node as HTMLElement).style.width = String(((value - min) * 100) / (max - min)) + '%'
 
-      node.setAttribute('aria-valuenow', String(value))
-      node.setAttribute('aria-valuemin', String(min))
-      node.setAttribute('aria-valuemax', String(max))
+      updateAttribute(node, 'role', role)
+      updateAttribute(node, 'aria-valuenow', value)
+      updateAttribute(node, 'aria-valuemin', min)
+      updateAttribute(node, 'aria-valuemax', max)
 
-      if (tooltip !== false) {
-        toggle('tooltip', true)
-        ;(node as HTMLElement).dataset.tooltip = tooltip
-      }
+      updateDatasetKey(node, 'tooltip', tooltip)
     }
+
+    return ['bar-item', { tooltip }]
   }),
 })

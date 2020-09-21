@@ -1,11 +1,7 @@
-import type { ClassNameToggler } from './internal'
-import { define } from './internal'
+import { define, updateAttribute } from './internal'
 
-export const code = define((toggle: ClassNameToggler, lang?: string, node?: Element) => {
-  toggle('code', true)
+export const code = define((lang?: string, node?: Element) => {
+  updateAttribute(node, 'lang', lang)
 
-  if (lang && node) {
-    // eslint-disable-next-line unicorn/prefer-dataset
-    node.setAttribute('data-lang', lang)
-  }
+  return 'code'
 })

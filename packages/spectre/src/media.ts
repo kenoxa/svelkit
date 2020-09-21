@@ -1,5 +1,4 @@
-import type { ClassNameToggler } from './internal'
-import { define, defineWithClassNames, stable, forEach } from './internal'
+import { define, defineWithClassNames, isString, stable, withPrefix } from './internal'
 
 const IMG_FITS = ['cover', 'contain'] as const
 
@@ -8,30 +7,27 @@ export interface ImgOptions {
   fit?: typeof IMG_FITS[number]
 }
 
-export const img = define((toggle: ClassNameToggler, options?: ImgOptions) => {
-  toggle('img-responsive', options?.responsive)
-  forEach(IMG_FITS, options?.fit, 'img-fit-', toggle)
-}, {
+export const img = define((options: 'responsive' | ImgOptions = {}) =>
+  isString(options)
+    ? withPrefix('img-', options)
+    : [options.responsive && 'img-responsive', withPrefix('img-fit-', options.fit)], {
   responsive: define(stable('img-responsive')),
   fit: defineWithClassNames('img-fit-', IMG_FITS),
 })
 
-const VIDEO_RATIOS = ['4:3', '1:1', '4-3', '1-1', '4_3', '1_1'] as const
-const mapVideoRatio = (className: string): string =>
-  'video-responsive-' + className.replace(/:|_/, '-')
+const mapVideoRatio = (className: string | undefined): string | undefined =>
+  className && 'video-responsive-' + className.replace(/:|_/, '-')
 
 export interface VideoOptions {
   responsive?: boolean
-  ratio?: typeof VIDEO_RATIOS[number]
+  ratio?: '4:3' | '1:1' | '4-3' | '1-1' | '4_3' | '1_1'
 }
 
-export const video = define((toggle: ClassNameToggler, options?: VideoOptions) => {
-  toggle('video-responsive', options?.responsive)
-  forEach(VIDEO_RATIOS, options?.ratio, mapVideoRatio, toggle)
-}, {
-  responsive: define((toggle: ClassNameToggler, ratio?: VideoOptions['ratio']) => {
-    forEach(VIDEO_RATIOS, ratio, mapVideoRatio, toggle)
-  }, {
+export const video = define((options: 'responsive' | VideoOptions = {}) =>
+  isString(options)
+    ? withPrefix('video-', options)
+    : [options.responsive && 'video-responsive', mapVideoRatio(options.ratio)], {
+  responsive: define(mapVideoRatio, {
     '4_3': define(stable('video-responsive video-responsive-4-3')),
     '1_1': define(stable('video-responsive video-responsive-1-1')),
   }),

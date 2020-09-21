@@ -1,30 +1,44 @@
-import type { ClassNameToggler } from './internal'
-import { define, stable, classNamesToVariants, forEach, PRESENCES } from './internal'
+import {
+  define,
+  stable,
+  classNamesToVariants,
+  withPrefix,
+  updateDatasetKey,
+  PRESENCES,
+  isString,
+} from './internal'
 
-const SIZES = ['xs', 'sm', 'lg', 'xl'] as const
+const AVATAR_SIZES = ['xs', 'sm', 'lg', 'xl'] as const
 
 export interface AvatarOptions {
-  size?: typeof SIZES[number]
+  size?: typeof AVATAR_SIZES[number]
   initial?: string
 }
 
-export const avatar = define((
-  toggle: ClassNameToggler,
-  options?: AvatarOptions,
-  node?: Element,
-) => {
-  toggle('avatar', true)
+export type AvatarParameter =
+  | AvatarOptions['size']
+  | 'presence'
+  | typeof PRESENCES[number]
+  | AvatarOptions
 
-  forEach(SIZES, options?.size, 'avatar-', toggle)
+export const avatar = define((options: AvatarParameter = {}, node?: Element) => {
+  if (isString(options)) {
+    updateDatasetKey(node, 'initial')
 
-  if (options?.initial && node) {
-    ;(node as HTMLElement).dataset.initial = options.initial
+    return [
+      (AVATAR_SIZES as readonly string[]).includes(options) && 'avatar',
+      (PRESENCES as readonly string[]).includes(options) && 'avatar-presence',
+      withPrefix('avatar-', options),
+    ]
   }
+
+  updateDatasetKey(node, 'initial', options.initial)
+
+  return ['avatar', withPrefix('avatar-', options.size)]
 }, {
   icon: define(stable('avatar-icon')),
-  presence: define((toggle: ClassNameToggler, status?: typeof PRESENCES[number]) => {
-    toggle('avatar-presence', true)
-
-    forEach(PRESENCES, status, '', toggle)
-  }, classNamesToVariants(PRESENCES)),
+  presence: define((status?: typeof PRESENCES[number]) => [
+    'avatar-presence',
+    status,
+  ], classNamesToVariants(PRESENCES)),
 })

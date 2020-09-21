@@ -1,5 +1,4 @@
-import type { ClassNameToggler } from './internal'
-import { define, classNamesToVariants } from './internal'
+import { define, classNamesToVariants, withPrefix } from './internal'
 
 export interface TableOptions {
   striped?: boolean
@@ -7,9 +6,7 @@ export interface TableOptions {
   scroll?: boolean
 }
 
-export const table = define((toggle: ClassNameToggler, options?: TableOptions) => {
-  toggle('table', true)
-  toggle('table-striped', options?.striped)
-  toggle('table-hover', options?.hover)
-  toggle('table-scroll', options?.scroll)
-}, classNamesToVariants(['striped', 'hover', 'scroll'], 'table-'))
+export const table = define(({ striped, hover, scroll }: TableOptions = {}) => [
+  'table',
+  withPrefix('table-', { striped, hover, scroll }),
+], classNamesToVariants(['striped', 'hover', 'scroll'], 'table-'))

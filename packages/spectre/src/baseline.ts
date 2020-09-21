@@ -1,9 +1,6 @@
-import type { ClassNameToggler } from './internal'
-import { define } from './internal'
+import { define, stable } from './internal'
 
-const scoped = define((toggle: ClassNameToggler) => {
-  toggle('baseline', true)
-})
+const scoped = define(stable('baseline'))
 
 export const baseline = Object.assign(
   (node: Element = document?.documentElement) => scoped(node),

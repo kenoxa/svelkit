@@ -1,14 +1,20 @@
-import type { ClassNameToggler } from './internal'
-import { define, classNamesToVariants, forEach, SIZES } from './internal'
+import type { ClassValue } from './types'
 
-import classNames from './styles/spectre.module.scss'
+import {
+  define,
+  classNamesToVariants,
+  withPrefix,
+  STATES,
+  SIZES,
+  ensureButtonType,
+  isString,
+} from './internal'
 
-const STATES = ['active', 'loading', 'disabled'] as const
-const VARIANTS = ['primary', 'success', 'error', 'link', 'clear'] as const
+const BUTTON_VARIANTS = ['primary', 'success', 'error', 'link', 'clear'] as const
 
 export interface ButtonOptions {
   state?: typeof STATES[number]
-  variant?: typeof VARIANTS[number]
+  variant?: typeof BUTTON_VARIANTS[number]
   size?: typeof SIZES[number]
   block?: boolean
   action?: boolean
@@ -18,49 +24,28 @@ export interface ButtonGroupOptions {
   block?: boolean
 }
 
-export const button = define((
-  toggle: ClassNameToggler,
-  options?: ButtonOptions,
+// eslint-disable-next-line unicorn/prevent-abbreviations
+export const btn = define((
+  options: string | (string | ClassValue)[] | ButtonOptions = {},
   node?: Element,
 ) => {
-  toggle('btn', true)
+  ensureButtonType(node)
 
-  forEach(STATES, options?.state, 'btn-', toggle)
-  forEach(VARIANTS, options?.variant, 'btn-', toggle)
-  forEach(SIZES, options?.size, 'btn-', toggle)
-
-  toggle('btn-block', options?.block)
-
-  toggle('btn-action', options?.action)
-
-  if (node) {
-    if (node.tagName === 'BUTTON' && !(node as HTMLButtonElement).type) {
-      ;(node as HTMLButtonElement).type = 'button'
-    }
-
-    const parentClassList = node.parentElement?.classList
-
-    if (parentClassList) {
-      toggle('input-group-btn', parentClassList.contains(classNames['input-group']))
-
-      if (parentClassList.contains(classNames['bar-item'])) {
-        toggle('bar-slider-btn', true)
-        node.setAttribute('role', 'slider')
-      }
-
-      toggle(
-        'dropdown-toggle',
-        parentClassList.contains(classNames.dropdown) ||
-          (parentClassList.contains(classNames['btn-group']) &&
-            node.parentElement?.parentElement?.classList.contains(classNames.dropdown)),
-      )
-    }
-  }
+  return [
+    'btn',
+    isString(options) || Array.isArray(options)
+      ? withPrefix('btn-', options)
+      : [
+          withPrefix('btn-', options.variant, options.size),
+          options.state,
+          { 'btn-block': options.block, 'btn-action': options.action },
+        ],
+  ]
 }, {
-  ...classNamesToVariants([...STATES, ...VARIANTS, ...SIZES, 'block', 'action'], 'btn-'),
+  ...classNamesToVariants([...STATES, ...BUTTON_VARIANTS, ...SIZES, 'block', 'action'], 'btn-'),
 
-  group: define((toggle: ClassNameToggler, options?: ButtonGroupOptions) => {
-    toggle('btn-group', true)
-    toggle('btn-group-block', options?.block)
-  }, classNamesToVariants(['block'], 'btn-group-')),
+  group: define((options: 'block' | ButtonGroupOptions = {}) => [
+    'btn-group',
+    withPrefix('btn-group-', options as ClassValue),
+  ], classNamesToVariants(['block'], 'btn-group-')),
 })

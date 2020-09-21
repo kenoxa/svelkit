@@ -1,5 +1,5 @@
-import type { ClassNameToggler, ActionVariants } from './internal'
-import { define, stable, classNamesToVariants, forEach, SIZES, STATES } from './internal'
+import type { ActionVariants } from './internal'
+import { define, stable, classNamesToVariants, withPrefix, SIZES, FORM_STATES } from './internal'
 
 const FORM_VARIANTS = ['horizontal', 'inline'] as const
 
@@ -12,12 +12,12 @@ export interface FormSizeOptions {
 }
 
 export interface FormGroupOptions {
-  state?: typeof STATES[number]
+  state?: typeof FORM_STATES[number]
 }
 
 export interface FormFieldOptions {
   size?: typeof SIZES[number]
-  state?: typeof STATES[number]
+  state?: typeof FORM_STATES[number]
   disabled?: boolean
   inline?: boolean
 }
@@ -32,56 +32,46 @@ const formField = <Variants extends ActionVariants | undefined>(
   variants?: Variants,
 ) => {
   const sizePrefix = kind === 'select' ? kind + '-' : 'input-'
-  const inline = (kind === 'input' ? kind : 'form') + '-inline'
+  const inlineClass = (kind === 'input' ? kind : 'form') + '-inline'
 
-  return define((toggle: ClassNameToggler, options?: FormFieldOptions) => {
-    toggle('form-' + kind, true)
-
-    toggle(inline, options?.inline)
-
-    forEach(SIZES, options?.size, sizePrefix, toggle)
-    forEach(STATES, options?.state, 'is-', toggle)
-    toggle('disabled', options?.disabled)
-  }, {
+  return define(({ inline, disabled, size, state }: FormFieldOptions = {}) => [
+    'form-' + kind,
+    { [inlineClass]: inline, disabled },
+    withPrefix(sizePrefix, size),
+    withPrefix('is-', state),
+  ], {
     ...classNamesToVariants(SIZES, `form-${kind} ${sizePrefix}`),
-    inline: define(stable(`form-${kind} ${inline}`)),
+    inline: define(stable(`form-${kind}`, inlineClass)),
     ...variants,
   })
 }
 
-export const form = define((toggle: ClassNameToggler, options?: FormOptions) => {
-  toggle('form', true)
-
-  forEach(FORM_VARIANTS, options?.variant, 'form-', toggle)
-}, {
+export const form = define(({ variant }: FormOptions = {}) => [
+  'form',
+  withPrefix('form-', variant),
+], {
   ...classNamesToVariants(FORM_VARIANTS, 'form form-'),
 
-  group: define((toggle: ClassNameToggler, options?: FormGroupOptions) => {
-    toggle('form-group', true)
+  group: define(({ state }: FormGroupOptions = {}) => ['form-group', withPrefix('has-', state)]),
 
-    forEach(STATES, options?.state, 'has-', toggle)
-  }),
-
-  label: define((toggle: ClassNameToggler, options?: FormSizeOptions) => {
-    toggle('form-label', true)
-
-    forEach(SIZES, options?.size, 'label-', toggle)
-  }, classNamesToVariants(SIZES, 'form-label label-')),
+  label: define(({ size }: FormSizeOptions = {}) => [
+    'form-label',
+    withPrefix('label-', size),
+  ], classNamesToVariants(SIZES, 'form-label label-')),
 
   input: formField('input', {
     hint: define(stable('form-input-hint')),
 
-    group: define((toggle: ClassNameToggler, options?: FormInputGroupOptions) => {
-      toggle('input-group', true)
-      toggle('input-inline', options?.inline)
-    }, {
+    group: define(({ inline }: FormInputGroupOptions = {}) => [
+      'input-group',
+      inline && 'input-inline',
+    ], {
       inline: define(stable('input-group input-inline')),
 
-      addon: define((toggle: ClassNameToggler, options?: FormSizeOptions) => {
-        toggle('input-group-addon', true)
-
-        forEach(SIZES, options?.size, 'addon-', toggle)
-      }, classNamesToVariants(SIZES, 'input-group-addon addon-')),
+      addon: define(({ size }: FormSizeOptions = {}) => [
+        'input-group-addon',
+        withPrefix('addon-', size),
+      ], classNamesToVariants(SIZES, 'input-group-addon addon-')),
 
       btn: define(stable('input-group-btn')),
     }),
@@ -97,16 +87,12 @@ export const form = define((toggle: ClassNameToggler, options?: FormOptions) => 
 
 const LEFT_RIGHT = ['left', 'right'] as const
 
-export const has = define((toggle: ClassNameToggler, state?: typeof STATES[number]) => {
-  forEach(STATES, state, 'has-', toggle)
-}, {
-  ...classNamesToVariants(STATES, 'has-'),
+export const has = define((state?: typeof FORM_STATES[number]) => withPrefix('has-', state), {
+  ...classNamesToVariants(FORM_STATES, 'has-'),
 
-  icon: define((toggle: ClassNameToggler, position?: typeof LEFT_RIGHT[number]) => {
-    forEach(LEFT_RIGHT, position, 'has-icon-', toggle)
-  }, classNamesToVariants(LEFT_RIGHT, 'has-icon-')),
+  icon: define((position?: typeof LEFT_RIGHT[number]) =>
+    withPrefix('has-icon-', position), classNamesToVariants(LEFT_RIGHT, 'has-icon-')),
 })
 
-export const is = define((toggle: ClassNameToggler, state?: typeof STATES[number]) => {
-  forEach(STATES, state, 'is-', toggle)
-}, classNamesToVariants(STATES, 'is-'))
+export const is = define((state?: typeof FORM_STATES[number]) =>
+  withPrefix('is-', state), classNamesToVariants(FORM_STATES, 'is-'))

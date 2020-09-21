@@ -1,23 +1,16 @@
-import type { ClassNameToggler } from './internal'
-import { define, classNamesToVariants, forEach, isString } from './internal'
+import { define, classNamesToVariants, isString, withPrefix } from './internal'
 
-const VARIANTS = ['primary', 'secondary', 'success', 'warning', 'error'] as const
+const LABEL_VARIANTS = ['primary', 'secondary', 'success', 'warning', 'error'] as const
 
 export interface LabelOptions {
-  variant?: typeof VARIANTS[number]
+  variant?: typeof LABEL_VARIANTS[number]
   rounded?: boolean
 }
 
-export const label = define((
-  toggle: ClassNameToggler,
-  options?: typeof VARIANTS[number] | LabelOptions,
-) => {
-  toggle('label', true)
-
+export const label = define((options: typeof LABEL_VARIANTS[number] | LabelOptions = {}) => {
   if (isString(options)) {
     options = { variant: options }
   }
 
-  toggle('label-rounded', options?.rounded)
-  forEach(VARIANTS, options?.variant, 'label-', toggle)
-}, classNamesToVariants([...VARIANTS, 'rounded'], 'label-'))
+  return ['label', options.rounded && 'label-rounded', withPrefix('label-', options.variant)]
+}, classNamesToVariants([...LABEL_VARIANTS, 'rounded'], 'label-'))

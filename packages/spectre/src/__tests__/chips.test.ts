@@ -32,16 +32,12 @@ test.each([
   [undefined, 'chip'],
   [{ active: false }, 'chip'],
   [{ active: true }, 'chip active'],
-])('chip.clsx(%j) => %s', (options, className) => {
-  expect(chip.clsx(options)).toBe(className)
+])('chip(%j) => %s', (options, className) => {
+  expect(chip(options)).toBe(className)
 })
 
-test('chip.class => chip', () => {
-  expect(chip.class).toBe('chip')
-})
+test.each([['active', 'chip active']])('chip.%s() => %s', (property, className) => {
+  const base = chip[property as keyof typeof chip] as () => string
 
-test.each([['active', 'chip active']])('chip.%s.class => %s', (property, className) => {
-  const base = chip[property as keyof typeof chip] as { class: string }
-
-  expect(base.class).toBe(className)
+  expect(base()).toBe(className)
 })

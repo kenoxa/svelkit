@@ -2,6 +2,27 @@
  * Source: https://github.com/picturepan2/spectre/blob/0.5.10/src/_base.scss
  */
 
+/** Adjustmend for non-baseline usage */
+:not(.baseline) {
+  .avatar,
+  .avatar::after,
+  .btn,
+  .btn::after,
+  .badge,
+  .badge::after,
+  .img-responsive,
+  .card,
+  .container,
+  .columns,
+  .column {
+    box-sizing: border-box;
+  }
+
+  .btn[data-badge]::after {
+    line-height: 0.9;
+  }
+}
+
 .baseline {
   // composes: baseline from global;
 

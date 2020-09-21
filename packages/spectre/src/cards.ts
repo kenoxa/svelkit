@@ -1,14 +1,17 @@
-import type { ClassNameToggler } from './internal'
-import { define, stable, classNamesToVariants } from './internal'
+import { define, stable, classNamesToVariants, isString, withPrefix } from './internal'
+
+const CARD_VARIANTS = ['image', 'header', 'body', 'footer'] as const
 
 export interface CardOptions {
   shadow?: boolean
 }
 
-export const card = define((toggle: ClassNameToggler, options?: CardOptions) => {
-  toggle('card', true)
-  toggle('card-shadow', options?.shadow)
-}, {
-  ...classNamesToVariants(['image', 'header', 'body', 'footer'], 'card-'),
-  shadow: define(stable('card', 'card-shadow')),
+export type CardParameter = undefined | 'shadow' | typeof CARD_VARIANTS[number] | CardOptions
+
+export const card = define((options: CardParameter = {}) =>
+  isString(options)
+    ? [options === 'shadow' && 'card', withPrefix('card-', options)]
+    : ['card', withPrefix('card-', { shadow: options.shadow })], {
+  ...classNamesToVariants(CARD_VARIANTS, 'card-'),
+  shadow: define(stable('card card-shadow')),
 })

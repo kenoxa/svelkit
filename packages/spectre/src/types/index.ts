@@ -1,19 +1,19 @@
 export interface ActionResult<Options> {
-  update?: (options?: Options) => void
+  update: (options?: Options) => void
   destroy?: () => void
 }
 
 export interface Action<Options> {
-  (node: Element, options?: Options): ActionResult<Options> | void
-  clsx: (options?: Options) => string
-  class: string
+  (node: Element, options?: Options): ActionResult<Options>
+  (options?: Options): string
 }
 
-export type ClassValue =
-  | string
-  | number
+export type ClassFalsy =
+  | ''
+  | 0
+  | false
+  | typeof NaN // eslint-disable-line unicorn/prefer-number-properties
   | null
-  | boolean
   | undefined
-  | Record<string, unknown>
-  | ClassValue[]
+
+export type ClassValue = string | ClassFalsy | Record<string, unknown> | ClassValue[]

@@ -1,5 +1,7 @@
 # Spectre
 
+Just like clsx but with mapped class names.
+
 ```example
 <script>
   import { spectre } from '@svelkit/spectre'

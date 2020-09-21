@@ -2,12 +2,6 @@
  * Source: https://github.com/picturepan2/spectre/blob/0.5.10/src/_layout.scss
  */
 
-.container,
-.columns,
-.column {
-  box-sizing: border-box;
-}
-
 // Layout
 .container {
   // composes: container from global;
@@ -107,8 +101,7 @@
     margin-right: 0;
 
     & > .column {
-      padding-left: 0;
-      padding-right: 0;
+      padding: 0;
     }
   }
   &.col-oneline {
@@ -127,10 +120,10 @@
 }
 /* [class~="col-"] => not needed as we add the column class to each col-* */
 .column {
+  display: flex;
   flex: 1;
   max-width: 100%;
-  padding-left: $layout-spacing;
-  padding-right: $layout-spacing;
+  padding: $layout-spacing;
 
   &.col-12,
   &.col-11,

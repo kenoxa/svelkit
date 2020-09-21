@@ -1,6 +1,6 @@
 # Baseline
 
-> A baseline component to kickstart an elegant, consistent, and simple baseline to build upon.
+A baseline action to kickstart an elegant, consistent, and simple baseline to build upon.
 
 ## Why?
 

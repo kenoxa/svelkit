@@ -1,7 +1,6 @@
-import type { ClassNameToggler } from './internal'
-import { define, classNamesToVariants } from './internal'
+import { define, classNamesToVariants, withPrefix } from './internal'
 
-export const menu = define((toggle: ClassNameToggler, variant?: 'nav') => {
-  toggle('menu', true)
-  toggle('menu-nav', variant === 'nav')
-}, classNamesToVariants(['item', 'badge'] as const, 'menu-'))
+export const menu = define((variant?: 'nav') => [
+  'menu',
+  withPrefix('menu-', variant),
+], classNamesToVariants(['item', 'badge'] as const, 'menu-'))

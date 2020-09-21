@@ -1,10 +1,7 @@
-import type { ClassNameToggler } from './internal'
-import { define } from './internal'
+import { define, updateDatasetKey } from './internal'
 
-export const badge = define((toggle: ClassNameToggler, value?: string, node?: Element) => {
-  toggle('badge', true)
+export const badge = define((value?: string | number, node?: Element) => {
+  updateDatasetKey(node, 'badge', value)
 
-  if (value && node) {
-    ;(node as HTMLElement).dataset.badge = value
-  }
+  return 'badge'
 })

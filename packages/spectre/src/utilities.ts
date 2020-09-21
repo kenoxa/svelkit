@@ -1,6 +1,5 @@
 import type { Action } from './types'
-import type { ClassNameToggler } from './internal'
-import { define, defineWithClassNames, isBoolean } from './internal'
+import { define, defineWithClassNames, isBoolean, stable, updateDatasetKey } from './internal'
 
 // Use:text('primary center uppercase muted')
 export const text = defineWithClassNames((className) => 'text-' + className, [
@@ -51,9 +50,19 @@ export const bg = defineWithClassNames((className) => 'bg-' + className, [
   'error',
 ] as const)
 
+export const cursor = defineWithClassNames((className) => 'c-' + className, [
+  // From styles/utilities/cursors
+  'hand',
+  'move',
+  'zoom-in',
+  'zoom-out',
+  'not-allowed',
+  'auto',
+] as const)
+
 // Use:centered('p') || Use:centered('flex')
 export const centered = defineWithClassNames(
-  (className) => (className === 'block' ? 'p' : className) + '-centered',
+  (className = 'flex') => (className === 'block' ? 'p' : className) + '-centered',
   [
     // From styles/utilities/colors
     'p',
@@ -62,36 +71,28 @@ export const centered = defineWithClassNames(
   ] as const,
 )
 
-export const clearfix = define((toggle: ClassNameToggler, enable?: boolean) => {
-  toggle('clearfix', enable !== false)
-})
+export const clearfix = define(stable('clearfix'))
 
 export interface LoadingOptions {
   enable?: boolean
   lg?: boolean
 }
 
-export const loading = define((
-  toggle: ClassNameToggler,
-  options?: boolean | 'lg' | LoadingOptions,
-) => {
+export const loading = define((options: boolean | 'lg' | LoadingOptions = {}) => {
   if (isBoolean(options)) {
-    toggle('loading', options !== false)
-  } else {
-    if (options === 'lg') options = { enable: true, lg: true }
-
-    toggle('loading', options?.enable !== false)
-    toggle('loading-lg', options?.lg === true)
+    options = { enable: options }
+  } else if (options === 'lg') {
+    options = { lg: true }
   }
+
+  return { loading: options.enable !== false, 'loading-lg': options.lg }
 })
 
 const defineDivider = (className: string): Action<string> =>
-  define((toggle: ClassNameToggler, content?: string, node?: Element) => {
-    toggle(className, true)
+  define((content?: string, node?: Element) => {
+    updateDatasetKey(node, 'content', content)
 
-    if (content) {
-      ;(node as HTMLElement).dataset.content = content
-    }
+    return className
   })
 
 export const divider = Object.assign(defineDivider('divider'), {

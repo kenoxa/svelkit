@@ -2,9 +2,30 @@ import '@carv/types'
 import { render, screen } from '@testing-library/svelte'
 import html from 'svelte-htm'
 
-import type { Action } from '..'
+import type { Action, CardParameter } from '..'
 
 import { card } from '..'
+
+test('card action', () => {
+  render(html`<div>content<//>`)
+
+  const node = screen.getByText('content')
+
+  const action = card(node)
+
+  expect(node).toHaveClass('card')
+  expect(node).not.toHaveClass('card-shadow')
+
+  action.update('shadow')
+  expect(node).toHaveClass('card', 'card-shadow')
+
+  action.update({ shadow: false })
+  expect(node).toHaveClass('card')
+  expect(node).not.toHaveClass('card-shadow')
+
+  action.update({ shadow: true })
+  expect(node).toHaveClass('card', 'card-shadow')
+})
 
 test('has card class', () => {
   render(html`<div use:card=${card}>content<//>`)
@@ -28,12 +49,13 @@ test.each([
   [undefined, 'card'],
   [{ shadow: false }, 'card'],
   [{ shadow: true }, 'card card-shadow'],
-])('card.clsx(%j) => %s', (options, className) => {
-  expect(card.clsx(options)).toBe(className)
-})
-
-test('card.class => card', () => {
-  expect(card.class).toBe('card')
+  ['shadow', 'card card-shadow'],
+  ['image', 'card-image'],
+  ['header', 'card-header'],
+  ['body', 'card-body'],
+  ['footer', 'card-footer'],
+])('card(%j) => %s', (options, className) => {
+  expect(card(options as CardParameter)).toBe(className)
 })
 
 test.each([
@@ -48,8 +70,7 @@ test.each([
   render(html`<div use:action=${action}>content<//>`)
   expect(screen.getByText('content')).toHaveClass(...className.split(/\s+/g))
 
-  expect(action.clsx()).toBe(className)
-  expect(action.clsx(true)).toBe(className)
-  expect(action.clsx(false)).toBe('')
-  expect(action.class).toBe(className)
+  expect(action()).toBe(className)
+  expect(action(true)).toBe(className)
+  expect(action(false)).toBe('')
 })
