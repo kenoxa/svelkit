@@ -313,9 +313,9 @@
     browserslist-useragent "^3.0.3"
 
 "@carv/prettier-config@^1.0.2":
-  version "1.0.3"
-  resolved "https://registry.npmjs.org/@carv/prettier-config/-/prettier-config-1.0.3.tgz#ad89964c20659791ded81d5d9346783890d6de35"
-  integrity sha512-E48hcLl1iNxlNvUguaO6OOihQWcTvDBh7NeZZ2QiRIeAW4k7KvIVrKCTzfXOKsl5LtVsA3ESPpLsACRqO5WdpQ==
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@carv/prettier-config/-/prettier-config-1.0.4.tgz#28c1e23b0ce96e6918f0948b5943ace3fb33ce8e"
+  integrity sha512-nG7ouB+kmE07U1+otlcm5uMGkRhhYJy1jgv8dmv7hiogPUgsmqg6njdeSEzKR+NDUKb+qzNxg6Cs5A7YVZP0kw==
   dependencies:
     prettier-plugin-packagejson "^2.2.5"
     prettier-plugin-svelte "^1.1.0"
@@ -10215,8 +10215,9 @@ rollup-plugin-hot-nollup@^0.1.0:
   dependencies:
     "@rollup/pluginutils" "^3.1.0"
 
-"rollup-plugin-hot@github:sastan/rollup-plugin-hot#open-and-proxy":
+rollup-plugin-hot@sastan/rollup-plugin-hot#open-and-proxy:
   version "0.1.0"
+  uid "90dfa55517a3c1ea0a91c101d2ed51c4b8a87f15"
   resolved "https://codeload.github.com/sastan/rollup-plugin-hot/tar.gz/90dfa55517a3c1ea0a91c101d2ed51c4b8a87f15"
   dependencies:
     cors "^2.8.5"
