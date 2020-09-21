@@ -322,7 +322,7 @@
 
 "@carv/scripts@^1.2.2":
   version "1.2.2"
-  resolved "https://npm.kenoxa.com/@carv%2fscripts/-/scripts-1.2.2.tgz#6f92e21cd7c6ba7956f1253a296a67bbf6cd9f51"
+  resolved "https://registry.npmjs.org/@carv/scripts/-/scripts-1.2.2.tgz#6f92e21cd7c6ba7956f1253a296a67bbf6cd9f51"
   integrity sha512-o8tjzuiWKf79yx+B5pBneQh59uvr1yRae/Gs/NKRNs/j6QfgCdxc96CR6kDtgg0GFp8ZeaPFjBPyDyajxbF2ZQ==
   dependencies:
     "@carv/cdn-css-loader" "^1.1.0"
