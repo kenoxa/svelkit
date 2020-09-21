@@ -10215,8 +10215,9 @@ rollup-plugin-hot-nollup@^0.1.0:
   dependencies:
     "@rollup/pluginutils" "^3.1.0"
 
-"rollup-plugin-hot@github:sastan/rollup-plugin-hot#open-and-proxy":
+rollup-plugin-hot@sastan/rollup-plugin-hot#open-and-proxy:
   version "0.1.0"
+  uid "90dfa55517a3c1ea0a91c101d2ed51c4b8a87f15"
   resolved "https://codeload.github.com/sastan/rollup-plugin-hot/tar.gz/90dfa55517a3c1ea0a91c101d2ed51c4b8a87f15"
   dependencies:
     cors "^2.8.5"
@@ -11751,9 +11752,9 @@ typescript-eslint-language-service@^3.0.0:
     read-pkg-up "^7.0.0"
 
 typescript@*, typescript@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.npmjs.org/typescript/-/typescript-4.0.2.tgz#7ea7c88777c723c681e33bf7988be5d008d05ac2"
-  integrity sha512-e4ERvRV2wb+rRZ/IQeb3jm2VxBsirQLpQhdxplZ2MEzGvDkkMmPglecnNDfSUBivMjP93vRbngYYDQqQ/78bcQ==
+  version "4.0.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.0.3.tgz#153bbd468ef07725c1df9c77e8b453f8d36abba5"
+  integrity sha512-tEu6DGxGgRJPb/mVPIZ48e69xCn2yRmCgYmDugAVwmJ6o+0u1RI18eO7E7WBTLYLaEVVOhwQmcdhQHweux/WPg==
 
 typescript@^3.9.5:
   version "3.9.7"
