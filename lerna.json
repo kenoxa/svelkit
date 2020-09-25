@@ -4,7 +4,7 @@
   "useWorkspaces": true,
   "command": {
     "publish": {
-      "contents": "build",
+      "contents": "dist",
       "conventionalCommits": true
     }
   }

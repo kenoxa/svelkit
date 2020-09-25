@@ -1,6 +1,6 @@
 {
   "name": "@svelkit/delay",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "keywords": [
     "svelkit",
     "svelte"
@@ -41,5 +41,5 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "307181b36c3444ea4c5abba3e73cfe5dbbaaaa77"
+  "gitHead": "872e6e132ee6ff2b365a288046296d5630c58da6"
 }
