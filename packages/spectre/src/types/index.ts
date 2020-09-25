@@ -4,8 +4,8 @@ export interface ActionResult<Options> {
 }
 
 export interface Action<Options> {
-  (node: Element, options?: Options): ActionResult<Options>
   (options?: Options): string
+  (node: Element, options?: Options): ActionResult<Options>
 }
 
 export type ClassFalsy =

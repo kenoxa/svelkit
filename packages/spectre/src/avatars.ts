@@ -1,3 +1,5 @@
+import type { Action, ClassValue } from './types'
+
 import {
   define,
   stable,
@@ -17,9 +19,20 @@ export interface AvatarOptions {
 
 export type AvatarParameter =
   | AvatarOptions['size']
-  | 'presence'
-  | typeof PRESENCES[number]
   | AvatarOptions
+
+const useAvatar = (
+  size?: typeof AVATAR_SIZES[number],
+  initial?: string,
+  node?: Element,
+): ClassValue[] => {
+  updateDatasetKey(node, 'initial', initial)
+
+  return ['avatar', withPrefix('avatar-', size)]
+}
+
+const defineAvatar = (size?: typeof AVATAR_SIZES[number]): Action<string> =>
+  define((initial?: string, node?: Element) => useAvatar(size, initial, node))
 
 export const avatar = define((options: AvatarParameter = {}, node?: Element) => {
   if (isString(options)) {
@@ -27,18 +40,18 @@ export const avatar = define((options: AvatarParameter = {}, node?: Element) => 
 
     return [
       (AVATAR_SIZES as readonly string[]).includes(options) && 'avatar',
-      (PRESENCES as readonly string[]).includes(options) && 'avatar-presence',
       withPrefix('avatar-', options),
     ]
   }
 
-  updateDatasetKey(node, 'initial', options.initial)
-
-  return ['avatar', withPrefix('avatar-', options.size)]
+  return useAvatar(options.size, options.initial, node)
 }, {
+  xs: defineAvatar('xs'),
+  sm: defineAvatar('sm'),
+  md: defineAvatar(),
+  lg: defineAvatar('lg'),
+  xl: defineAvatar('xl'),
   icon: define(stable('avatar-icon')),
-  presence: define((status?: typeof PRESENCES[number]) => [
-    'avatar-presence',
-    status,
-  ], classNamesToVariants(PRESENCES)),
+  presence: define((status?: typeof PRESENCES[number]) => ['avatar-presence', status]),
+  ...classNamesToVariants(PRESENCES, (presence) => 'avatar-presence ' + presence),
 })

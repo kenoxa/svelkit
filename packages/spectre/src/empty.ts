@@ -1,6 +1,8 @@
-import { define, stable, classNamesToVariants } from './internal'
+import { define, classNamesToVariants, withPrefix } from './internal'
 
-export const empty = define(stable('empty'), classNamesToVariants(
-  ['icon', 'title', 'subtitle', 'action'] as const,
+const EMPTY_VARIANTS = ['icon', 'title', 'subtitle', 'action'] as const
+
+export const empty = define((variant?: (typeof EMPTY_VARIANTS)[number]) => ['empty', withPrefix('empty-', variant)], classNamesToVariants(
+  EMPTY_VARIANTS,
   'empty-',
 ))

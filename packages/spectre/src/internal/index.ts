@@ -16,8 +16,14 @@ export const isNumber = (value: unknown): value is number => is(value, 'number')
 export const isBoolean = (value: unknown): value is boolean => is(value, 'boolean')
 
 export const ensureButtonType = (node?: Element): void => {
-  if (node && node.tagName === 'BUTTON' && !node.hasAttribute('type')) {
-    ;(node as HTMLButtonElement).type = 'button'
+  if (node) {
+    if (node.tagName === 'BUTTON') {
+      if (!node.hasAttribute('type')) {
+        ;(node as HTMLButtonElement).type = 'button'
+      }
+    } else {
+      node.setAttribute('role', 'button')
+    }
   }
 }
 

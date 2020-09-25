@@ -1,0 +1,41 @@
+{
+  "name": "@svelkit/hooks",
+  "version": "0.1.0",
+  "keywords": [
+    "svelkit",
+    "svelte"
+  ],
+  "homepage": "https://github.com/kenoxa/svelkit#readme",
+  "bugs": {
+    "url": "https://github.com/kenoxa/svelkit/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kenoxa/svelkit.git",
+    "directory": "packages/hooks"
+  },
+  "license": "MIT",
+  "author": "Sascha Tandel <s.tandel@kenoxa.de>",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "nps",
+    "format": "nps",
+    "prepublishOnly": "nps build.package",
+    "test": "nps"
+  },
+  "prettier": "@carv/prettier-config",
+  "eslintConfig": {
+    "extends": "@carv/eslint-config",
+    "root": true
+  },
+  "jest": {
+    "preset": "@carv/scripts"
+  },
+  "devDependencies": {
+    "nps": "^5.9.12"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "307181b36c3444ea4c5abba3e73cfe5dbbaaaa77"
+}

@@ -1,3 +1,5 @@
+const path = require('path')
+
 const target = process.env.npm_lifecycle_event === 'build' ? 'import' : 'dev'
 
 module.exports = {
@@ -28,6 +30,10 @@ module.exports = {
   },
 
   aliases: {
+    '@svelkit/docs': require.resolve(`./src/index.js`),
+    '@svelkit/delay': require.resolve(`@svelkit/delay/dist/browser/${target}/delay.js`),
+    '@svelkit/graphql': require.resolve(`@svelkit/graphql/dist/browser/${target}/graphql.js`),
+    '@svelkit/hooks': require.resolve(`@svelkit/hooks/dist/browser/${target}/hooks.js`),
     '@svelkit/spectre': require.resolve(`@svelkit/spectre/dist/browser/${target}/spectre.js`),
   },
 

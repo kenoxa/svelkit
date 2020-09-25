@@ -4,7 +4,6 @@ import {
   isNumber,
   withPrefix,
   ensureButtonType,
-  updateDatasetKey,
   updateAttribute,
 } from './internal'
 
@@ -20,7 +19,6 @@ export interface BarItemOptions {
   min?: number
   max?: number
   role?: string
-  tooltip?: string | false
 }
 
 export interface BarSliderButtonOptions {
@@ -28,20 +26,25 @@ export interface BarSliderButtonOptions {
   variant?: ButtonOptions['variant']
 }
 
-export const bar = define((options: BarOptions['size'] | 'slider' | BarOptions = {}) =>
-  ['bar', isString(options) ? withPrefix('bar-', options) :  withPrefix('bar-', options.size, options.slider && 'slider')]
-, {
-  slider: define((size?: BarOptions['size']) => ['bar bar-slider', withPrefix('bar-', size)], {
-    btn: define(({ state, variant }: BarSliderButtonOptions = {}, node?: Element) => {
-      ensureButtonType(node)
-      updateAttribute(node, 'role', 'slider')
+export const bar = define((options: BarOptions['size'] | 'slider' | BarOptions = {}) => [
+  'bar',
+  isString(options)
+    ? withPrefix('bar-', options)
+    : withPrefix('bar-', options.size, options.slider && 'slider'),
+], {
+  slider: define((size?: BarOptions['size']) => ['bar bar-slider', withPrefix('bar-', size)]),
 
-      return ['btn bar-slider-btn', withPrefix('btn-', variant), state]
-    }),
+  btn: define(({ state, variant }: BarSliderButtonOptions = {}, node?: Element) => {
+    ensureButtonType(node)
+    updateAttribute(node, 'role', 'slider')
+
+    return ['btn bar-slider-btn', withPrefix('btn-', variant), state]
   }),
 
   item: define((options: number | BarItemOptions = 0, node?: Element) => {
-    const { value, min = 0, max = 100, tooltip = `${value}%`, role = 'progressbar' } = isNumber(options)
+    const { value, min = 0, max = 100, role = 'progressbar' } = isNumber(
+      options,
+    )
       ? ({ value: options } as const)
       : options
 
@@ -52,10 +55,8 @@ export const bar = define((options: BarOptions['size'] | 'slider' | BarOptions =
       updateAttribute(node, 'aria-valuenow', value)
       updateAttribute(node, 'aria-valuemin', min)
       updateAttribute(node, 'aria-valuemax', max)
-
-      updateDatasetKey(node, 'tooltip', tooltip)
     }
 
-    return ['bar-item', { tooltip }]
+    return 'bar-item'
   }),
 })

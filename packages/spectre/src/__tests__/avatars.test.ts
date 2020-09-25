@@ -39,7 +39,6 @@ test.each([
   [{ size: 'xs' }, 'avatar avatar-xs'],
   ['presence', 'avatar-presence'],
   ['presence online', 'avatar-presence online'],
-  ['online', 'avatar-presence online'],
 ])('avatar(%j) => %s', (options, className) => {
   expect(avatar(options as AvatarParameter)).toBe(className)
 })

@@ -14,6 +14,7 @@
   export let ms: number = 200
 
   let visible: boolean
+
   let timeoutRef: ReturnType<typeof setTimeout>
 
   onDestroy(() => clearTimeout(timeoutRef))

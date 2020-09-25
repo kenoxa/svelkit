@@ -12,6 +12,8 @@ npm install @svelkit/spectre
 
 This package exports a number of [actions](https://svelte.dev/docs#use_action) to add [spectre] css classes to DOM elements. Some actions additionally add aria attributes.
 
+*Note:* Using nested actions (eg: `use:btn.primary`) requires `svelte@^3.26.0`
+
 ## API
 
 Each action can be used with the `use:action` svelte directive: ```<T>(node: Element, options?: T) => { update(options?: T): void }```.
@@ -41,12 +43,14 @@ Actions can be combined:
   import { badge, btn } from '@svelkit/spectre'
 </script>
 
-<button use:badge={8} use:btn>
+<button use:btn use:badge={8}>
   Button
 </button>
 ```
 
-Use the `spectre` action:
+## The `spectre` action
+
+The `spectre` action utility allows constructing class strings conditionally.
 
 ```example
 <script>
@@ -58,7 +62,7 @@ Use the `spectre` action:
 </button>
 ```
 
-Use the `spectre` class helper:
+Using the `spectre` class helper:
 
 ```example
 <script>
@@ -69,5 +73,41 @@ Use the `spectre` class helper:
   Button
 </button>
 ```
+
+This function can take **any** number of arguments, each of which can be an Object, Array, Boolean, or String.
+
+```js
+// Strings (variadic)
+spectre('btn', true && 'active', 'btn-lg');
+// => 'btn active btn-lg'
+
+// Objects
+spectre({ btn: true, loading: false, disabled: isTrue() });
+// => 'btn disabled'
+
+// Objects (variadic)
+spectre({ btn: true }, { active: false }, null, { 'loading': $fetching });
+// => 'btn loading'
+
+// Arrays
+spectre(['btn', 0, false && 'active', 'btn-primary']);
+// => 'btn btn-primary'
+
+// Arrays (variadic)
+spectre(['btn'], ['', 0, false, 'tooltip'], [['loading', [['active'], 'disabled']]]);
+// => 'btn tooltip loading active disabled'
+
+// Kitchen sink (with nesting)
+spectre('btn', [1 && 'loading', { active: false, disabled: null }, ['btn-lg', ['btn-primary']]], 'tooltip');
+// => 'btn loading btn-lg btn-primary tooltip'
+```
+
+All falsey values are discarded! Standalone Boolean values are discarded as well.
+
+```js
+spectre(true, false, '', null, undefined, 0, NaN);
+// => ''
+```
+
 
 [spectre]: https://picturepan2.github.io/spectre/

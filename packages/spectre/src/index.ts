@@ -31,6 +31,7 @@ export * from './empty'
 export * from './menus'
 export * from './modals'
 export * from './navs'
+export * from './tooltips'
 
 // Utility classes
 export * from './utilities'

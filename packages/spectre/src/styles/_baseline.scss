@@ -2,27 +2,6 @@
  * Source: https://github.com/picturepan2/spectre/blob/0.5.10/src/_base.scss
  */
 
-/** Adjustmend for non-baseline usage */
-:not(.baseline) {
-  .avatar,
-  .avatar::after,
-  .btn,
-  .btn::after,
-  .badge,
-  .badge::after,
-  .img-responsive,
-  .card,
-  .container,
-  .columns,
-  .column {
-    box-sizing: border-box;
-  }
-
-  .btn[data-badge]::after {
-    line-height: 0.9;
-  }
-}
-
 .baseline {
   // composes: baseline from global;
 
@@ -60,6 +39,14 @@
   *::before,
   *::after {
     box-sizing: inherit;
+    background-repeat: no-repeat;
+  }
+
+  /* Pseudo-elements inherit text decoration and vertical alignment */
+  ::before,
+  ::after {
+    text-decoration: inherit;
+    vertical-align: inherit;
   }
 
   /**
@@ -105,5 +92,58 @@
     &:visited {
       color: $link-color-light;
     }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    ::before,
+    ::after {
+      animation-delay: -1ms !important;
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+      background-attachment: initial !important;
+      scroll-behavior: auto !important;
+      transition-delay: 0s !important;
+      transition-duration: 0s !important;
+    }
+  }
+
+  /* SVGs fallback to the current text color */
+  svg:not([fill]) {
+    fill: currentColor;
+  }
+
+  /* Tables do not include additional border spacing */
+  table {
+    border-collapse: collapse;
+  }
+
+  /* Single taps are dispatched immediately on clickable elements */
+  a, area, button, input, label, select, summary, textarea, [tabindex] {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+  }
+
+  /* ARIA roles include visual cursor hints */
+  [aria-busy="true"] {
+    cursor: progress;
+  }
+
+  [aria-controls] {
+    cursor: pointer;
+  }
+
+  [aria-disabled="true"], [disabled] {
+    cursor: default;
+  }
+
+  /* Visually hidden content remains accessible */
+  [aria-hidden="false"][hidden] {
+    display: initial;
+  }
+
+  [aria-hidden="false"][hidden]:not(:focus) {
+    clip: rect(0, 0, 0, 0);
+    position: absolute;
   }
 }

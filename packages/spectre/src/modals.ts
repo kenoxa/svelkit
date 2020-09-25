@@ -9,6 +9,8 @@ export interface ModalContainerOptions {
   fullheight?: boolean
 }
 
+// Variable for storing the last focused element
+// let lastFocusedElement
 export const modal = define((options: boolean | typeof SIZES[number] | ModalOptions = {}) => {
   if (isBoolean(options)) {
     options = { active: options }
@@ -17,6 +19,12 @@ export const modal = define((options: boolean | typeof SIZES[number] | ModalOpti
   }
 
   // TODO if active and not focus-within
+  // https://frend.co/components/dialogmodal/
+  // https://github.com/udacity/ud891/blob/gh-pages/lesson2-focus/07-modals-and-keyboard-traps/solution/modal.js
+  // Store the last focused element
+  // lastFocusedElement = document.activeElement;
+  // Return the focus to the last focused element
+  // lastFocusedElement.focus();
   // node.focus()
   // node.setAttribute('aria-hidden', active)
   // mainPage.setAttribute('aria-hidden', !active)

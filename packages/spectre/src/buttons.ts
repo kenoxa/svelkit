@@ -8,6 +8,7 @@ import {
   SIZES,
   ensureButtonType,
   isString,
+  ActionVariants,
 } from './internal'
 
 const BUTTON_VARIANTS = ['primary', 'success', 'error', 'link', 'clear'] as const

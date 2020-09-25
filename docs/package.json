@@ -10,6 +10,7 @@
       "@rollup/**"
     ]
   },
+  "main": "src/index.js",
   "scripts": {
     "build": "rollup -c node_modules/@svelte-docs/core/rollup.config.js",
     "build:watch": "rollup -c node_modules/@svelte-docs/core/rollup.config.js -w",
@@ -25,6 +26,9 @@
     "root": true
   },
   "dependencies": {
+    "@svelkit/delay": "*",
+    "@svelkit/graphql": "*",
+    "@svelkit/hooks": "*",
     "@svelkit/spectre": "*"
   },
   "devDependencies": {
@@ -36,6 +40,7 @@
     "nps": "^5.9.12",
     "rollup": "^1.32.1",
     "rollup-plugin-terser": "^7.0.2",
-    "sirv-cli": "^1.0.6"
+    "sirv-cli": "^1.0.6",
+    "svelte": "^3.26.0"
   }
 }

@@ -36,3 +36,21 @@ Badges support [button](spectre/buttons) and [avatars](spectre//avatars) element
   <img src="https://picturepan2.github.io/spectre/img/avatar-3.png" alt="YZ">
 </figure>
 ```
+
+## Playground
+
+```example
+<script>
+  import { Knobs } from '@svelkit/docs'
+
+  import { badge } from '@svelkit/spectre'
+
+  let state = { value: undefined }
+</script>
+
+<span use:badge={state.value}>Notifications</span>
+
+<Knobs bind:state={state} config={{
+  value: { size: 5 }
+}} />
+```

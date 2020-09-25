@@ -1,0 +1,60 @@
+/**
+ * Source: https://github.com/picturepan2/spectre/blob/0.5.10/src/_breadcrumbs.scss
+ */
+
+// Breadcrumbs
+.breadcrumb {
+  list-style: none;
+  margin: $unit-1 0;
+  padding: $unit-1 0;
+}
+
+.breadcrumb-item {
+  color: $gray-color-dark;
+  display: inline-block;
+  margin: 0;
+  padding: $unit-1 0;
+
+  &:not(:last-child) {
+    margin-right: $unit-1;
+
+    a,
+    > .btn {
+      color: currentColor;
+    }
+  }
+
+  &:not(:first-child) {
+    &::before {
+      color: $gray-color-dark;
+      content: '/';
+      padding-right: $unit-2;
+    }
+  }
+
+  > .btn {
+    // Same as for .breadcrumb-item > a
+    border-radius: 0;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+
+    // Override .btn styles
+    background: transparent;
+    border: none;
+    height: inherit;
+    width: inherit;
+    text-align: left;
+    font-size: 1em;
+    line-height: inherit;
+    vertical-align: inherit;
+
+    &:focus,
+    &:hover,
+    &:active,
+    &.active {
+      color: $primary-color;
+    }
+  }
+}
