@@ -1,5 +1,3 @@
-const path = require('path')
-
 const target = process.env.npm_lifecycle_event === 'build' ? 'import' : 'dev'
 
 module.exports = {
