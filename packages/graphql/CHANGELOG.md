@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/kenoxa/svelkit/compare/@svelkit/graphql@0.5.1...@svelkit/graphql@0.6.0) (2020-09-25)
+
+### Features
+
+- @carv/spectre ([446997a](https://github.com/kenoxa/svelkit/commit/446997aaf4939a03e7b32c7377be7cc7e7d38a6d))
+
 ## [0.5.1](https://github.com/kenoxa/svelkit/compare/@svelkit/graphql@0.5.0...@svelkit/graphql@0.5.1) (2020-09-03)
 
 ### Bug Fixes
