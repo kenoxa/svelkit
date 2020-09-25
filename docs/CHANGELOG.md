@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/kenoxa/svelkit/compare/@svelkit/docs@0.1.0...@svelkit/docs@0.1.1) (2020-09-25)
+
+**Note:** Version bump only for package @svelkit/docs
+
 # 0.1.0 (2020-09-25)
 
 ### Bug Fixes

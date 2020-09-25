@@ -1,6 +1,6 @@
 {
   "name": "@svelkit/spectre",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "spectre components as svelte actions and css modules",
   "keywords": [
     "svelkit",
