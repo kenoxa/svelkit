@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.4](https://github.com/kenoxa/svelkit/compare/@svelkit/delay@0.3.2...@svelkit/delay@0.3.4) (2020-09-25)
+
+**Note:** Version bump only for package @svelkit/delay
+
 ## [0.3.2](https://github.com/kenoxa/svelkit/compare/@svelkit/delay@0.3.0...@svelkit/delay@0.3.2) (2020-09-25)
 
 **Note:** Version bump only for package @svelkit/delay

@@ -1,6 +1,6 @@
 {
   "name": "@svelkit/docs",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "private": true,
   "workspaces": {
     "nohoist": [
@@ -26,10 +26,10 @@
     "root": true
   },
   "dependencies": {
-    "@svelkit/delay": "^0.3.2",
-    "@svelkit/graphql": "^0.6.2",
-    "@svelkit/hooks": "^0.1.3",
-    "@svelkit/spectre": "^0.2.2"
+    "@svelkit/delay": "^0.3.4",
+    "@svelkit/graphql": "^0.6.3",
+    "@svelkit/hooks": "^0.1.4",
+    "@svelkit/spectre": "^0.2.3"
   },
   "devDependencies": {
     "@svelte-docs/core": "^0.10.8",
