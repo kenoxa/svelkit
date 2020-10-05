@@ -113,6 +113,11 @@ export interface GraphQLRequestOptions extends Record<string, any> {
   readonly signal?: AbortSignal
 
   /**
+   * Determines which operation should be executed.
+   */
+  readonly operationName?: string
+
+  /**
    * If you are running on react-native, or modern browsers, this should be no problem.
    * If you are targeting an environment without fetch such as older browsers or the server,
    * you will need to pass your own fetch to the link through the options.
