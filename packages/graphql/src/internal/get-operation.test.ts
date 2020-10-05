@@ -137,3 +137,98 @@ test.each(cases)('%s', (_, gql, expected): void => {
   expect(getOperation(gql)).toStrictEqual(expected)
   expect(getOperation(minimize(gql))).toStrictEqual(expected)
 })
+
+test('multiple operations', () => {
+  const gql = `
+    query Feed($type: FeedType!, $offset: Int, $limit: Int) {
+      currentUser {
+        login
+      }
+      feed(type: $type, offset: $offset, limit: $limit) {
+        id
+        # ...
+      }
+    }
+
+    query GetDogs {
+      dogs {
+        id
+        breed
+      }
+    }
+
+    mutation AddTodo($type: String!) {
+      addTodo(type: $type) {
+        id
+        type
+      }
+    }
+
+    subscription OnCommentAdded($repoFullName: String!) {
+      commentAdded(repoFullName: $repoFullName) {
+        id
+        content
+      }
+    }
+
+    mutation StoryLikeMutation($input: StoryLikeInput) {
+      storyLike(input: $input) {
+        story {
+          likers { count }
+          likeSentence { text }
+        }
+      }
+    }
+
+    subscription StoryLikeSubscription($input: StoryLikeSubscribeInput) {
+      storyLikeSubscribe(input: $input) {
+        story {
+          likers { count }
+          likeSentence { text }
+        }
+      }
+    }
+  `
+
+
+  expect(getOperation(gql)).toMatchObject({
+    type: 'query',
+    name: 'Feed',
+  })
+
+  expect(getOperation(gql, 'Feed')).toMatchObject({
+    type: 'query',
+    name: 'Feed',
+  })
+
+  expect(getOperation(gql, 'GetDogs')).toMatchObject({
+    type: 'query',
+    name: 'GetDogs',
+  })
+
+  expect(getOperation(gql, 'AddTodo')).toMatchObject({
+    type: 'mutation',
+    name: 'AddTodo',
+  })
+
+  expect(getOperation(gql, 'StoryLikeMutation')).toMatchObject({
+    type: 'mutation',
+    name: 'StoryLikeMutation',
+  })
+
+  expect(getOperation(gql, 'OnCommentAdded')).toMatchObject({
+    type: 'subscription',
+    name: 'OnCommentAdded',
+  })
+
+  expect(getOperation(gql, 'StoryLikeSubscription')).toMatchObject({
+    type: 'subscription',
+    name: 'StoryLikeSubscription',
+  })
+
+  expect(() => getOperation(gql, 'GetPerson')).toThrow('Operation GetPerson not found')
+})
+
+test('no operation', () => {
+  expect(() => getOperation('')).toThrow('No operation found')
+})
