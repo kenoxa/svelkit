@@ -110,6 +110,8 @@ export interface GraphQLRequestOptions extends Record<string, any> {
    */
   readonly uri?: string
 
+  readonly signal?: AbortSignal
+
   /**
    * If you are running on react-native, or modern browsers, this should be no problem.
    * If you are targeting an environment without fetch such as older browsers or the server,

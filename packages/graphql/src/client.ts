@@ -84,6 +84,7 @@ export class Client implements GraphQLClient {
   ): Readable<GraphQLResponse<T>> {
     const store = writable<StoreData<T>>({}, (set) => {
       const controller = new AbortController()
+    let controller: AbortController | undefined
 
       set({ fetching: true })
 
@@ -92,6 +93,7 @@ export class Client implements GraphQLClient {
         index: number,
       ): Promise<GraphQLServerResult> => {
         const exchange = this.exchanges[index]
+    const signal = requestOptions.signal || (controller = new AbortController()).signal
 
         if (exchange) {
           return exchange(
