@@ -19,8 +19,10 @@ export const modal = define((options: boolean | typeof SIZES[number] | ModalOpti
   }
 
   // TODO if active and not focus-within
-  // https://frend.co/components/dialogmodal/
-  // https://github.com/udacity/ud891/blob/gh-pages/lesson2-focus/07-modals-and-keyboard-traps/solution/modal.js
+  // - https://jdsteinbach.com/a11y-modal-slides
+  // - https://frend.co/components/dialogmodal/
+  // - https://github.com/udacity/ud891/blob/gh-pages/lesson2-focus/07-modals-and-keyboard-traps/solution/modal.js
+  // - https://www.w3.org/TR/wai-aria-practices-1.2/#dialog_modal
   // Store the last focused element
   // lastFocusedElement = document.activeElement;
   // Return the focus to the last focused element

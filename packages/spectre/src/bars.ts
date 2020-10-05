@@ -42,6 +42,7 @@ export const bar = define((options: BarOptions['size'] | 'slider' | BarOptions =
   }),
 
   item: define((options: number | BarItemOptions = 0, node?: Element) => {
+    // TODO https://github.com/adobe/react-spectrum/blob/main/packages/%40react-aria/progress/src/useProgressBar.ts
     const { value, min = 0, max = 100, role = 'progressbar' } = isNumber(
       options,
     )
