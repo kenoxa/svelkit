@@ -9,17 +9,18 @@ import type {
   GraphQLError,
   GraphQLClientError,
   GraphQLRequest,
-  GraphQLResponse,
+  GraphQLStoreValue,
   GraphQLExtensions,
   GraphQLClient,
   GraphQLExchange,
+  GraphQLExchangeOptions,
+  GraphQLExchangeUpdate,
   GraphQLNetworkError,
 } from './types'
 import { getOperation } from './internal/get-operation'
 import { fetch, defaultExchanges } from './exchanges'
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 class ClientError extends Error implements GraphQLClientError {
   readonly name: GraphQLClientError['name']
   readonly errors: ReadonlyArray<GraphQLError>
@@ -33,20 +34,7 @@ class ClientError extends Error implements GraphQLClientError {
   }
 }
 
-const fromServerResult = <T>({
-  fetching,
-  error,
-  data,
-  errors,
-  extensions,
-}: StoreData<T>): GraphQLResponse<T> => ({
-  fetching: Boolean(fetching),
-  data,
-  error: error || (errors && new ClientError(errors, extensions)),
-  extensions,
-})
-
-interface StoreData<T> extends GraphQLServerResult<T> {
+interface StoreData<Data> extends GraphQLServerResult<Data> {
   readonly fetching?: boolean
   readonly error?: GraphQLNetworkError
 }
@@ -54,6 +42,31 @@ interface StoreData<T> extends GraphQLServerResult<T> {
 export interface GraphQLClientOptions extends GraphQLRequestOptions {
   /** Defaults to the default exchanges */
   readonly exchanges?: (null | undefined | false | GraphQLExchange)[]
+}
+
+const callExchange = async (
+  exchanges: GraphQLExchange[],
+  index: number,
+  request: GraphQLRequest,
+  update: GraphQLExchangeUpdate,
+): Promise<GraphQLServerResult> => {
+  if (request.options.signal.aborted) {
+    throw new Error('aborted')
+  }
+
+  if (index === exchanges.length) {
+    // Terminator
+    throw new Error(
+      `No exchange has handled operations of type "${request.operation.type}". Check whether you've added an exchange responsible for these operations.`,
+    )
+  }
+
+  return exchanges[index](
+    request,
+    (nextRequest = request, nextUpdate = update) =>
+      callExchange(exchanges, index + 1, nextRequest, nextUpdate),
+    update,
+  )
 }
 
 export class Client implements GraphQLClient {
@@ -77,75 +90,80 @@ export class Client implements GraphQLClient {
     return headers[name]
   }
 
-  request<T = any, V extends GraphQLVariables = GraphQLVariables>(
+  request<Data = any, V extends GraphQLVariables = GraphQLVariables>(
     query: string,
-    variables?: V,
-    options: GraphQLRequestOptions = {},
-  ): Readable<GraphQLResponse<T>> {
-    const store = writable<StoreData<T>>({}, (set) => {
-      const controller = new AbortController()
+    variables: V,
+    requestOptions: GraphQLRequestOptions = {},
+  ): Readable<GraphQLStoreValue<Data, V>> {
     let controller: AbortController | undefined
 
-      set({ fetching: true })
-
-      const callExchange = (
-        request: GraphQLRequest,
-        index: number,
-      ): Promise<GraphQLServerResult> => {
-        const exchange = this.exchanges[index]
     const signal = requestOptions.signal || (controller = new AbortController()).signal
 
-        if (exchange) {
-          return exchange(
-            request,
-            (nextRequest = request) => callExchange(nextRequest, index + 1),
-            store.update,
-          )
-        }
+    const options: GraphQLExchangeOptions = {
+      uri: './graphql',
+      ...this.options,
+      ...requestOptions,
+      headers: { ...this.options.headers, ...requestOptions.headers },
+      signal,
+    }
 
-        // Terminator
-        throw new Error(
-          `No exchange has handled operations of type "${request.operation.type}". Check whether you've added an exchange responsible for these operations.`,
-        )
-      }
+    const operation = {
+      ...getOperation(query, options.operationName),
+      id: ++this.lastId,
+    }
+
+    const store = writable<StoreData<Data>>({}, (set) => {
+      set({ fetching: true })
 
       // eslint-disable-next-line promise/catch-or-return, @typescript-eslint/no-floating-promises
       callExchange(
+        this.exchanges,
+        0,
         {
           query,
-          variables: (variables || {}) as NonNullable<GraphQLVariables>,
-          operation: {
-            ...getOperation(query),
-            id: ++this.lastId,
-          },
+          variables,
+          options,
+          operation,
           extensions: {},
-          options: {
-            ...this.options,
-            ...options,
-            headers: { ...this.options.headers, ...options.headers },
-            signal: controller.signal,
-          },
         },
-        0,
+        store.update,
       )
         .catch((error: Error) => ({ error }))
-        .then((result) => store.set({ ...result, fetching: false }))
+        .then((result) => set({ ...result, fetching: false }))
 
-      return () => controller.abort()
+      return () => controller?.abort()
     })
 
-    return derived(store, fromServerResult)
+    return derived(store, ({ fetching, error, data, errors, extensions }) => ({
+      query,
+      variables,
+      options,
+      operation,
+      fetching: Boolean(fetching),
+      data,
+      error: error || (errors && new ClientError(errors, extensions)),
+      extensions,
+    }))
   }
 }
 
 const CLIENT_CONTEXT_KEY = Symbol.for('@svelkit/graphql/client')
 
+export const createGraphQLClient = (options: GraphQLClientOptions): GraphQLClient =>
+  new Client(options)
+
+const failWithNoClientError = (): never => {
+  throw new Error(`No GraphQL client found.`)
+}
+
 export const initGraphQLClient = (options: GraphQLClientOptions): GraphQLClient => {
-  const client = new Client(options)
+  const client = createGraphQLClient(options)
   setContext(CLIENT_CONTEXT_KEY, client)
   return client
 }
 
-export const useGraphQLClient = (): GraphQLClient => getContext(CLIENT_CONTEXT_KEY)
+export const useGraphQLClient = (): GraphQLClient => {
+  return getContext(CLIENT_CONTEXT_KEY) || failWithNoClientError()
+}
 
 /* eslint-enable @typescript-eslint/no-explicit-any */
