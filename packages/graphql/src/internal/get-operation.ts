@@ -4,7 +4,7 @@ const OP_REGEXP = /(?:^|})\s*(?:(query|mutation|subscription)\s*(\w+)?\s*[({]|{)
 
 export const getOperation = (
   gql: string,
-  name?: string | undefined | null
+  name?: string | undefined | null,
 ): { type: GraphQLOperationType; name: string | undefined } => {
   // As we return early below we must reset the index before each run
   OP_REGEXP.lastIndex = 0

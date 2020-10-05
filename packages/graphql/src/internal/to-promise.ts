@@ -1,8 +1,10 @@
 import type { Readable } from 'svelte/store'
-import type { GraphQLResponse } from '../types'
+import type { GraphQLStoreValue } from '../types'
 
-export const toPromise = <T>(store: Readable<GraphQLResponse<T>>): Promise<GraphQLResponse<T>> =>
-  new Promise<GraphQLResponse<T>>((resolve, reject) => {
+export const toPromise = <Data, V>(
+  store: Readable<GraphQLStoreValue<Data, V>>,
+): Promise<GraphQLStoreValue<Data, V>> =>
+  new Promise<GraphQLStoreValue<Data, V>>((resolve, reject) => {
     const unsubscribe = store.subscribe((result) => {
       if (result.data) {
         unsubscribe()

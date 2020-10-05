@@ -190,7 +190,6 @@ test('multiple operations', () => {
     }
   `
 
-
   expect(getOperation(gql)).toMatchObject({
     type: 'query',
     name: 'Feed',

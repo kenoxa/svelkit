@@ -8,11 +8,6 @@ import type {
   ReferrerPolicy,
 } from './types.dom'
 
-/**
- * This is required for snowpack to include this file in the output.
- */
-const MAKE_SNOWPACK_HAPPY = undefined // eslint-disable-line @typescript-eslint/no-unused-vars
-
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export type GraphQLExtensions = Record<string, any>
 export type GraphQLVariables = undefined | Record<string, any>
@@ -79,12 +74,14 @@ export interface GraphQLNetworkError extends Error {
 }
 
 /** Resulting data from a [request]{@link GraphQLRequest}. */
-export interface GraphQLResponse<T = any> {
+export interface GraphQLResponse<Data = any> {
   /** Determines if the query is in flight. */
   readonly fetching: boolean
 
+  readonly operation?: GraphQLOperation
+
   /** The data returned from the Graphql server. */
-  readonly data?: T
+  readonly data?: Data
 
   /** Any errors resulting from the operation. */
   readonly error?: GraphQLClientError | GraphQLNetworkError
@@ -93,15 +90,39 @@ export interface GraphQLResponse<T = any> {
   readonly extensions?: GraphQLExtensions
 }
 
-export interface GraphQLStore<T = any, V extends GraphQLVariables = GraphQLVariables>
-  extends Readable<GraphQLResponse<T>>,
-    PromiseLike<GraphQLResponse<T>> {
-  fetch(variables?: Partial<V> | undefined, options?: GraphQLRequestOptions): GraphQLStore<T, V>
+export interface GraphQLOperationContext<V extends GraphQLVariables = GraphQLVariables> {
+  query: string
+  variables: V
+  options: GraphQLRequestOptions
 }
 
-export interface GraphQLExecutor<T = any, V extends GraphQLVariables = GraphQLVariables>
-  extends GraphQLStore<T, V> {
-  (variables?: Partial<V> | undefined, options?: GraphQLRequestOptions): GraphQLStore<T, V>
+export interface GraphQLStoreValue<Data = any, V extends GraphQLVariables = GraphQLVariables>
+  extends GraphQLOperationContext<V>,
+    GraphQLResponse<Data>,
+    GraphQLOperationContext<V> {}
+
+export interface GraphQLStore<Data = any, V extends GraphQLVariables = GraphQLVariables>
+  extends GraphQLOperationContext<V>,
+    Readable<GraphQLStoreValue<Data>>,
+    PromiseLike<GraphQLStoreValue<Data, V>> {
+  context: GraphQLOperationContext<V>
+
+  fetch(
+    variables?: Partial<V> | undefined,
+    options?: GraphQLRequestOptions | undefined,
+  ): GraphQLStore<Data, V>
+
+  set(value: GraphQLOperationContext<V>): void
+
+  update(updater: (value: GraphQLOperationContext<V>) => GraphQLOperationContext<V>): void
+}
+
+export interface GraphQLExecutor<Data = any, V extends GraphQLVariables = GraphQLVariables>
+  extends GraphQLStore<Data, V> {
+  (variables?: Partial<V> | undefined, options?: GraphQLRequestOptions | undefined): GraphQLStore<
+    Data,
+    V
+  >
 }
 
 export interface GraphQLRequestOptions extends Record<string, any> {
@@ -163,23 +184,27 @@ export interface GraphQLRequestOptions extends Record<string, any> {
   readonly referrerPolicy?: ReferrerPolicy
 }
 
-export interface GraphQLClient {
-  setHeader(name: string, value: string | false | null | undefined): string | undefined
+export type FalsyValue = false | null | undefined | 0
 
-  request<T = any, V extends GraphQLVariables = GraphQLVariables>(
+export interface GraphQLClient {
+  setHeader(name: string, value: string | FalsyValue): string | undefined
+
+  request<Data = any, V extends GraphQLVariables = GraphQLVariables>(
     gql: string,
     variables: V,
     options?: GraphQLRequestOptions,
-  ): Readable<GraphQLResponse<T>>
+  ): Readable<GraphQLStoreValue<Data, V>>
 }
 
-export interface GraphQLServerResult<T = any> {
-  data?: T
+export interface GraphQLServerResult<Data = any> {
+  data?: Data
   errors?: GraphQLError[]
   extensions?: GraphQLExtensions
 }
 
 export interface GraphQLExchangeOptions extends GraphQLRequestOptions {
+  readonly uri: string
+
   readonly signal: AbortSignal
 
   /**
@@ -200,12 +225,15 @@ export interface GraphQLOperation {
 export interface GraphQLRequest<V extends GraphQLVariables = GraphQLVariables> {
   readonly operation: GraphQLOperation
   readonly query: string
-  readonly variables: Readonly<NonNullable<V>>
+  readonly variables: V
   readonly extensions: GraphQLExtensions
   readonly options: GraphQLExchangeOptions
 }
 
-export type GraphQLExchangeNext = (request?: GraphQLRequest) => Promise<GraphQLServerResult>
+export type GraphQLExchangeNext = (
+  request?: GraphQLRequest,
+  update?: GraphQLExchangeUpdate,
+) => Promise<GraphQLServerResult>
 export type GraphQLExchangeUpdate = (updater: GraphQLExchangeUpdater) => void
 export type GraphQLExchangeUpdater = (result: GraphQLServerResult) => GraphQLServerResult
 
@@ -215,4 +243,33 @@ export type GraphQLExchange = (
   update: GraphQLExchangeUpdate,
 ) => Promise<GraphQLServerResult>
 
+export type MaybeGraphQLExchange = GraphQLExchange | FalsyValue
+
+export type GraphQLInterceptor<Data = any, V extends GraphQLVariables = GraphQLVariables> = (
+  context: GraphQLOperationContext<V>,
+  next: GraphQLInterceptorNext<Data, V>,
+  set: GraphQLInterceptorUpdate<Data, V>,
+  client: GraphQLClient,
+) => GraphQLInterceptorResult
+
+export type GraphQLInterceptorNext<Data = any, V extends GraphQLVariables = GraphQLVariables> = (
+  context?: GraphQLOperationContext<V>,
+  set?: GraphQLInterceptorUpdate<Data, V>,
+  client?: GraphQLClient,
+) => GraphQLInterceptorResult
+
+export type GraphQLInterceptorResult = void | (() => void)
+
+export type GraphQLInterceptorUpdate<Data = any, V extends GraphQLVariables = GraphQLVariables> = (
+  value: GraphQLStoreValue<Data, V>,
+) => void
+
+export type MaybeGraphQLInterceptor<Data = any, V extends GraphQLVariables = GraphQLVariables> =
+  | GraphQLInterceptor<Data, V>
+  | FalsyValue
+
+export interface GraphQLOperationOptions<Data = any, V extends GraphQLVariables = GraphQLVariables>
+  extends GraphQLRequestOptions {
+  readonly intercept?: MaybeGraphQLInterceptor<Data, V> | MaybeGraphQLInterceptor<Data, V>[]
+}
 /* eslint-enable @typescript-eslint/no-explicit-any */

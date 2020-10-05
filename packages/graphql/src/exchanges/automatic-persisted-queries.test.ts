@@ -22,7 +22,8 @@ test('already persisted query', async () => {
       extensions: {},
       options: {
         headers: {},
-        signal: new AbortController().signal,
+        signal: expect.any(AbortSignal) as AbortSignal,
+        uri: 'http://test.local/graphql',
       },
     },
     next,
@@ -70,7 +71,8 @@ test('persisted query not found', async () => {
       extensions: {},
       options: {
         headers: {},
-        signal: new AbortController().signal,
+        signal: expect.any(AbortSignal) as AbortSignal,
+        uri: 'http://test.local/graphql',
       },
     },
     next,
@@ -131,7 +133,8 @@ test('persisted query not found (code: 400)', async () => {
       extensions: {},
       options: {
         headers: {},
-        signal: new AbortController().signal,
+        signal: expect.any(AbortSignal) as AbortSignal,
+        uri: 'http://test.local/graphql',
       },
     },
     next,
@@ -188,7 +191,8 @@ test('persisted query not supported', async () => {
       extensions: {},
       options: {
         headers: {},
-        signal: new AbortController().signal,
+        signal: expect.any(AbortSignal) as AbortSignal,
+        uri: 'http://test.local/graphql',
       },
     },
     next,
@@ -237,7 +241,8 @@ test('persisted query not supported', async () => {
       extensions: {},
       options: {
         headers: {},
-        signal: new AbortController().signal,
+        signal: expect.any(AbortSignal) as AbortSignal,
+        uri: 'http://test.local/graphql',
       },
     },
     next,
@@ -271,7 +276,8 @@ test('other errors are passed through', async () => {
       extensions: {},
       options: {
         headers: {},
-        signal: new AbortController().signal,
+        signal: expect.any(AbortSignal) as AbortSignal,
+        uri: 'http://test.local/graphql',
       },
     },
     next,
@@ -316,7 +322,8 @@ test('mutations are passed through', async () => {
       extensions: {},
       options: {
         headers: {},
-        signal: new AbortController().signal,
+        signal: expect.any(AbortSignal) as AbortSignal,
+        uri: 'http://test.local/graphql',
       },
     },
     next,

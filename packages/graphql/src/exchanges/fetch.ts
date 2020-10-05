@@ -37,7 +37,7 @@ const fetchExchange = (config: GraphQLRequestOptions = {}): GraphQLExchange => a
   next,
 ) => {
   if (operation.type === 'query' || operation.type === 'mutation') {
-    const { fetch = globalThis.fetch, uri = '/graphql', preferGetForQueries, ...init } = {
+    const { fetch = globalThis.fetch, uri, preferGetForQueries, ...init } = {
       referrerPolicy: 'strict-origin-when-cross-origin' as ReferrerPolicy,
       ...config,
       ...options,

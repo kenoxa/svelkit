@@ -36,6 +36,7 @@ test('basic query', async () => {
       variables,
       extensions: {},
       options: {
+        uri,
         headers: {},
         signal: new AbortController().signal,
       },
@@ -91,6 +92,7 @@ test('prefer get for queries', async () => {
       variables,
       extensions: {},
       options: {
+        uri: '/graphql',
         headers: {},
         signal: new AbortController().signal,
       },
@@ -146,6 +148,7 @@ test('send 400 with errors', async () => {
       variables,
       extensions: {},
       options: {
+        uri,
         headers: {},
         signal: new AbortController().signal,
       },
