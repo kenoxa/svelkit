@@ -2,6 +2,7 @@
   "name": "@svelkit/docs",
   "version": "0.1.2",
   "private": true,
+  "main": "src/index.js",
   "workspaces": {
     "nohoist": [
       "@svelte-docs/**",
@@ -10,14 +11,13 @@
       "@rollup/**"
     ]
   },
-  "main": "src/index.js",
   "scripts": {
     "build": "rollup -c node_modules/@svelte-docs/core/rollup.config.js",
     "build:watch": "rollup -c node_modules/@svelte-docs/core/rollup.config.js -w",
     "format": "nps",
     "start": "run-p start:dev start:pagewatch build:watch",
-    "start:dist": "sirv dist --single",
     "start:dev": "node node_modules/@svelte-docs/server --dev --single",
+    "start:dist": "sirv dist --single",
     "start:pagewatch": "node node_modules/@svelte-docs/core/watcher"
   },
   "prettier": "@carv/prettier-config",

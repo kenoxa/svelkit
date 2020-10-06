@@ -119,13 +119,21 @@
   }
 
   /* Single taps are dispatched immediately on clickable elements */
-  a, area, button, input, label, select, summary, textarea, [tabindex] {
+  a,
+  area,
+  button,
+  input,
+  label,
+  select,
+  summary,
+  textarea,
+  [tabindex] {
     -ms-touch-action: manipulation;
     touch-action: manipulation;
   }
 
   /* ARIA roles include visual cursor hints */
-  [aria-busy="true"] {
+  [aria-busy='true'] {
     cursor: progress;
   }
 
@@ -133,16 +141,17 @@
     cursor: pointer;
   }
 
-  [aria-disabled="true"], [disabled] {
+  [aria-disabled='true'],
+  [disabled] {
     cursor: default;
   }
 
   /* Visually hidden content remains accessible */
-  [aria-hidden="false"][hidden] {
+  [aria-hidden='false'][hidden] {
     display: initial;
   }
 
-  [aria-hidden="false"][hidden]:not(:focus) {
+  [aria-hidden='false'][hidden]:not(:focus) {
     clip: rect(0, 0, 0, 0);
     position: absolute;
   }
@@ -153,7 +162,8 @@
     cursor: default;
   }
 
-  [inert], [inert] * {
+  [inert],
+  [inert] * {
     user-select: none;
   }
 }

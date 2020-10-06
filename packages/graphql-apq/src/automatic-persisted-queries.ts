@@ -1,4 +1,9 @@
-import type { FalsyValue, GraphQLExchange, GraphQLServerResult, GraphQLFetchError } from '@svelkit/graphql'
+import type {
+  FalsyValue,
+  GraphQLExchange,
+  GraphQLServerResult,
+  GraphQLFetchError,
+} from '@svelkit/graphql'
 
 export interface AutomaticPersistedQuery extends Record<string, string | number> {
   version: number

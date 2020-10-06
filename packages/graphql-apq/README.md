@@ -12,10 +12,9 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [@svelkit/graphql-apq](#svelkitgraphql-apq)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [License](#license)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <!-- prettier-ignore-end -->
@@ -53,9 +52,7 @@ import { automaticPersistedQueriesExchange } from 'https://unpkg.com/@svelkit/gr
 
   initGraphQLClient({
     uri: 'https://swapi.graph.cool/',
-    exchanges: [
-      automaticPersistedQueriesExchange()
-    ]
+    exchanges: [automaticPersistedQueriesExchange()],
   })
 
   const films = useQuery(gql`

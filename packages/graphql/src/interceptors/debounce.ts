@@ -20,9 +20,12 @@ export function withDebounce<Data = any, V extends GraphQLVariables = GraphQLVar
   return (context, next, set, client) => {
     let unsubscribe: GraphQLInterceptorResult
 
-    const ref = setTimeout(() => {
-      unsubscribe = next()
-    }, isFunction(delay) ? delay(context.variables, context, client) : delay)
+    const ref = setTimeout(
+      () => {
+        unsubscribe = next()
+      },
+      isFunction(delay) ? delay(context.variables, context, client) : delay,
+    )
 
     unsubscribe = () => clearTimeout(ref)
 

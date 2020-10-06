@@ -1,1 +1,1 @@
-export {default as Knobs} from './knobs.svelte'
+export { default as Knobs } from './knobs.svelte'

@@ -15,9 +15,9 @@
     "packages/*"
   ],
   "scripts": {
-    "format": "nps format && lerna exec -- nps format.package",
-    "clean": "nps clean && lerna exec -- nps clean",
     "build": "lerna run build",
+    "clean": "nps clean && lerna exec -- nps clean",
+    "format": "nps format && lerna exec -- nps format.package",
     "preinstall": "npx only-allow yarn",
     "publish": "lerna publish",
     "test": "nps test",

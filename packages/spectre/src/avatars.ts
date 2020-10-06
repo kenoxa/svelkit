@@ -17,9 +17,7 @@ export interface AvatarOptions {
   initial?: string
 }
 
-export type AvatarParameter =
-  | AvatarOptions['size']
-  | AvatarOptions
+export type AvatarParameter = AvatarOptions['size'] | AvatarOptions
 
 const useAvatar = (
   size?: typeof AVATAR_SIZES[number],

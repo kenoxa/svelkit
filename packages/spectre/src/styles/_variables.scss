@@ -3,7 +3,7 @@
  */
 
 // Core variables
-$version: "0.5.9";
+$version: '0.5.9';
 
 // Core features
 $rtl: false !default;
@@ -46,46 +46,35 @@ $link-color-light: lighten($link-color, 10%) !default;
 
 // Fonts
 // Credit: https://www.smashingmagazine.com/2015/11/using-system-ui-fonts-practical-guide/
-$base-font-family:
-  system-ui,
-  /* macOS 10.11-10.12 */ -apple-system,
-  /* Windows 6+ */ Segoe UI,
-  /* Android 4+ */ Roboto,
-  /* Ubuntu 10.10+ */ Ubuntu,
-  /* Gnome 3+ */ Cantarell,
-  /* KDE Plasma 5+ */ Noto Sans,
-  /* fallback */ sans-serif,
-  /* macOS emoji */ "Apple Color Emoji",
-  /* Windows emoji */ "Segoe UI Emoji",
-  /* Windows emoji */ "Segoe UI Symbol",
-  /* Linux emoji */ "Noto Color Emoji"
-  !default;
+$base-font-family: system-ui, /* macOS 10.11-10.12 */ -apple-system, /* Windows 6+ */ Segoe UI,
+  /* Android 4+ */ Roboto, /* Ubuntu 10.10+ */ Ubuntu, /* Gnome 3+ */ Cantarell,
+  /* KDE Plasma 5+ */ Noto Sans, /* fallback */ sans-serif, /* macOS emoji */ 'Apple Color Emoji',
+  /* Windows emoji */ 'Segoe UI Emoji', /* Windows emoji */ 'Segoe UI Symbol',
+  /* Linux emoji */ 'Noto Color Emoji' !default;
 
 $mono-font-family:
-  /* macOS 10.10+ */ Menlo,
-  /* Windows 6+ */ Consolas,
-  /* Android 4+ */ Roboto Mono,
-  /* Ubuntu 10.10+ */ Ubuntu Monospace,
-  /* KDE Plasma 5+ */ Noto Mono,
-  /* KDE Plasma 4+ */ Oxygen Mono,
-  /* Linux/OpenOffice fallback */ Liberation Mono,
-  /* fallback */ monospace
-  !default;
+  /* macOS 10.10+ */ Menlo, /* Windows 6+ */ Consolas,
+  /* Android 4+ */ Roboto Mono, /* Ubuntu 10.10+ */ Ubuntu Monospace, /* KDE Plasma 5+ */ Noto Mono,
+  /* KDE Plasma 4+ */ Oxygen Mono, /* Linux/OpenOffice fallback */ Liberation Mono,
+  /* fallback */ monospace !default;
 
-$fallback-font-family: "Helvetica Neue", sans-serif !default;
-$cjk-zh-hans-font-family: $base-font-family, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", $fallback-font-family !default;
-$cjk-zh-hant-font-family: $base-font-family, "PingFang TC", "Hiragino Sans CNS", "Microsoft JhengHei", $fallback-font-family !default;
-$cjk-jp-font-family: $base-font-family, "Hiragino Sans", "Hiragino Kaku Gothic Pro", "Yu Gothic", YuGothic, Meiryo, $fallback-font-family !default;
-$cjk-ko-font-family: $base-font-family, "Malgun Gothic", $fallback-font-family !default;
+$fallback-font-family: 'Helvetica Neue', sans-serif !default;
+$cjk-zh-hans-font-family: $base-font-family, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+  $fallback-font-family !default;
+$cjk-zh-hant-font-family: $base-font-family, 'PingFang TC', 'Hiragino Sans CNS',
+  'Microsoft JhengHei', $fallback-font-family !default;
+$cjk-jp-font-family: $base-font-family, 'Hiragino Sans', 'Hiragino Kaku Gothic Pro', 'Yu Gothic',
+  YuGothic, Meiryo, $fallback-font-family !default;
+$cjk-ko-font-family: $base-font-family, 'Malgun Gothic', $fallback-font-family !default;
 $body-font-family: $base-font-family, $fallback-font-family !default;
 
 /* Adjusted the size for a 16px base wich works better in non-baseline enviroments */
 // Unit sizes
-$unit-o: .0625rem !default;
-$unit-h: .125rem !default;
-$unit-1: .25rem !default;
-$unit-2: .5rem !default;
-$unit-3: .75rem !default;
+$unit-o: 0.0625rem !default;
+$unit-h: 0.125rem !default;
+$unit-1: 0.25rem !default;
+$unit-2: 0.5rem !default;
+$unit-3: 0.75rem !default;
 $unit-4: 1rem !default;
 $unit-5: 1.25rem !default;
 $unit-6: 1.5rem !default;
@@ -100,7 +89,7 @@ $unit-16: 4rem !default;
 $html-font-size: 16px !default;
 $html-line-height: 1.5 !default;
 $font-size: 1rem !default;
-$font-size-sm: .875rem !default;
+$font-size-sm: 0.875rem !default;
 $font-size-lg: 1.125rem !default;
 $line-height: 1.5rem !default;
 
@@ -115,12 +104,12 @@ $control-size: $unit-9 !default;
 $control-size-sm: $unit-7 !default;
 $control-size-lg: $unit-10 !default;
 $control-padding-x: $unit-2 !default;
-$control-padding-x-sm: $unit-2 * .75 !default;
+$control-padding-x-sm: $unit-2 * 0.75 !default;
 $control-padding-x-lg: $unit-2 * 1.5 !default;
 $control-padding-y: ($control-size - $line-height) / 2 - $border-width !default;
 $control-padding-y-sm: ($control-size-sm - $line-height) / 2 - $border-width !default;
 $control-padding-y-lg: ($control-size-lg - $line-height) / 2 - $border-width !default;
-$control-icon-size: .8rem !default;
+$control-icon-size: 0.8rem !default;
 
 $control-width-xs: 180px !default;
 $control-width-sm: 320px !default;

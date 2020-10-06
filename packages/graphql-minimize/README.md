@@ -12,10 +12,9 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [@svelkit/graphql-minimize](#svelkitgraphql-minimize)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [License](#license)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <!-- prettier-ignore-end -->
@@ -53,9 +52,7 @@ import { minimizeExchange } from 'https://unpkg.com/@svelkit/graphql-minimize?mo
 
   initGraphQLClient({
     uri: 'https://swapi.graph.cool/',
-    exchanges: [
-      minimizeExchange()
-    ]
+    exchanges: [minimizeExchange()],
   })
 
   const films = useQuery(gql`

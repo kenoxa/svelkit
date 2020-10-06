@@ -40,7 +40,10 @@ test('already persisted query', async () => {
     {
       query: '',
       extensions: {
-        persistedQuery: { version: 1, sha256Hash: '3f9a5fe58741fdcb3ba59d8cc865ce0c081b65bca09f7904bc81277be1bdd3f0' },
+        persistedQuery: {
+          version: 1,
+          sha256Hash: '3f9a5fe58741fdcb3ba59d8cc865ce0c081b65bca09f7904bc81277be1bdd3f0',
+        },
       },
       options: {
         preferGetForQueries: true,
@@ -89,7 +92,10 @@ test('persisted query not found', async () => {
     {
       query: '',
       extensions: {
-        persistedQuery: { version: 1, sha256Hash: '3f9a5fe58741fdcb3ba59d8cc865ce0c081b65bca09f7904bc81277be1bdd3f0' },
+        persistedQuery: {
+          version: 1,
+          sha256Hash: '3f9a5fe58741fdcb3ba59d8cc865ce0c081b65bca09f7904bc81277be1bdd3f0',
+        },
       },
     },
   ])
@@ -151,7 +157,10 @@ test('persisted query not found (code: 400)', async () => {
     {
       query: '',
       extensions: {
-        persistedQuery: { version: 1, sha256Hash: '3f9a5fe58741fdcb3ba59d8cc865ce0c081b65bca09f7904bc81277be1bdd3f0' },
+        persistedQuery: {
+          version: 1,
+          sha256Hash: '3f9a5fe58741fdcb3ba59d8cc865ce0c081b65bca09f7904bc81277be1bdd3f0',
+        },
       },
     },
   ])
@@ -209,7 +218,10 @@ test('persisted query not supported', async () => {
     {
       query: '',
       extensions: {
-        persistedQuery: { version: 1, sha256Hash: '3f9a5fe58741fdcb3ba59d8cc865ce0c081b65bca09f7904bc81277be1bdd3f0' },
+        persistedQuery: {
+          version: 1,
+          sha256Hash: '3f9a5fe58741fdcb3ba59d8cc865ce0c081b65bca09f7904bc81277be1bdd3f0',
+        },
       },
       options: {
         preferGetForQueries: true,
@@ -294,7 +306,10 @@ test('other errors are passed through', async () => {
     {
       query: '',
       extensions: {
-        persistedQuery: { version: 1, sha256Hash: '3f9a5fe58741fdcb3ba59d8cc865ce0c081b65bca09f7904bc81277be1bdd3f0' },
+        persistedQuery: {
+          version: 1,
+          sha256Hash: '3f9a5fe58741fdcb3ba59d8cc865ce0c081b65bca09f7904bc81277be1bdd3f0',
+        },
       },
       options: {
         preferGetForQueries: true,

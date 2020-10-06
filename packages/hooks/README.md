@@ -2,7 +2,6 @@
 
 > common hooks for [svelte] (part of [svelkit])
 
-
 [![License](https://badgen.net/npm/license/@svelkit/hooks)](https://github.com/kenoxa/@svelkit/hooks/blob/main/LICENSE)
 [![Latest Release](https://badgen.net/npm/v/@svelkit/hooks)](https://www.npmjs.com/package/@svelkit/hooks)
 [![View changelog](https://badgen.net/badge/%E2%80%8B/Explore%20Changelog/green?icon=awesome)](https://changelogs.xyz/@svelkit/hooks)
@@ -19,12 +18,9 @@ A hook is a function that must be called during component initialization.
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [@svelkit/hooks](#svelkithooks)
-  - [What?](#what)
-  - [Why?](#why)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [License](#license)
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <!-- prettier-ignore-end -->
@@ -57,16 +53,16 @@ import { useAutoId } from 'https://unpkg.com/@svelkit/hooks?module'
 
 ```html
 <script>
-  import { useAutoId } from '@svelkit/hooks';
+  import { useAutoId } from '@svelkit/hooks'
 
-  const autoId = useAutoId('my-form');
+  const autoId = useAutoId('my-form')
 </script>
 
 <label for="{autoId('name')}">Name</label>
-<input id="{autoId('name')}">
+<input id="{autoId('name')}" />
 
 <label for="{autoId('email')}">E-Mail</label>
-<input id="{autoId('email')}" type="email">
+<input id="{autoId('email')}" type="email" />
 ```
 
 ## License

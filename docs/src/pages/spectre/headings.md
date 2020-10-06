@@ -15,7 +15,7 @@
 <div use:heading={6}>heading(6)</div>
 ```
 
-## h*
+## h\*
 
 ```example
 <script>
