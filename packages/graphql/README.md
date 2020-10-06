@@ -22,14 +22,11 @@ This solutions focuses on a _native_ svelte API using [svelte/store](https://sve
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [@svelkit/graphql](#svelkitgraphql)
-  - [What?](#what)
-  - [Why?](#why)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Features](#features)
-  - [Polyfills](#polyfills)
-  - [License](#license)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Features](#features)
+- [Polyfills](#polyfills)
+- [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <!-- prettier-ignore-end -->

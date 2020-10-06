@@ -1,6 +1,5 @@
 import type { GraphQLOperationType } from '../types'
 
-import { minimize } from './minimize'
 import { getOperation } from './get-operation'
 
 const cases: [string, string, { type: GraphQLOperationType; name: string | undefined }][] = [
@@ -135,7 +134,6 @@ const cases: [string, string, { type: GraphQLOperationType; name: string | undef
 ]
 test.each(cases)('%s', (_, gql, expected): void => {
   expect(getOperation(gql)).toStrictEqual(expected)
-  expect(getOperation(minimize(gql))).toStrictEqual(expected)
 })
 
 test('multiple operations', () => {
