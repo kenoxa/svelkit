@@ -1,8 +1,6 @@
-import 'cross-fetch/polyfill'
 import fetchMock from 'fetch-mock-jest'
 import { Client } from './client'
 import { toPromise } from './internal/to-promise'
-import { minimize } from './internal/minimize'
 
 beforeEach(() => {
   fetchMock.mockReset()
@@ -36,6 +34,6 @@ test('basic query', async () => {
   expect(fetchMock.lastOptions(uri)).toMatchObject({
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ query: minimize(query), variables }),
+    body: JSON.stringify({ query, variables }),
   })
 })

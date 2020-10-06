@@ -1,10 +1,7 @@
-import 'cross-fetch/polyfill'
 import fetchMock from 'fetch-mock-jest'
 
 import { render, waitFor } from '@testing-library/svelte'
 import Fragment from 'svelte-fragment-component'
-
-import { minimize } from './internal/minimize'
 
 import type { GraphQLExecutor } from '.'
 import {
@@ -56,7 +53,7 @@ test('result is promise like', async () => {
   expect(fetchMock.lastOptions(uri)).toMatchObject({
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ query: minimize(query), variables }),
+    body: JSON.stringify({ query, variables }),
   })
 })
 
@@ -125,7 +122,7 @@ test('result is a readable store', async () => {
   expect(fetchMock.lastOptions(uri)).toMatchObject({
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ operationName: 'fetchHeros', query: minimize(query), variables }),
+    body: JSON.stringify({ operationName: 'fetchHeros', query, variables }),
   })
 })
 
@@ -163,7 +160,7 @@ test('result is a function returning a promise like', async () => {
   expect(fetchMock.lastOptions(uri)).toMatchObject({
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ query: minimize(query), variables: { episode: 5 } }),
+    body: JSON.stringify({ query, variables: { episode: 5 } }),
   })
 })
 
@@ -228,7 +225,7 @@ test('result is a function returning an readable store', async () => {
   expect(fetchMock.lastOptions(uri)).toMatchObject({
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ query: minimize(query), variables: { episode: 7 } }),
+    body: JSON.stringify({ query, variables: { episode: 7 } }),
   })
 })
 
@@ -309,7 +306,7 @@ test('request with guard and debounce', () => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       operationName: 'fetchHeros',
-      query: minimize(query),
+      query,
       variables: { episode: 7 },
     }),
   })

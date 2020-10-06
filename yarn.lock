@@ -320,14 +320,15 @@
     prettier-plugin-packagejson "^2.2.5"
     prettier-plugin-svelte "^1.1.0"
 
-"@carv/scripts@^1.2.5":
-  version "1.2.5"
-  resolved "https://registry.npmjs.org/@carv/scripts/-/scripts-1.2.5.tgz#27560110f496e336c990f0f563f49fc8cf015a9b"
-  integrity sha512-J4zPk/dD+dgLv6FKiLDrA9fmPJ3mqjFt0aV5c/na4Ods86vToUqw9+ugHyMSoD06stoeQmWJFZaEQzX9TEmjxQ==
+"@carv/scripts@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.npmjs.org/@carv/scripts/-/scripts-1.3.0.tgz#8394927c426a6971c33daff6679b7dec390e228c"
+  integrity sha512-Ntq8oFH+C4h+yPEbJoRKyZtrtdeLdTLUf6KdhZTviwqsr8BvGKM7EiDJL3vKIWIc/6k70GYufnYo5Lh0UI9QOg==
   dependencies:
     "@carv/cdn-css-loader" "^1.1.0"
     "@carv/polyfills" "^1.1.3"
     "@carv/types" "^1.3.0"
+    "@peculiar/webcrypto" "^1.1.3"
     "@rollup/plugin-commonjs" "^15.0.0"
     "@rollup/plugin-dynamic-import-vars" "^1.1.0"
     "@rollup/plugin-html" "^0.2.0"
@@ -1596,6 +1597,34 @@
   dependencies:
     "@types/node" ">= 8"
 
+"@peculiar/asn1-schema@^2.0.12", "@peculiar/asn1-schema@^2.0.13":
+  version "2.0.17"
+  resolved "https://registry.npmjs.org/@peculiar/asn1-schema/-/asn1-schema-2.0.17.tgz#5c5fcdabefacb1f0fc1579f333f70057d58ab211"
+  integrity sha512-7rJD8bR1r6NFE4skDxXsLsFEO3zM2TfjX9wdq5SERoBNEuxGkAJ3uIH84sIMxvDgJtb3cMfLsv8iNpGN0nAWdw==
+  dependencies:
+    "@types/asn1js" "^0.0.1"
+    asn1js "^2.0.26"
+    pvtsutils "^1.0.11"
+    tslib "^2.0.1"
+
+"@peculiar/json-schema@^1.1.12":
+  version "1.1.12"
+  resolved "https://registry.npmjs.org/@peculiar/json-schema/-/json-schema-1.1.12.tgz#fe61e85259e3b5ba5ad566cb62ca75b3d3cd5339"
+  integrity sha512-coUfuoMeIB7B8/NMekxaDzLhaYmp0HZNPEjYRm9goRou8UZIC3z21s0sL9AWoCw4EG876QyO3kYrc61WNF9B/w==
+  dependencies:
+    tslib "^2.0.0"
+
+"@peculiar/webcrypto@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.npmjs.org/@peculiar/webcrypto/-/webcrypto-1.1.3.tgz#54301b4cfa22e9d879fd8d460528fa44a1548119"
+  integrity sha512-M1mipPJkWzIf92w3T1Vx5ir3kV9c0oWCcLkeh4vNa/3XDEtQ7xxj5NRKyq67NuVNKLH2/0JD1crlLJyqfYbfBA==
+  dependencies:
+    "@peculiar/asn1-schema" "^2.0.13"
+    "@peculiar/json-schema" "^1.1.12"
+    pvtsutils "^1.0.11"
+    tslib "^2.0.1"
+    webcrypto-core "^1.1.6"
+
 "@polka/url@^0.5.0":
   version "0.5.0"
   resolved "https://registry.npmjs.org/@polka/url/-/url-0.5.0.tgz#b21510597fd601e5d7c95008b76bf0d254ebfd31"
@@ -1836,6 +1865,13 @@
   resolved "https://registry.npmjs.org/@types/aria-query/-/aria-query-4.2.0.tgz#14264692a9d6e2fa4db3df5e56e94b5e25647ac0"
   integrity sha512-iIgQNzCm0v7QMhhe4Jjn9uRh+I6GoPmt03CbEtwx3ao8/EfoQcmgtqH4vQ5Db/lxiIGaWDv6nwvunuh0RyX0+A==
 
+"@types/asn1js@^0.0.1":
+  version "0.0.1"
+  resolved "https://registry.npmjs.org/@types/asn1js/-/asn1js-0.0.1.tgz#ef8b9f9708cb1632a1c3a9cd27717caabe793bc2"
+  integrity sha1-74uflwjLFjKhw6nNJ3F8qr55O8I=
+  dependencies:
+    "@types/pvutils" "*"
+
 "@types/babel__core@^7.0.0", "@types/babel__core@^7.1.7":
   version "7.1.9"
   resolved "https://registry.npmjs.org/@types/babel__core/-/babel__core-7.1.9.tgz#77e59d438522a6fb898fa43dc3455c6e72f3963d"
@@ -1986,6 +2022,11 @@
   version "2.0.4"
   resolved "https://registry.npmjs.org/@types/pug/-/pug-2.0.4.tgz#8772fcd0418e3cd2cc171555d73007415051f4b2"
   integrity sha1-h3L80EGOPNLMFxVV1zAHQVBR9LI=
+
+"@types/pvutils@*":
+  version "0.0.2"
+  resolved "https://registry.npmjs.org/@types/pvutils/-/pvutils-0.0.2.tgz#e21684962cfa58ac920fd576d90556032dc86009"
+  integrity sha512-CgQAm7pjyeF3Gnv78ty4RBVIfluB+Td+2DR8iPaU0prF18pkzptHHP+DoKPfpsJYknKsVZyVsJEu5AuGgAqQ5w==
 
 "@types/q@^1.5.1":
   version "1.5.4"
@@ -2451,6 +2492,13 @@ asn1@~0.2.3:
   integrity sha512-jxwzQpLQjSmWXgwaCZE9Nz+glAG01yF1QnWgbhGwHI5A6FRIEY6IVqtHhIepHqI7/kyEyQEagBC5mBEFlIYvdg==
   dependencies:
     safer-buffer "~2.1.0"
+
+asn1js@^2.0.26:
+  version "2.0.26"
+  resolved "https://registry.npmjs.org/asn1js/-/asn1js-2.0.26.tgz#0a6d435000f556a96c6012969d9704d981b71251"
+  integrity sha512-yG89F0j9B4B0MKIcFyWWxnpZPLaNTjCj4tkE3fjbAoo0qmpGw0PYYqSbX/4ebnd9Icn8ZgK4K1fvDyEtW1JYtQ==
+  dependencies:
+    pvutils latest
 
 assert-plus@1.0.0, assert-plus@^1.0.0:
   version "1.0.0"
@@ -9660,6 +9708,18 @@ pupa@^2.0.1:
   dependencies:
     escape-goat "^2.0.0"
 
+pvtsutils@^1.0.11:
+  version "1.0.14"
+  resolved "https://registry.npmjs.org/pvtsutils/-/pvtsutils-1.0.14.tgz#002a07d5a47b00aa9191889e450493390ebffefc"
+  integrity sha512-X9SBWQ9ceNAEEgLweoE7m7P6LDnZ3pZADBq7utQQV4pQ1vj7uQIAXaAQRCz/4nKLKQRT9ZrHOuxailKqBiztrg==
+  dependencies:
+    tslib "^2.0.1"
+
+pvutils@latest:
+  version "1.0.17"
+  resolved "https://registry.npmjs.org/pvutils/-/pvutils-1.0.17.tgz#ade3c74dfe7178944fe44806626bd2e249d996bf"
+  integrity sha512-wLHYUQxWaXVQvKnwIDWFVKDJku9XDCvyhhxoq8dc5MFdIlRenyPI9eSfEtcvgHgD7FlvCyGAlWgOzRnZD99GZQ==
+
 q@^1.1.2, q@^1.5.1:
   version "1.5.1"
   resolved "https://registry.npmjs.org/q/-/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
@@ -11618,6 +11678,11 @@ tslib@^1.10.0, tslib@^1.8.1, tslib@^1.9.0:
   resolved "https://registry.npmjs.org/tslib/-/tslib-1.13.0.tgz#c881e13cc7015894ed914862d276436fa9a47043"
   integrity sha512-i/6DQjL8Xf3be4K/E6Wgpekn5Qasl1usyw++dAA35Ue5orEn65VIxOA+YvNNl9HV3qv70T7CNwjODHZrLwvd1Q==
 
+tslib@^2.0.0, tslib@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.npmjs.org/tslib/-/tslib-2.0.1.tgz#410eb0d113e5b6356490eec749603725b021b43e"
+  integrity sha512-SgIkNheinmEBgx1IUNirK0TUD4X9yjjBRTqqjggWCU3pUEqIk3/Uwl3yRixYKT6WjQuGiwDv4NomL3wqRCj+CQ==
+
 tsutils@^3.17.1:
   version "3.17.1"
   resolved "https://registry.npmjs.org/tsutils/-/tsutils-3.17.1.tgz#ed719917f11ca0dee586272b2ac49e015a2dd759"
@@ -12187,6 +12252,17 @@ wcwidth@^1.0.0:
   integrity sha1-8LDc+RW8X/FSivrbLA4XtTLaL+g=
   dependencies:
     defaults "^1.0.3"
+
+webcrypto-core@^1.1.6:
+  version "1.1.8"
+  resolved "https://registry.npmjs.org/webcrypto-core/-/webcrypto-core-1.1.8.tgz#91720c07f4f2edd181111b436647ea5a282af0a9"
+  integrity sha512-hKnFXsqh0VloojNeTfrwFoRM4MnaWzH6vtXcaFcGjPEu+8HmBdQZnps3/2ikOFqS8bJN1RYr6mI2P/FJzyZnXg==
+  dependencies:
+    "@peculiar/asn1-schema" "^2.0.12"
+    "@peculiar/json-schema" "^1.1.12"
+    asn1js "^2.0.26"
+    pvtsutils "^1.0.11"
+    tslib "^2.0.1"
 
 webidl-conversions@^4.0.2:
   version "4.0.2"

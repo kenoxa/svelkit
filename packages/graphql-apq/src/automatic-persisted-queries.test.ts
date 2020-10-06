@@ -1,14 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
-import type { Response } from '../types.dom'
-import { automaticPersistedQueries } from './automatic-persisted-queries'
-import { GraphQLFetchError } from './fetch'
+import { GraphQLFetchError } from '@svelkit/graphql'
+
+import { automaticPersistedQueriesExchange } from '.'
 
 test('already persisted query', async () => {
   const query = '{ viewer { name } }'
   const response = { data: { viewer: { name: 'X' } } }
   const next = jest.fn().mockResolvedValueOnce(response)
 
-  const apq = automaticPersistedQueries()
+  const apq = automaticPersistedQueriesExchange()
 
   const result = await apq(
     {
@@ -40,7 +40,7 @@ test('already persisted query', async () => {
     {
       query: '',
       extensions: {
-        persistedQuery: { version: -1, fnv1a128Hash: 'bd05d1f7d9d0529cfba185ac3ca46a22' },
+        persistedQuery: { version: 1, sha256Hash: '3f9a5fe58741fdcb3ba59d8cc865ce0c081b65bca09f7904bc81277be1bdd3f0' },
       },
       options: {
         preferGetForQueries: true,
@@ -57,7 +57,7 @@ test('persisted query not found', async () => {
     .mockResolvedValueOnce({ errors: [{ message: 'PersistedQueryNotFound' }] })
     .mockResolvedValue(response)
 
-  const apq = automaticPersistedQueries()
+  const apq = automaticPersistedQueriesExchange()
 
   const result = await apq(
     {
@@ -89,7 +89,7 @@ test('persisted query not found', async () => {
     {
       query: '',
       extensions: {
-        persistedQuery: { version: -1, fnv1a128Hash: 'bd05d1f7d9d0529cfba185ac3ca46a22' },
+        persistedQuery: { version: 1, sha256Hash: '3f9a5fe58741fdcb3ba59d8cc865ce0c081b65bca09f7904bc81277be1bdd3f0' },
       },
     },
   ])
@@ -119,7 +119,7 @@ test('persisted query not found (code: 400)', async () => {
     )
     .mockResolvedValue(response)
 
-  const apq = automaticPersistedQueries()
+  const apq = automaticPersistedQueriesExchange()
 
   const result = await apq(
     {
@@ -151,7 +151,7 @@ test('persisted query not found (code: 400)', async () => {
     {
       query: '',
       extensions: {
-        persistedQuery: { version: -1, fnv1a128Hash: 'bd05d1f7d9d0529cfba185ac3ca46a22' },
+        persistedQuery: { version: 1, sha256Hash: '3f9a5fe58741fdcb3ba59d8cc865ce0c081b65bca09f7904bc81277be1bdd3f0' },
       },
     },
   ])
@@ -177,7 +177,7 @@ test('persisted query not supported', async () => {
     .mockResolvedValueOnce({ errors: [{ message: 'PersistedQueryNotSupported' }] })
     .mockResolvedValue(response)
 
-  const apq = automaticPersistedQueries()
+  const apq = automaticPersistedQueriesExchange()
 
   const result = await apq(
     {
@@ -209,7 +209,7 @@ test('persisted query not supported', async () => {
     {
       query: '',
       extensions: {
-        persistedQuery: { version: -1, fnv1a128Hash: 'bd05d1f7d9d0529cfba185ac3ca46a22' },
+        persistedQuery: { version: 1, sha256Hash: '3f9a5fe58741fdcb3ba59d8cc865ce0c081b65bca09f7904bc81277be1bdd3f0' },
       },
       options: {
         preferGetForQueries: true,
@@ -262,7 +262,7 @@ test('other errors are passed through', async () => {
   const response = { errors: [{ message: 'Some other error' }] }
   const next = jest.fn().mockResolvedValueOnce(response)
 
-  const apq = automaticPersistedQueries()
+  const apq = automaticPersistedQueriesExchange()
 
   const result = await apq(
     {
@@ -294,7 +294,7 @@ test('other errors are passed through', async () => {
     {
       query: '',
       extensions: {
-        persistedQuery: { version: -1, fnv1a128Hash: 'bd05d1f7d9d0529cfba185ac3ca46a22' },
+        persistedQuery: { version: 1, sha256Hash: '3f9a5fe58741fdcb3ba59d8cc865ce0c081b65bca09f7904bc81277be1bdd3f0' },
       },
       options: {
         preferGetForQueries: true,
@@ -308,14 +308,14 @@ test('mutations are passed through', async () => {
   const response = { data: { add: { result: 3 } } }
   const next = jest.fn().mockResolvedValueOnce(response)
 
-  const apq = automaticPersistedQueries()
+  const apq = automaticPersistedQueriesExchange()
 
   const result = await apq(
     {
       operation: {
         id: 1,
         type: 'mutation',
-        name: 'add',
+        name: 'Add',
       },
       query,
       variables: {},

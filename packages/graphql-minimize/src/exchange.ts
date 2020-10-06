@@ -1,8 +1,8 @@
-import type { GraphQLExchange } from '../types'
-import { minimize } from '../internal/minimize'
+import type { GraphQLExchange } from '@svelkit/graphql'
+import { minimize } from './minimize'
 
 /** An exchange to minimize the graphql string. */
-const minimizeExchange = (): GraphQLExchange => {
+export function minimizeExchange(): GraphQLExchange {
   const cache = new Map<string, string>()
 
   const minify = (gql: string): string => {
@@ -17,5 +17,3 @@ const minimizeExchange = (): GraphQLExchange => {
 
   return (request, next) => next({ ...request, query: minify(request.query) })
 }
-
-export { minimizeExchange as minimize }

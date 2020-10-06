@@ -1,7 +1,4 @@
-import type { FalsyValue, GraphQLExchange, GraphQLServerResult } from '../types'
-import type { GraphQLFetchError } from './fetch'
-
-import { isFunction } from '../internal/is'
+import type { FalsyValue, GraphQLExchange, GraphQLServerResult, GraphQLFetchError } from '@svelkit/graphql'
 
 export interface AutomaticPersistedQuery extends Record<string, string | number> {
   version: number
@@ -49,13 +46,13 @@ export interface AutomaticPersistedQueryOptions {
  * - https://github.com/apollographql/apollo-link-persisted-queries
  * - https://www.apollographql.com/docs/apollo-server/performance/apq
  */
-const automaticPersistedQueriesExchange = ({
+export function automaticPersistedQueriesExchange({
   generateHash = sha256Hash,
   preferGETForHashedQueries = true,
   notFoundError = 'PersistedQueryNotFound',
   notSupportedError = 'PersistedQueryNotSupported',
-}: AutomaticPersistedQueryOptions = {}): GraphQLExchange => {
-  if (!isFunction(generateHash)) {
+}: AutomaticPersistedQueryOptions = {}): GraphQLExchange {
+  if (typeof generateHash !== 'function') {
     return (request, next) => next()
   }
 
@@ -119,8 +116,6 @@ const automaticPersistedQueriesExchange = ({
     return result
   }
 }
-
-export { automaticPersistedQueriesExchange as automaticPersistedQueries }
 
 function textEncode(string: string): Uint8Array {
   if (typeof TextEncoder !== 'undefined') {

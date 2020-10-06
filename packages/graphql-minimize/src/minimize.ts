@@ -124,7 +124,7 @@ const extractString = (): string => {
   return buffer
 }
 
-export const minimize = (gql: string): string => {
+export function minimize(gql: string): string {
   position = 0
   string = gql
   let buffer = ''

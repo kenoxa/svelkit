@@ -37,7 +37,7 @@
   "devDependencies": {
     "@carv/eslint-config": "^1.4.1",
     "@carv/prettier-config": "^1.0.2",
-    "@carv/scripts": "^1.2.5",
+    "@carv/scripts": "^1.3.0",
     "@carv/types": "^1.3.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/svelte": "^3.0.0",

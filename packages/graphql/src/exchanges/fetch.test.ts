@@ -1,4 +1,3 @@
-import 'cross-fetch/polyfill'
 import fetchMock from 'fetch-mock-jest'
 import { fetch as fetchExchange } from './fetch'
 

@@ -18,7 +18,7 @@ import type {
   GraphQLNetworkError,
 } from './types'
 import { getOperation } from './internal/get-operation'
-import { fetch, defaultExchanges } from './exchanges'
+import { fetch } from './exchanges'
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 class ClientError extends Error implements GraphQLClientError {
@@ -74,7 +74,7 @@ export class Client implements GraphQLClient {
   private exchanges: GraphQLExchange[]
   private options: GraphQLRequestOptions
 
-  constructor({ exchanges = defaultExchanges, ...options }: GraphQLClientOptions) {
+  constructor({ exchanges = [], ...options }: GraphQLClientOptions) {
     this.exchanges = exchanges.filter(Boolean) as GraphQLExchange[]
     this.exchanges.push(fetch())
     this.options = options
