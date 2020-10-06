@@ -1,17 +1,32 @@
-import type { GraphQLVariables, GraphQLInterceptor, GraphQLInterceptorResult } from '../types'
+import { isFunction } from '../internal/is'
+import type {
+  GraphQLClient,
+  GraphQLVariables,
+  GraphQLOperationContext,
+  GraphQLInterceptor,
+  GraphQLInterceptorResult,
+} from '../types'
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export const withDebounce = <Data = any, V extends GraphQLVariables = GraphQLVariables>(
-  ms: number,
-): GraphQLInterceptor<Data, V> => (context, next) => {
-  let unsubscribe: GraphQLInterceptorResult
+export type GetDelay<V extends GraphQLVariables = GraphQLVariables> = (
+  variables: V,
+  context: GraphQLOperationContext<V>,
+  client: GraphQLClient,
+) => number
 
-  const ref = setTimeout(() => {
-    unsubscribe = next()
-  }, ms)
+export function withDebounce<Data = any, V extends GraphQLVariables = GraphQLVariables>(
+  delay: number | GetDelay,
+): GraphQLInterceptor<Data, V> {
+  return (context, next, set, client) => {
+    let unsubscribe: GraphQLInterceptorResult
 
-  unsubscribe = () => clearTimeout(ref)
+    const ref = setTimeout(() => {
+      unsubscribe = next()
+    }, isFunction(delay) ? delay(context.variables, context, client) : delay)
 
-  return () => unsubscribe && unsubscribe()
+    unsubscribe = () => clearTimeout(ref)
+
+    return () => unsubscribe && unsubscribe()
+  }
 }
 /* eslint-enable @typescript-eslint/no-explicit-any */
