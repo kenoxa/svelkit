@@ -1,21 +1,42 @@
-import type { GraphQLExchange, GraphQLServerResult } from '../types'
+import type { FalsyValue, GraphQLExchange, GraphQLServerResult } from '../types'
 import type { GraphQLFetchError } from './fetch'
 
-import { fnv1a128 } from '../internal/fnv1a'
+import { isFunction } from '../internal/is'
 
 export interface AutomaticPersistedQuery extends Record<string, string | number> {
   version: number
 }
 
-export { fnv1a128 }
+declare global {
+  interface WindowOrWorkerGlobalScope {
+    readonly msCrypto?: Crypto
+    readonly msrCrypto?: Crypto
+  }
 
-const defaultHash: AutomaticPersistedQueryOptions['generateHash'] = (query) => ({
-  version: -1,
-  fnv1a128Hash: fnv1a128(query),
-})
+  interface Crypto {
+    readonly webkitSubtle?: SubtleCrypto
+  }
+}
+
+// eslint-disable-next-line no-restricted-globals
+const crypto = self.crypto /* Native */ || self.msCrypto /* IE11 */ || self.msrCrypto /* Polyfill */
+
+const cryptoSubtle = crypto && (crypto.subtle || crypto.webkitSubtle)
+
+const sha256Hash: AutomaticPersistedQueryOptions['generateHash'] =
+  cryptoSubtle &&
+  (async (query) => ({
+    version: 1,
+    // 1. Encode as UTF-8
+    // 2. Hash the message
+    // 3. Convert ArrayBuffer to hex string
+    sha256Hash: toHex(await cryptoSubtle.digest('SHA-256', textEncode(query))),
+  }))
+
+export type GenerateHash = (query: string) => Promise<AutomaticPersistedQuery>
 
 export interface AutomaticPersistedQueryOptions {
-  generateHash?: (query: string) => AutomaticPersistedQuery
+  generateHash?: FalsyValue | GenerateHash
   preferGETForHashedQueries?: boolean
   notFoundError?: string
   notSupportedError?: string
@@ -29,14 +50,18 @@ export interface AutomaticPersistedQueryOptions {
  * - https://www.apollographql.com/docs/apollo-server/performance/apq
  */
 const automaticPersistedQueriesExchange = ({
-  generateHash = defaultHash,
+  generateHash = sha256Hash,
   preferGETForHashedQueries = true,
   notFoundError = 'PersistedQueryNotFound',
   notSupportedError = 'PersistedQueryNotSupported',
 }: AutomaticPersistedQueryOptions = {}): GraphQLExchange => {
-  const cache = new Map<string, AutomaticPersistedQuery>()
+  if (!isFunction(generateHash)) {
+    return (request, next) => next()
+  }
 
-  const cachedPersistedQuery = (gql: string): AutomaticPersistedQuery => {
+  const cache = new Map<string, Promise<AutomaticPersistedQuery>>()
+
+  const cachedPersistedQuery = (gql: string): Promise<AutomaticPersistedQuery> => {
     let hashed = cache.get(gql)
 
     if (!hashed) {
@@ -58,7 +83,7 @@ const automaticPersistedQueriesExchange = ({
       return next()
     }
 
-    const persistedQuery = cachedPersistedQuery(query)
+    const persistedQuery = await cachedPersistedQuery(query)
 
     const result = await next({
       ...request,
@@ -96,3 +121,30 @@ const automaticPersistedQueriesExchange = ({
 }
 
 export { automaticPersistedQueriesExchange as automaticPersistedQueries }
+
+function textEncode(string: string): Uint8Array {
+  if (typeof TextEncoder !== 'undefined') {
+    return new TextEncoder().encode(string)
+  }
+
+  const utf8 = unescape(encodeURIComponent(string))
+  const result = new Uint8Array(utf8.length)
+
+  let i = utf8.length
+  while (i--) {
+    result[i] = utf8.charCodeAt(i)
+  }
+
+  return result
+}
+
+function toHex(buffer: ArrayBuffer): string {
+  let result = ''
+  const view = new DataView(buffer)
+
+  for (let i = 0; i < view.byteLength; i += 4) {
+    result += ('00000000' + view.getUint32(i).toString(16)).slice(-8)
+  }
+
+  return result
+}
