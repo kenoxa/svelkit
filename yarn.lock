@@ -320,10 +320,10 @@
     prettier-plugin-packagejson "^2.2.5"
     prettier-plugin-svelte "^1.1.0"
 
-"@carv/scripts@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.npmjs.org/@carv/scripts/-/scripts-1.3.0.tgz#8394927c426a6971c33daff6679b7dec390e228c"
-  integrity sha512-Ntq8oFH+C4h+yPEbJoRKyZtrtdeLdTLUf6KdhZTviwqsr8BvGKM7EiDJL3vKIWIc/6k70GYufnYo5Lh0UI9QOg==
+"@carv/scripts@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.npmjs.org/@carv/scripts/-/scripts-1.4.0.tgz#28d92e4f7bfeee997370c3ccab0a520bfd7bf290"
+  integrity sha512-pOKDSpLrxYthhUgaPIE+WhyKMqWBQ8PJgXVkYt4fI41BQXHbWbuSs84WmbDzOrwV0FL2rmZH6bgr2WCfc4T4qA==
   dependencies:
     "@carv/cdn-css-loader" "^1.1.0"
     "@carv/polyfills" "^1.1.3"
@@ -342,6 +342,7 @@
     common-tags "^1.8.0"
     compressible "^2.0.18"
     cosmiconfig "^7.0.0"
+    cross-fetch "^3.0.6"
     cssnano "^4.1.10"
     cssnano-preset-default "^4.0.7"
     doctoc "^1.4.0"
@@ -3581,7 +3582,7 @@ cosmiconfig@^7.0.0:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
-cross-fetch@^3.0.5:
+cross-fetch@^3.0.6:
   version "3.0.6"
   resolved "https://registry.npmjs.org/cross-fetch/-/cross-fetch-3.0.6.tgz#3a4040bc8941e653e0e9cf17f29ebcd177d3365c"
   integrity sha512-KBPUbqgFjzWlVcURG+Svp9TlhA5uliYtiNx/0r8nv0pdypeQCRJ9IaSIc3q/x3q8t3F75cHuwxVql1HFGHCNJQ==
