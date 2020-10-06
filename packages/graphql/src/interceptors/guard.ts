@@ -14,11 +14,13 @@ export type Guard<Data = any, V extends GraphQLVariables = GraphQLVariables> = (
   client: GraphQLClient,
 ) => unknown
 
-export const withGuard = <Data = any, V extends GraphQLVariables = GraphQLVariables>(
+export function withGuard<Data = any, V extends GraphQLVariables = GraphQLVariables>(
   guard: Guard<Data, V>,
-): GraphQLInterceptor<Data, V> => (context, next, set, client) => {
-  if (guard(context.variables, set, context, client)) {
-    return next()
+): GraphQLInterceptor<Data, V> {
+  return (context, next, set, client) => {
+    if (guard(context.variables, set, context, client)) {
+      return next()
+    }
   }
 }
 /* eslint-enable @typescript-eslint/no-explicit-any */
