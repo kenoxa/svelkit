@@ -2,6 +2,7 @@ import type { Response, Headers } from '../types.dom'
 import type { GraphQLExchange, GraphQLRequestOptions, GraphQLServerResult } from '../types'
 import stableStringify from 'fast-json-stable-stringify'
 import { isString } from '../internal/is'
+import { baseURI } from '../internal/base-uri'
 
 export class GraphQLFetchError extends Error {
   readonly status: number
@@ -32,17 +33,19 @@ const isJsonResponse = (response: Response): boolean | undefined =>
 /**
  * A default exchange for fetching GraphQL requests.
  */
-const fetchExchange = (config: GraphQLRequestOptions = {}): GraphQLExchange => async (
-  { operation, query, variables, extensions, options },
-  next,
-) => {
-  if (operation.type === 'query' || operation.type === 'mutation') {
-    const { fetch = globalThis.fetch, uri, preferGetForQueries, ...init } = {
+export function fetchExchange(config: GraphQLRequestOptions = {}): GraphQLExchange {
+  return async ({ operation, query, variables, extensions, options }, next) => {
+    if (operation.type === 'subscription') {
+      return next()
+    }
+
+    // eslint-disable-next-line no-restricted-globals
+    const { fetch = self.fetch, uri, preferGetForQueries, ...init } = {
       referrerPolicy: 'strict-origin-when-cross-origin' as ReferrerPolicy,
       ...config,
       ...options,
       headers: {
-        Accept: 'application/json',
+        accept: 'application/json',
         ...config.headers,
         ...options.headers,
       },
@@ -55,17 +58,19 @@ const fetchExchange = (config: GraphQLRequestOptions = {}): GraphQLExchange => a
       query: query || undefined,
       variables: emptyToUndefined(variables),
       extensions: emptyToUndefined(extensions),
-    }
+    } as const
 
     if (preferGetForQueries && operation.type === 'query') {
-      const url = new URL(uri, document.baseURI)
+      const url = new URL(uri, baseURI())
 
       // Add all defined args as search parameters
-      for (const [key, value] of Object.entries(args)) {
+      Object.keys(args).forEach(key => {
+        const value = args[key as keyof typeof args]
+
         if (value) {
           url.searchParams.set(key, isString(value) ? value : stableStringify(value))
         }
-      }
+      })
 
       if (url.href.length < MAX_URL_LENGTH) {
         response = await fetch(url.href, { ...init, method: 'GET' })
@@ -73,12 +78,12 @@ const fetchExchange = (config: GraphQLRequestOptions = {}): GraphQLExchange => a
     }
 
     if (!response) {
-      response = await fetch(new URL(uri, document.baseURI).href, {
+      response = await fetch(new URL(uri, baseURI()).href, {
         ...init,
         method: 'POST',
         headers: {
           ...init.headers,
-          'Content-Type': 'application/json',
+          'content-type': 'application/json',
         },
         body: JSON.stringify(args),
       })
@@ -93,8 +98,4 @@ const fetchExchange = (config: GraphQLRequestOptions = {}): GraphQLExchange => a
       await (isJsonResponse(response) ? response.json() : response.text()),
     )
   }
-
-  return next()
 }
-
-export { fetchExchange as fetch }

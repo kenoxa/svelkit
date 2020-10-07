@@ -9,6 +9,7 @@ import {
   initGraphQLClient,
   useRequest,
   useOperations,
+  createRequest,
   withGuard,
   withDebounce,
 } from '.'
@@ -52,7 +53,7 @@ test('result is promise like', async () => {
 
   expect(fetchMock.lastOptions(uri)).toMatchObject({
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ query, variables }),
   })
 })
@@ -121,7 +122,7 @@ test('result is a readable store', async () => {
 
   expect(fetchMock.lastOptions(uri)).toMatchObject({
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ operationName: 'fetchHeros', query, variables }),
   })
 })
@@ -159,7 +160,7 @@ test('result is a function returning a promise like', async () => {
 
   expect(fetchMock.lastOptions(uri)).toMatchObject({
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ query, variables: { episode: 5 } }),
   })
 })
@@ -224,7 +225,7 @@ test('result is a function returning an readable store', async () => {
 
   expect(fetchMock.lastOptions(uri)).toMatchObject({
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ query, variables: { episode: 7 } }),
   })
 })
@@ -303,11 +304,78 @@ test('request with guard and debounce', () => {
 
   expect(fetchMock.lastOptions(uri)).toMatchObject({
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'content-type': 'application/json' },
     body: JSON.stringify({
       operationName: 'fetchHeros',
       query,
       variables: { episode: 7 },
+    }),
+  })
+})
+
+test('no fetch until subscriber', async () => {
+  const uri = 'http://localhost/graphql'
+  const query = `query fetchHeros {
+    hero(episode: $episode) {
+      name
+      heroFriends: friends {
+        id
+        name
+      }
+    }
+  }`
+  const variables = { episode: 5 }
+
+  fetchMock.post(uri, { data: { hero: [] } })
+
+  const request = createRequest(createGraphQLClient(), query, variables)
+
+  jest.runAllTimers()
+
+  expect(fetchMock).not.toHaveBeenCalled()
+
+  const update = jest.fn()
+  request.subscribe(update)
+
+  expect(update).toHaveBeenCalledWith({
+    query,
+    variables: { episode: 5 },
+    options: {
+      uri,
+      headers: {},
+      signal: expect.any(AbortSignal) as AbortSignal,
+    },
+    operation: { id: 1, type: 'query', name: 'fetchHeros' },
+    fetching: true,
+    data: undefined,
+    error: undefined,
+    extensions: undefined,
+  })
+
+  await waitFor(() =>
+    expect(update).toHaveBeenCalledWith({
+      query,
+      variables: { episode: 5 },
+      options: {
+        uri,
+        headers: {},
+        signal: expect.any(AbortSignal) as AbortSignal,
+      },
+      operation: { id: 1, type: 'query', name: 'fetchHeros' },
+      fetching: false,
+      data: { hero: [] },
+      error: undefined,
+      extensions: undefined,
+    }),
+  )
+
+  expect(fetchMock.lastOptions(uri)).toMatchObject({
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({
+      operationName: 'fetchHeros',
+      query,
+      variables: { episode: 5 },
     }),
   })
 })

@@ -1,5 +1,5 @@
 import fetchMock from 'fetch-mock-jest'
-import { fetch as fetchExchange } from './fetch'
+import { fetchExchange } from './fetch'
 
 beforeEach(() => {
   fetchMock.mockReset()
@@ -54,7 +54,7 @@ test('basic query', async () => {
 
   expect(fetchMock.lastOptions(uri)).toMatchObject({
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    headers: { 'content-type': 'application/json', accept: 'application/json' },
     body: JSON.stringify({ query, variables }),
   })
 })
@@ -110,7 +110,7 @@ test('prefer get for queries', async () => {
 
   expect(fetchMock.lastOptions(url.href)).toMatchObject({
     method: 'GET',
-    headers: { Accept: 'application/json' },
+    headers: { accept: 'application/json' },
   })
 })
 
@@ -168,7 +168,7 @@ test('send 400 with errors', async () => {
 
   expect(fetchMock.lastOptions(uri)).toMatchObject({
     method: 'POST',
-    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    headers: { 'content-type': 'application/json', accept: 'application/json' },
     body: JSON.stringify({ query, variables }),
   })
 })

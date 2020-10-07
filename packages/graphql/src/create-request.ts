@@ -150,7 +150,7 @@ class Request<Data = any, V extends GraphQLVariables = GraphQLVariables>
   }
 
   set context(value) {
-    this.update(() => value)
+    this.set(value)
   }
 
   get query(): string {

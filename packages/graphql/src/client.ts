@@ -18,7 +18,8 @@ import type {
   GraphQLNetworkError,
 } from './types'
 import { getOperation } from './internal/get-operation'
-import { fetch } from './exchanges'
+import { fetchExchange } from './exchanges'
+import { baseURI } from './internal/base-uri'
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 class ClientError extends Error implements GraphQLClientError {
@@ -69,14 +70,14 @@ const callExchange = async (
   )
 }
 
-export class Client implements GraphQLClient {
+class Client implements GraphQLClient {
   private lastId = 0
   private exchanges: GraphQLExchange[]
   private options: GraphQLRequestOptions
 
   constructor({ exchanges = [], ...options }: GraphQLClientOptions) {
     this.exchanges = exchanges.filter(Boolean) as GraphQLExchange[]
-    this.exchanges.push(fetch())
+    this.exchanges.push(fetchExchange())
     this.options = options
   }
 
@@ -100,9 +101,9 @@ export class Client implements GraphQLClient {
     const signal = requestOptions.signal || (controller = new AbortController()).signal
 
     const options: GraphQLExchangeOptions = {
-      uri: './graphql',
       ...this.options,
       ...requestOptions,
+      uri: new URL(requestOptions.uri || this.options.uri || './graphql', baseURI()).href,
       headers: { ...this.options.headers, ...requestOptions.headers },
       signal,
     }
@@ -149,14 +150,14 @@ export class Client implements GraphQLClient {
 
 const CLIENT_CONTEXT_KEY = Symbol.for('@svelkit/graphql/client')
 
-export const createGraphQLClient = (options: GraphQLClientOptions): GraphQLClient =>
+export const createGraphQLClient = (options: GraphQLClientOptions = {}): GraphQLClient =>
   new Client(options)
 
 const failWithNoClientError = (): never => {
   throw new Error(`No GraphQL client found.`)
 }
 
-export const initGraphQLClient = (options: GraphQLClientOptions): GraphQLClient => {
+export const initGraphQLClient = (options?: GraphQLClientOptions | undefined): GraphQLClient => {
   const client = createGraphQLClient(options)
   setContext(CLIENT_CONTEXT_KEY, client)
   return client

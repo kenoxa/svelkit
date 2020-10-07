@@ -1,5 +1,5 @@
 import fetchMock from 'fetch-mock-jest'
-import { Client } from './client'
+import { createGraphQLClient } from './client'
 import { toPromise } from './internal/to-promise'
 
 beforeEach(() => {
@@ -21,7 +21,7 @@ test('basic query', async () => {
 
   fetchMock.post(uri, { data: { hero: [] } })
 
-  const client = new Client({ uri })
+  const client = createGraphQLClient({ uri })
 
   const result = await toPromise(client.request(query, variables))
 
@@ -33,7 +33,7 @@ test('basic query', async () => {
 
   expect(fetchMock.lastOptions(uri)).toMatchObject({
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ query, variables }),
   })
 })
