@@ -25,6 +25,8 @@ const emptyToUndefined = <T extends Record<string, unknown>>(
   object: undefined | T,
 ): undefined | T => (object && Object.keys(object).length > 0 ? object : undefined)
 
+const falsyToUndefined = <T>(value: T): undefined | T => value || undefined
+
 const MAX_URL_LENGTH = 2000
 
 const isJsonResponse = (response: Response): boolean | undefined =>
@@ -54,8 +56,8 @@ export function fetchExchange(config: GraphQLRequestOptions = {}): GraphQLExchan
     let response: Response | undefined
 
     const args = {
-      operationName: operation.name,
-      query: query || undefined,
+      operationName: falsyToUndefined(operation.name),
+      query: falsyToUndefined(query),
       variables: emptyToUndefined(variables),
       extensions: emptyToUndefined(extensions),
     } as const
@@ -67,7 +69,7 @@ export function fetchExchange(config: GraphQLRequestOptions = {}): GraphQLExchan
       Object.keys(args).forEach(key => {
         const value = args[key as keyof typeof args]
 
-        if (value) {
+        if (value !== undefined) {
           url.searchParams.set(key, isString(value) ? value : stableStringify(value))
         }
       })
