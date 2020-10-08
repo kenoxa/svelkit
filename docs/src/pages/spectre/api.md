@@ -16,7 +16,11 @@ _Note:_ Using nested actions (eg: `use:btn.primary`) requires `svelte@^3.26.0`
 
 ## API
 
-Each action can be used with the `use:action` svelte directive: `<T>(node: Element, options?: T) => { update(options?: T): void }`.
+Each action can be used with the `use:action` svelte directive:
+
+```typescript
+<T>(node: Element, options?: T) => { update(options?: T): void }
+```
 
 ```example
 <script>

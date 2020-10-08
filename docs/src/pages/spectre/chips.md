@@ -2,7 +2,7 @@
 
 [Chips](https://picturepan2.github.io/spectre/components/chips.html) are complex entities in small blocks.
 
-Apply the `breadcrumb` action to an element and add child text element, [buttons](spectre/buttons) or [avatars](spectre/avatars).
+Apply the `chip` action to an element and add child text element, [buttons](spectre/buttons) or [avatars](spectre/avatars).
 
 ```example
 <script>
