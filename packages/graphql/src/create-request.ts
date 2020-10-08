@@ -21,7 +21,7 @@ import { useGraphQLClient } from './client'
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const executeRequest = <Data = any, V extends GraphQLVariables = GraphQLVariables>(
   { query, variables, options }: GraphQLOperationContext<V>,
-  set: GraphQLInterceptorUpdate<Data, V>,
+  set: GraphQLInterceptorUpdate<Data>,
   client: GraphQLClient,
 ): GraphQLInterceptorResult => client.request(query, variables, options).subscribe(set)
 
@@ -39,7 +39,7 @@ const callInterceptor = <Data = any, V extends GraphQLVariables = GraphQLVariabl
   interceptors: GraphQLInterceptor<Data, V>[],
   index: number,
   context: GraphQLOperationContext<V>,
-  update: GraphQLInterceptorUpdate<Data, V>,
+  update: GraphQLInterceptorUpdate<Data>,
   client: GraphQLClient,
 ): GraphQLInterceptorResult => // eslint-disable-line max-params
   index === interceptors.length
@@ -104,14 +104,18 @@ class Request<Data = any, V extends GraphQLVariables = GraphQLVariables>
     this.update = context.update
     this.get = () => get(context) as GraphQLOperationContext<V>
 
-    const store = derived<Readable<GraphQLOperationContext<V>>, GraphQLStoreValue<Data, V>>(
+    const request = derived<Readable<GraphQLOperationContext<V>>, GraphQLResponse<Data>>(
       context,
-      ($context: GraphQLOperationContext<V>, set: (value: GraphQLStoreValue<Data, V>) => void) =>
+      ($context: GraphQLOperationContext<V>, set: (value: GraphQLResponse<Data>) => void) =>
         callInterceptor(interceptors, 0, $context, set, client),
-      { ...this.context, fetching: false },
+      { fetching: false },
     )
 
-    this.subscribe = store.subscribe
+    // Update context properties to always have live access to query, variables and options
+    this.subscribe = derived([context, request], ([$context, $request]) => ({
+      ...$request,
+      ...$context,
+    })).subscribe
   }
 
   subscribe: Readable<GraphQLStoreValue<Data, V>>['subscribe']

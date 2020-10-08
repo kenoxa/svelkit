@@ -9,7 +9,7 @@ import type {
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export type Guard<Data = any, V extends GraphQLVariables = GraphQLVariables> = (
   variables: V,
-  set: GraphQLInterceptorUpdate<Data, V>,
+  set: GraphQLInterceptorUpdate<Data>,
   context: GraphQLOperationContext<V>,
   client: GraphQLClient,
 ) => unknown

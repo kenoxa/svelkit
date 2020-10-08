@@ -9,7 +9,7 @@ import type {
   GraphQLError,
   GraphQLClientError,
   GraphQLRequest,
-  GraphQLStoreValue,
+  GraphQLResponse,
   GraphQLExtensions,
   GraphQLClient,
   GraphQLExchange,
@@ -95,7 +95,7 @@ class Client implements GraphQLClient {
     query: string,
     variables: V,
     requestOptions: GraphQLRequestOptions = {},
-  ): Readable<GraphQLStoreValue<Data, V>> {
+  ): Readable<GraphQLResponse<Data>> {
     let controller: AbortController | undefined
 
     const signal = requestOptions.signal || (controller = new AbortController()).signal
@@ -136,9 +136,6 @@ class Client implements GraphQLClient {
     })
 
     return derived(store, ({ fetching, error, data, errors, extensions }) => ({
-      query,
-      variables,
-      options,
       operation,
       fetching: Boolean(fetching),
       data,

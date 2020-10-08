@@ -98,8 +98,7 @@ export interface GraphQLOperationContext<V extends GraphQLVariables = GraphQLVar
 
 export interface GraphQLStoreValue<Data = any, V extends GraphQLVariables = GraphQLVariables>
   extends GraphQLOperationContext<V>,
-    GraphQLResponse<Data>,
-    GraphQLOperationContext<V> {}
+    GraphQLResponse<Data> {}
 
 export interface GraphQLStore<Data = any, V extends GraphQLVariables = GraphQLVariables>
   extends GraphQLOperationContext<V>,
@@ -193,7 +192,7 @@ export interface GraphQLClient {
     gql: string,
     variables: V,
     options?: GraphQLRequestOptions,
-  ): Readable<GraphQLStoreValue<Data, V>>
+  ): Readable<GraphQLResponse<Data>>
 }
 
 export interface GraphQLServerResult<Data = any> {
@@ -251,20 +250,20 @@ export type MaybeGraphQLExchange = GraphQLExchange | FalsyValue
 export type GraphQLInterceptor<Data = any, V extends GraphQLVariables = GraphQLVariables> = (
   context: GraphQLOperationContext<V>,
   next: GraphQLInterceptorNext<Data, V>,
-  set: GraphQLInterceptorUpdate<Data, V>,
+  set: GraphQLInterceptorUpdate<Data>,
   client: GraphQLClient,
 ) => GraphQLInterceptorResult
 
 export type GraphQLInterceptorNext<Data = any, V extends GraphQLVariables = GraphQLVariables> = (
   context?: GraphQLOperationContext<V>,
-  set?: GraphQLInterceptorUpdate<Data, V>,
+  set?: GraphQLInterceptorUpdate<Data>,
   client?: GraphQLClient,
 ) => GraphQLInterceptorResult
 
 export type GraphQLInterceptorResult = void | (() => void)
 
-export type GraphQLInterceptorUpdate<Data = any, V extends GraphQLVariables = GraphQLVariables> = (
-  value: GraphQLStoreValue<Data, V>,
+export type GraphQLInterceptorUpdate<Data = any> = (
+  value: GraphQLResponse<Data>,
 ) => void
 
 export type MaybeGraphQLInterceptor<Data = any, V extends GraphQLVariables = GraphQLVariables> =
