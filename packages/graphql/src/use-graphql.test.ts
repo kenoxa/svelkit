@@ -214,7 +214,7 @@ test('result is a function returning an readable store', async () => {
   })
 })
 
-test('request with guard and debounce', () => {
+test('request with guard and debounce', async () => {
   const uri = 'http://test.local/graphql'
   const query = `query fetchHeros {
     hero(episode: $episode) {
@@ -258,15 +258,29 @@ test('request with guard and debounce', () => {
   // Pass the guard (episode > 5)
   request.variables = { episode: 6 }
   expect(request.variables).toMatchObject({ episode: 6 })
+  expect(update).toHaveBeenCalledWith({
+    fetching: false,
+    options: {},
+    query,
+    variables: { episode: 6 },
+  })
+  update.mockReset()
   jest.advanceTimersByTime(50)
 
   // The debounce (100) is still in play
-  expect(update).not.toHaveBeenCalled()
   expect(fetchMock).not.toHaveBeenCalled()
 
   request.variables = { episode: 7 }
   expect(request.variables).toMatchObject({ episode: 7 })
+  expect(update).toHaveBeenCalledWith({
+    fetching: false,
+    options: {},
+    query,
+    variables: { episode: 7 },
+  })
+  update.mockReset()
   jest.advanceTimersByTime(50)
+
   expect(update).not.toHaveBeenCalled()
 
   // The debounce (100) has passed
@@ -281,6 +295,19 @@ test('request with guard and debounce', () => {
     error: undefined,
     extensions: undefined,
   })
+
+  await waitFor(() =>
+    expect(update).toHaveBeenCalledWith({
+      query,
+      variables: { episode: 7 },
+      options: {},
+      operation: { id: 1, type: 'query', name: 'fetchHeros' },
+      fetching: false,
+      data: { hero: [] },
+      error: undefined,
+      extensions: undefined,
+    }),
+  )
 
   expect(fetchMock.lastOptions(uri)).toMatchObject({
     method: 'POST',

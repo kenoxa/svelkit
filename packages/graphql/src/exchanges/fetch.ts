@@ -67,7 +67,7 @@ export function fetchExchange(config: GraphQLRequestOptions = {}): GraphQLExchan
       const url = new URL(uri, baseURI())
 
       // Add all defined args as search parameters
-      Object.keys(args).forEach(key => {
+      Object.keys(args).forEach((key) => {
         const value = args[key as keyof typeof args]
 
         if (value !== undefined) {

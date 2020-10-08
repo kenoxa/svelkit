@@ -262,9 +262,7 @@ export type GraphQLInterceptorNext<Data = any, V extends GraphQLVariables = Grap
 
 export type GraphQLInterceptorResult = void | (() => void)
 
-export type GraphQLInterceptorUpdate<Data = any> = (
-  value: GraphQLResponse<Data>,
-) => void
+export type GraphQLInterceptorUpdate<Data = any> = (value: GraphQLResponse<Data>) => void
 
 export type MaybeGraphQLInterceptor<Data = any, V extends GraphQLVariables = GraphQLVariables> =
   | GraphQLInterceptor<Data, V>
