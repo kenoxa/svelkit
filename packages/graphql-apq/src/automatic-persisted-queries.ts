@@ -79,6 +79,7 @@ export function automaticPersistedQueriesExchange({
     if (
       !supportsPersistedQueries ||
       !query ||
+      request.persisted ||
       extensions.persistedQuery ||
       request.operation.type !== 'query'
     ) {
