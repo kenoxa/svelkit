@@ -228,6 +228,9 @@ export interface GraphQLRequest<V extends GraphQLVariables = GraphQLVariables> {
   readonly variables: V
   readonly extensions: GraphQLExtensions
   readonly options: GraphQLExchangeOptions
+
+  /* https://github.com/mercurius-js/mercurius#prepared */
+  readonly persisted?: boolean | undefined
 }
 
 export type GraphQLExchangeNext = (

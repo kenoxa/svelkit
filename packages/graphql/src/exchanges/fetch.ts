@@ -37,6 +37,7 @@ const isJsonResponse = (response: Response): boolean | undefined =>
  */
 export function fetchExchange(config: GraphQLRequestOptions = {}): GraphQLExchange {
   return async ({ operation, query, variables, extensions, options }, next) => {
+  return async ({ operation, query, variables, extensions, persisted, options }, next) => {
     if (operation.type === 'subscription') {
       return next()
     }
@@ -59,6 +60,7 @@ export function fetchExchange(config: GraphQLRequestOptions = {}): GraphQLExchan
       operationName: falsyToUndefined(operation.name),
       query: falsyToUndefined(query),
       variables: emptyToUndefined(variables),
+      persisted: falsyToUndefined(persisted),
       extensions: emptyToUndefined(extensions),
     } as const
 
