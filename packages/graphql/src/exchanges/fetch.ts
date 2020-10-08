@@ -30,13 +30,12 @@ const falsyToUndefined = <T>(value: T): undefined | T => value || undefined
 const MAX_URL_LENGTH = 2000
 
 const isJsonResponse = (response: Response): boolean | undefined =>
-  response.headers.get('Content-Type')?.startsWith('application/json')
+  response.headers.get('content-type')?.startsWith('application/json')
 
 /**
  * A default exchange for fetching GraphQL requests.
  */
 export function fetchExchange(config: GraphQLRequestOptions = {}): GraphQLExchange {
-  return async ({ operation, query, variables, extensions, options }, next) => {
   return async ({ operation, query, variables, extensions, persisted, options }, next) => {
     if (operation.type === 'subscription') {
       return next()
@@ -87,6 +86,7 @@ export function fetchExchange(config: GraphQLRequestOptions = {}): GraphQLExchan
         method: 'POST',
         headers: {
           ...init.headers,
+          // TODO application/graphql
           'content-type': 'application/json',
         },
         body: JSON.stringify(args),
