@@ -7,7 +7,7 @@ import type { GraphQLExecutor } from '.'
 import {
   createGraphQLClient,
   initGraphQLClient,
-  useRequest,
+  useGraphQL,
   useOperations,
   createRequest,
   withGuard,
@@ -39,7 +39,7 @@ test('result is promise like', async () => {
   render(Fragment, {
     onCreate() {
       initGraphQLClient({ uri })
-      request = useRequest(query, variables)
+      request = useGraphQL(query, variables)
     },
   })
 
@@ -77,7 +77,7 @@ test('result is a readable store', async () => {
   render(Fragment, {
     onCreate() {
       initGraphQLClient({ uri })
-      request = useRequest(query, variables)
+      request = useGraphQL(query, variables)
     },
   })
 
@@ -88,11 +88,7 @@ test('result is a readable store', async () => {
     expect.objectContaining({
       query,
       variables,
-      options: {
-        uri,
-        headers: {},
-        signal: expect.any(AbortSignal) as AbortSignal,
-      },
+      options: {},
       operation: { id: 1, type: 'query', name: 'fetchHeros' },
       fetching: true,
       data: undefined,
@@ -106,11 +102,7 @@ test('result is a readable store', async () => {
       expect.objectContaining({
         query,
         variables,
-        options: {
-          uri,
-          headers: {},
-          signal: expect.any(AbortSignal) as AbortSignal,
-        },
+        options: {},
         operation: { id: 1, type: 'query', name: 'fetchHeros' },
         fetching: false,
         data: { hero: [] },
@@ -146,7 +138,7 @@ test('result is a function returning a promise like', async () => {
   render(Fragment, {
     onCreate() {
       initGraphQLClient({ uri })
-      request = useRequest(query, variables)
+      request = useGraphQL(query, variables)
     },
   })
 
@@ -184,7 +176,7 @@ test('result is a function returning an readable store', async () => {
   render(Fragment, {
     onCreate() {
       initGraphQLClient({ uri })
-      request = useRequest(query, variables)
+      request = useGraphQL(query, variables)
     },
   })
 
@@ -194,11 +186,7 @@ test('result is a function returning an readable store', async () => {
   expect(update).toHaveBeenCalledWith({
     query,
     variables: { episode: 7 },
-    options: {
-      headers: {},
-      signal: expect.any(AbortSignal) as AbortSignal,
-      uri: 'http://test.local/graphql',
-    },
+    options: {},
     operation: { id: 1, type: 'query', name: undefined },
     fetching: true,
     data: undefined,
@@ -210,11 +198,7 @@ test('result is a function returning an readable store', async () => {
     expect(update).toHaveBeenCalledWith({
       query,
       variables: { episode: 7 },
-      options: {
-        headers: {},
-        signal: expect.any(AbortSignal) as AbortSignal,
-        uri: 'http://test.local/graphql',
-      },
+      options: {},
       operation: { id: 1, type: 'query', name: undefined },
       fetching: false,
       data: { hero: [] },
@@ -290,11 +274,7 @@ test('request with guard and debounce', () => {
   expect(update).toHaveBeenCalledWith({
     query,
     variables: { episode: 7 },
-    options: {
-      headers: {},
-      signal: expect.any(AbortSignal) as AbortSignal,
-      uri: 'http://test.local/graphql',
-    },
+    options: {},
     operation: { id: 1, type: 'query', name: 'fetchHeros' },
     fetching: true,
     data: undefined,
@@ -340,11 +320,7 @@ test('no fetch until subscriber', async () => {
   expect(update).toHaveBeenCalledWith({
     query,
     variables: { episode: 5 },
-    options: {
-      uri,
-      headers: {},
-      signal: expect.any(AbortSignal) as AbortSignal,
-    },
+    options: {},
     operation: { id: 1, type: 'query', name: 'fetchHeros' },
     fetching: true,
     data: undefined,
@@ -356,11 +332,7 @@ test('no fetch until subscriber', async () => {
     expect(update).toHaveBeenCalledWith({
       query,
       variables: { episode: 5 },
-      options: {
-        uri,
-        headers: {},
-        signal: expect.any(AbortSignal) as AbortSignal,
-      },
+      options: {},
       operation: { id: 1, type: 'query', name: 'fetchHeros' },
       fetching: false,
       data: { hero: [] },

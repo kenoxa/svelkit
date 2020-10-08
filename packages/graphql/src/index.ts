@@ -4,7 +4,7 @@ export { initGraphQLClient, useGraphQLClient, createGraphQLClient } from './clie
 
 export * from './create-request'
 
-export * from './use-request'
+export * from './use-graphql'
 export * from './use-operations'
 
 export * from './exchanges'
