@@ -399,9 +399,9 @@
     v8-compile-cache "^2.1.1"
 
 "@carv/types@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.npmjs.org/@carv/types/-/types-1.3.0.tgz#950e4be5608298afb2ef663604297852ffe6cb30"
-  integrity sha512-I2LVEFKbuLDH9rXzVquR5EFCS+A1OBYxl8p3yAmBLR9BjGDMSet9oErzWTVuTPp8BmFMeEAT+UrQ2qpghu72og==
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@carv/types/-/types-1.3.1.tgz#9f534a025755378dc52f26880b54f1bb48ddb141"
+  integrity sha512-V2MvqjLL89qcFU7DUszgQLPtGQ/FkC5DGf/5z5x+SQKhYj3GFzB6TrlqIQ8Epe3ymGQgjIqiJSi6++AmjHUK6Q==
 
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
