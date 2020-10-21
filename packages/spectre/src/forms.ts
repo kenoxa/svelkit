@@ -46,6 +46,23 @@ const formField = <Variants extends ActionVariants | undefined>(
   })
 }
 
+const hint = define(stable('form-input-hint'))
+
+export const input = formField('input', {
+  hint,
+  group: define(({ inline }: FormInputGroupOptions = {}) => [
+    'input-group',
+    inline && 'input-inline',
+  ]),
+  groupInline: define(stable('input-group input-inline')),
+
+  groupAddon: define(({ size }: FormSizeOptions = {}) => [
+    'input-group-addon',
+    withPrefix('addon-', size),
+  ], classNamesToVariants(SIZES, 'input-group-addon addon-')),
+  groupBtn: define(stable('input-group-btn')),
+})
+
 export const form = define(({ variant }: FormOptions = {}) => [
   'form',
   withPrefix('form-', variant),
@@ -58,25 +75,8 @@ export const form = define(({ variant }: FormOptions = {}) => [
     'form-label',
     withPrefix('label-', size),
   ], classNamesToVariants(SIZES, 'form-label label-')),
-
-  input: formField('input', {
-    hint: define(stable('form-input-hint')),
-
-    group: define(({ inline }: FormInputGroupOptions = {}) => [
-      'input-group',
-      inline && 'input-inline',
-    ], {
-      inline: define(stable('input-group input-inline')),
-
-      addon: define(({ size }: FormSizeOptions = {}) => [
-        'input-group-addon',
-        withPrefix('addon-', size),
-      ], classNamesToVariants(SIZES, 'input-group-addon addon-')),
-
-      btn: define(stable('input-group-btn')),
-    }),
-  }),
-
+  input,
+  hint,
   select: formField('select'),
   checkbox: formField('checkbox'),
   radio: formField('radio'),

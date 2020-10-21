@@ -1,3 +1,5 @@
+import type { GraphQLStoreValue } from './types'
+import type { Readable } from 'svelte/store'
 import fetchMock from 'fetch-mock-jest'
 import { createGraphQLClient } from './client'
 import { toPromise } from './internal/to-promise'
@@ -23,7 +25,9 @@ test('basic query', async () => {
 
   const client = createGraphQLClient({ uri })
 
-  const result = await toPromise(client.request(query, variables))
+  const result = await toPromise(
+    client.request(query, variables) as Readable<GraphQLStoreValue<undefined>>,
+  )
 
   expect(result).toMatchObject({
     fetching: false,

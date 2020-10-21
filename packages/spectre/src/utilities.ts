@@ -1,6 +1,9 @@
 import type { Action } from './types'
 import { define, defineWithClassNames, isBoolean, stable, updateDatasetKey } from './internal'
 
+// Use:active
+export const active = define(stable('active'))
+
 // Use:text('primary center uppercase muted')
 export const text = defineWithClassNames((className) => 'text-' + className, [
   // From styles/utilities/colors

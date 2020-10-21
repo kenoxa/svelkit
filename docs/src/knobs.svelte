@@ -16,7 +16,6 @@
       <div use:col={'auto'}>
         <div use:form.group>
           <label use:form.label for={autoId(key)}>{config[key].label || key}</label>
-
           {#if config[key].options}
             <select bind:value={state[key]} use:form.select id={autoId(key)}>
               {#each config[key].options as value}

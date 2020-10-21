@@ -1,14 +1,21 @@
 - [Getting Started](getting-started)
 - Spectre
   - [API](spectre/api)
-  - [Baseline](spectre/baseline)
-  - [Avatars](spectre/avatars)
-  - [Badges](spectre/badges)
-  - [Bars](spectre/bars)
-  - [Breadcrumbs](spectre/breadcrumbs)
-  - [Cards](spectre/cards)
-  - [Chips](spectre/chips)
-  - [Empty](spectre/empty)
-  - [Headings](spectre/headings)
-  - [Text](spectre/text)
+  - Elements
+    - [Forms](spectre/elements/forms)
+    - [Labels](spectre/elements/labels)
+    - [Tables](spectre/elements/tables)
+  - Layout
+  - Components
+    - [Avatars](spectre/components/avatars)
+    - [Badges](spectre/components/badges)
+    - [Bars](spectre/components/bars)
+    - [Breadcrumbs](spectre/components/breadcrumbs)
+    - [Cards](spectre/components/cards)
+    - [Chips](spectre/components/chips)
+    - [Empty states](spectre/components/empty)
+  - Utilities
+    - [Baseline](spectre/utilities/baseline)
+    - [Headings](spectre/utilities/headings)
+    - [Text](spectre/utilities/text)
 - [Github](https://github.com/kenoxa/svelkit)
