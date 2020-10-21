@@ -6,6 +6,7 @@ import {
   withPrefix,
   STATES,
   SIZES,
+  SHAPES,
   ensureButtonType,
   isString,
 } from './internal'
