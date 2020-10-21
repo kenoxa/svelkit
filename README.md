@@ -1,5 +1,15 @@
 # Svelkit
 
+## Quick start
+
+Clone the repository and cd into the project directory.
+
+Run `yarn install` then `yarn build`
+
+Cd into the package that you'd like to make progress on.
+
+## Overview
+
 > Collection of packages to create [svelte] apps.
 
 [![License](https://badgen.net/github/license/kenoxa/svelkit)](https://github.com/kenoxa/svelkit/blob/main/LICENSE)
@@ -13,11 +23,19 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [Usage](#usage)
-- [Packages](#packages)
-- [Support](#support)
-- [Contribute](#contribute)
-- [License](#license)
+- [Svelkit](#svelkit)
+  - [Quick start](#quick-start)
+  - [Overview](#overview)
+  - [Usage](#usage)
+    - [Baseline](#baseline)
+  - [Packages](#packages)
+    - [Components](#components)
+    - [Service](#service)
+    - [Hooks](#hooks)
+  - [Support](#support)
+  - [Contribute](#contribute)
+    - [Develop](#develop)
+  - [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <!-- prettier-ignore-end -->

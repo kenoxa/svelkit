@@ -1,6 +1,7 @@
 <script lang="js">
   import { useAutoId } from '@svelkit/hooks'
   import { baseline, row, col, form } from '@svelkit/spectre'
+  import 'spectre.css/dist/spectre-icons.css'
 
   const autoId = useAutoId('knobs')
 

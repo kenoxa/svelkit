@@ -405,7 +405,9 @@ You can use the `loading` class for loading or posting state.
 ```
 
 ## Input groups
+
 <!-- #TODO: figure out what influencese addon-sm/lg -->
+
 ```example
 <script>
   import { form, input, cols, col, btn, baseline } from '@svelkit/spectre'
@@ -549,7 +551,6 @@ You can use the `loading` class for loading or posting state.
   </fieldset>
 </form>
 ```
-
 
 To use form validation styles, you can either pass an object with the property `state: "success"` or `state: "error"` as argument to the action. Use the `use:form.hint` or `use:input.hint` to provide form validation success and error messages.
 

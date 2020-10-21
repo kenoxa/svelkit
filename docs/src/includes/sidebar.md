@@ -5,6 +5,7 @@
     - [Forms](spectre/elements/forms)
     - [Labels](spectre/elements/labels)
     - [Tables](spectre/elements/tables)
+    - [Buttons](spectre/elements/buttons)
   - Layout
   - Components
     - [Avatars](spectre/components/avatars)
