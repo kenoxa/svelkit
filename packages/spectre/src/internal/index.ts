@@ -5,7 +5,6 @@ import type { Action, ActionResult, ClassValue } from '../types'
 import classNames from '../styles/spectre.module.scss'
 
 export const SIZES = ['sm', 'lg'] as const
-export const SHAPES = ['circle'] as const
 export const STATES = ['active', 'loading', 'disabled'] as const
 export const FORM_STATES = ['success', 'error'] as const
 export const PRESENCES = ['online', 'busy', 'away'] as const

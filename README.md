@@ -23,19 +23,11 @@ Cd into the package that you'd like to make progress on.
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 
 
-- [Svelkit](#svelkit)
-  - [Quick start](#quick-start)
-  - [Overview](#overview)
-  - [Usage](#usage)
-    - [Baseline](#baseline)
-  - [Packages](#packages)
-    - [Components](#components)
-    - [Service](#service)
-    - [Hooks](#hooks)
-  - [Support](#support)
-  - [Contribute](#contribute)
-    - [Develop](#develop)
-  - [License](#license)
+- [Usage](#usage)
+- [Packages](#packages)
+- [Support](#support)
+- [Contribute](#contribute)
+- [License](#license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 <!-- prettier-ignore-end -->

@@ -21,7 +21,6 @@
 
 Add the action `use:label` to `<span>` or `<small>` elements. You can pass a parameter to the action: `primary`, `secondary`, `success`, `warning` and `error` for colored labels.
 
-
 ## Rounded labels
 
 ```example
