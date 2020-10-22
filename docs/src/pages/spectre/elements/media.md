@@ -24,13 +24,13 @@ Add the action `use:img` with the property `responsive:true` to `<img>` elements
 </script>
 
 <div use:cols>
-  <div use:col={[6, 12]}>
+  <div use:col={[12, 6]}>
     <figure use:figure>
       <img use:img.fit={"contain"} use:shape.rounded  src="https://picsum.photos/id/237/400/300" alt="cute black labrador puppy from lorem picsum">
       <figcaption use:figure.caption use:text.center>img-fit-contain</figcaption>
     </figure>
   </div>
-  <div use:col={[6, 12]}>
+  <div use:col={[12, 6]}>
     <figure use:figure>
       <img use:img.fit={"cover"} use:shape.rounded src="https://picsum.photos/id/1074/400/300" alt="closeup of proud lioness from lorem picsum">
       <figcaption use:figure.caption use:text={"center"}>img-fit-cover</figcaption>

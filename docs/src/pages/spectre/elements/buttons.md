@@ -72,12 +72,12 @@ Add the `size: sm` or `size: lg` property for small or large button size. Also, 
   import { btn, cols, col, shape } from '@svelkit/spectre'
 </script>
 <div use:cols>
-  <div use:col={[6, 12]}>
+  <div use:col={[12, 6]}>
     <button use:btn={{variant: "primary", size: "lg", action: true}}><i class="icon icon-menu"></i></button>
     <button use:btn={{variant: "primary", action: true}}><i class="icon icon-menu"></i></button>
     <button use:btn={{variant: "primary", size: "sm", action: true}}><i class="icon icon-menu"></i></button>
   </div>
-  <div use:col={[6, 12]}>
+  <div use:col={[12, 6]}>
     <button use:btn={{variant: "primary", size: "lg"}} use:shape={"circle"}><i class="icon icon-arrow-up"></i></button>
     <button use:btn={{variant: "primary", shape: "circle"}} use:shape={"circle"}><i class="icon icon-arrow-up"></i></button>
     <button use:btn={{variant: "primary", size: "sm"}} use:shape={"circle"}><i class="icon icon-arrow-up"></i></button>
@@ -148,28 +148,28 @@ A button with the `state: loading` can show loading indicator.
 </script>
 
 <div use:cols>
-  <div use:col={[6,12,12,12]}>
+  <div use:col={[12, 6]}>
     <div use:btn.group>
       <button use:btn>first button</button>
       <button use:btn>second button</button>
       <button use:btn>third button</button>
     </div>
   </div>
-  <div use:col={[6,12,12,12]}>
+  <div use:col={[12, 6]}>
     <div use:btn.group={"block"}>
       <button use:btn={"primary"}>first button</button>
       <button use:btn={"primary"}>second button</button>
       <button use:btn={"primary"}>third button</button>
     </div>
   </div>
-  <div use:col={[6,12,12,12]}>
+  <div use:col={[12, 6]}>
     <div use:btn.group>
       <button use:btn={{size: "sm", state: "active"}}>first button</button>
       <button use:btn={"sm"}>second button</button>
       <button use:btn={"sm"}>third button</button>
     </div>
   </div>
-  <div use:col={[6,12,12,12]}>
+  <div use:col={[12, 6]}>
     <div use:btn.group={{block: true}}>
       <button use:btn={{variant: "primary", size: "sm", state: "active"}}>first button</button>
       <button use:btn={{variant: "primary", size: "sm"}}>second button</button>

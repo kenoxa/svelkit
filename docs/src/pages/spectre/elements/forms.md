@@ -130,26 +130,26 @@ If you want to have a horizontal form, add the use:form.horizontal action to the
 
 <form use:form.horizontal autocomplete="off" action="#forms">
   <div use:form.group>
-    <div use:col={[3,12]}>
+    <div use:col={[12, 3]}>
       <label use:form.label for="input-example-4">Name</label>
     </div>
-    <div use:col={[9,12]}>
+    <div use:col={[12, 9]}>
       <input use:form.input id="input-example-4" type="text" placeholder="Name">
     </div>
   </div>
   <div use:form.group>
-    <div use:col={[3,12]}>
+    <div use:col={[12, 3]}>
       <label use:form.label for="input-example-5">Email</label>
     </div>
-    <div use:col={[9,12]}>
+    <div use:col={[12, 9]}>
       <input use:form.input id="input-example-5" type="email" placeholder="Email">
     </div>
   </div>
   <div use:form.group>
-    <div use:col={[3,12]}>
+    <div use:col={[12, 3]}>
       <label use:form.label>Gender</label>
     </div>
-    <div use:col={[9,12]}>
+    <div use:col={[12, 9]}>
       <label use:form.radio>
         <input type="radio" name="gender"><i use:form.icon></i> Male
       </label>
@@ -159,10 +159,10 @@ If you want to have a horizontal form, add the use:form.horizontal action to the
     </div>
   </div>
   <div use:form.group>
-    <div use:col={[3,12]}>
+    <div use:col={[12, 3]}>
       <label use:form.label>Source</label>
     </div>
-    <div use:col={[9,12]}>
+    <div use:col={[12, 9]}>
       <select use:form.select multiple="">
         <option>Slack</option>
         <option>Skype</option>
@@ -171,22 +171,22 @@ If you want to have a horizontal form, add the use:form.horizontal action to the
     </div>
   </div>
   <div use:form.group>
-    <div use:col={[9,12]} use:spectre={"col-ml-auto"}>
+    <div use:col={[12, 9]} use:spectre={"col-ml-auto"}>
       <label use:form.switch>
         <input type="checkbox"><i use:form.icon></i> Send me emails with news and tips
       </label>
     </div>
   </div>
   <div use:form.group>
-    <div use:col={[3,12]}>
+    <div use:col={[12, 3]}>
       <label use:form.label for="input-example-6">Message</label>
     </div>
-    <div use:col={[9,12]}>
+    <div use:col={[12, 9]}>
       <textarea use:form.input id="input-example-6" placeholder="Textarea" rows="3"></textarea>
     </div>
   </div>
   <div use:form.group>
-    <div use:col={[9,12]} use:spectre={"col-ml-auto"}>
+    <div use:col={[12, 9]} use:spectre={"col-ml-auto"}>
       <label use:form.checkbox>
         <input type="checkbox"><i use:form.icon></i> Remember me
       </label>
@@ -206,13 +206,13 @@ For smaller or larger input and select controls, you could pass the `size` prope
 </script>
 
 <div use:cols>
-  <div use:col={[4,12]}>
+  <div use:col={[12,4]}>
     <label use:form.label={{size:"sm"}}>Label</label>
   </div>
-  <div use:col={[4,12]}>
+  <div use:col={[12,4]}>
     <input use:form.input={{size:"sm"}} type="text" placeholder="Name">
   </div>
-  <div use:col={[4,12]}>
+  <div use:col={[12,4]}>
     <select use:form.select={{size:"sm"}}>
       <option>Choose an option</option>
       <option>Slack</option>
@@ -220,13 +220,13 @@ For smaller or larger input and select controls, you could pass the `size` prope
       <option>Hipchat</option>
     </select>
   </div>
-  <div use:col={[4,12]}>
+  <div use:col={[12,4]}>
     <label use:form.label={{size: "lg"}}>Label</label>
   </div>
-  <div use:col={[4,12]}>
+  <div use:col={[12,4]}>
     <input use:form.input={{size: "lg"}} type="text" placeholder="Name">
   </div>
-  <div use:col={[4,12]}>
+  <div use:col={[12,4]}>
     <select use:form.select={{size: "lg"}}>
       <option>Choose an option</option>
       <option>Slack</option>
@@ -248,37 +248,37 @@ You can add the size property to the `use:form.checkbox`, `use:form.radio` and `
 
 <!-- form input with Spectre icon -->
 <div use:cols>
-  <div use:col={[4,12]}>
+  <div use:col={[12,4]}>
     <div use:has.icon={"left"}>
       <input use:form.input={{size: "sm"}} type="text" placeholder="Name">
       <i use:form.icon class="icon icon-arrow-right"></i>
     </div>
   </div>
-  <div use:col={[4,12]}>
+  <div use:col={[12,4]}>
     <div use:has.icon={"left"} use:tooltip={"Lorem ipsum dolor sit amet"}>
       <input use:form.input type="text" placeholder="Name">
       <i use:form.icon class="icon icon-arrow-right"></i>
     </div>
   </div>
-  <div use:col={[4,12]}>
+  <div use:col={[12,4]}>
     <div use:has.icon={"left"}>
       <input use:form.input={{size: "lg"}} type="text" placeholder="Name">
       <i use:form.icon class="icon icon-arrow-right"></i>
     </div>
   </div>
-  <div use:col={[4,12]}>
+  <div use:col={[12,4]}>
     <div use:has.icon={"right"}>
       <input use:form.input={{size:"sm"}}  type="text" placeholder="Name">
       <i use:form.icon class="icon icon-check"></i>
     </div>
   </div>
-  <div use:col={[4,12]}>
+  <div use:col={[12,4]}>
     <div use:has.icon={"right"}>
       <input use:form.input type="text" placeholder="Name">
       <i use:form.icon class="icon icon-check"></i>
     </div>
   </div>
-  <div use:col={[4,12]}>
+  <div use:col={[12,4]}>
     <div use:has.icon={"right"}>
       <input use:form.input={{size: "lg"}} type="text" placeholder="Name">
       <i use:form.icon class="icon icon-check"></i>
@@ -296,19 +296,19 @@ You can use the `loading` class for loading or posting state.
 
 <!-- form input with loading icon -->
 <div use:cols>
-  <div use:col={[4,12]}>
+  <div use:col={[12,4]}>
     <div use:has.icon={"right"}>
       <input use:form.input={{size:"sm"}}  type="text" placeholder="Name">
       <i use:form.icon class="icon loading"></i>
     </div>
   </div>
-  <div use:col={[4,12]}>
+  <div use:col={[12,4]}>
     <div use:has.icon={"right"}>
       <input use:form.input type="text" placeholder="Name">
       <i use:form.icon class="icon loading"></i>
     </div>
   </div>
-  <div use:col={[4,12]}>
+  <div use:col={[12,4]}>
     <div use:has.icon={"right"}>
       <input use:form.input={{size: "lg"}} type="text" placeholder="Name">
       <i use:form.icon class="icon loading"></i>
@@ -325,7 +325,7 @@ You can use the `loading` class for loading or posting state.
 </script>
 
 <div use:cols>
-  <div use:col={[9,12]}>
+  <div use:col={[12, 9]}>
     <form use:form.horizontal action="#forms">
       <div use:form.group>
         <div use:col={3}>
@@ -416,7 +416,7 @@ You can use the `loading` class for loading or posting state.
 
 <form>
   <div use:cols>
-    <div use:col={[6, 12]}>
+    <div use:col={[12, 6]}>
       <div use:input.group>
         <input use:form.input={{size: "sm"}} type="text" placeholder="username">
         <select use:form.select={{size: "sm"}}>
@@ -426,13 +426,13 @@ You can use the `loading` class for loading or posting state.
         </select>
       </div>
     </div>
-    <div use:col={[6, 12]}>
+    <div use:col={[12, 6]}>
       <div use:input.group={{inline: true}}><span use:input.groupAddon={{size: "sm"}}>slack.com/</span>
         <input use:form.input={{size: "sm"}} type="text" placeholder="site name">
         <button use:btn={{variant: "primary", size: "sm"}} use:input.groupBtn={{size: "sm"}}>Submit</button>
       </div>
     </div>
-    <div use:col={[6, 12]}>
+    <div use:col={[12, 6]}>
       <div use:input.group>
         <input use:form.input type="text" placeholder="username">
         <select use:form.select>
@@ -442,13 +442,13 @@ You can use the `loading` class for loading or posting state.
         </select>
       </div>
     </div>
-    <div use:col={[6, 12]}>
+    <div use:col={[12, 6]}>
       <div use:input.group><span use:input.groupAddon>slack.com/</span>
         <input use:form.input type="text" placeholder="site name">
         <button use:btn={"primary"} use:input.groupBtn>Submit</button>
       </div>
     </div>
-    <div use:col={[6, 12]}>
+    <div use:col={[12, 6]}>
       <div use:input.group>
         <label use:form.switch>
           <input type="checkbox"><i use:form.icon></i>
@@ -456,7 +456,7 @@ You can use the `loading` class for loading or posting state.
         <input use:form.input type="text" placeholder="name">
       </div>
     </div>
-    <div use:col={[6, 12]}>
+    <div use:col={[12, 6]}>
       <div use:input.group>
         <label use:form.checkbox>
           <input type="checkbox"><i use:form.icon></i>
@@ -464,7 +464,7 @@ You can use the `loading` class for loading or posting state.
         <input use:form.input type="text" placeholder="name">
       </div>
     </div>
-    <div use:col={[6, 12]}>
+    <div use:col={[12, 6]}>
       <div use:input.group>
         <input use:form.input={{size: "lg"}} type="text" placeholder="username">
         <select use:form.select={{size: "lg"}}>
@@ -474,7 +474,7 @@ You can use the `loading` class for loading or posting state.
         </select>
       </div>
     </div>
-    <div use:col={[6, 12]}>
+    <div use:col={[12, 6]}>
       <div use:input.group><span use:input.groupAddon={{size: "lg"}}>slack.com/</span>
         <input use:form.input={{size: "lg"}} type="text" placeholder="site name">
         <button use:btn={{variant: "primary", size: "lg"}} use:input.groupBtn>Submit</button>
@@ -606,7 +606,7 @@ Pass `disabled` as an argument to to the element or `<fieldset>` for a disabled 
 </script>
 
 <div use:cols>
-  <div use:col={[6,12]}>
+  <div use:col={[12, 6]}>
     <form action="#forms">
       <fieldset disabled>
         <div use:form.group>

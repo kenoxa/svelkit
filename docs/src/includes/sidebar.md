@@ -2,12 +2,14 @@
 - Spectre
   - [API](spectre/api)
   - Elements
-    - [Tables](spectre/elements/tables)
     - [Buttons](spectre/elements/buttons)
     - [Forms](spectre/elements/forms)
     - [Labels](spectre/elements/labels)
     - [Media](spectre/elements/media)
+    - [Tables](spectre/elements/tables)
   - Layout
+    - [Layout](spectre/layout/layout)
+    - [Responsive](spectre/layout/responsive)
   - Components
     - [Avatars](spectre/components/avatars)
     - [Badges](spectre/components/badges)

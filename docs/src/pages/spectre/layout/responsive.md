@@ -1,21 +1,38 @@
-# Layout
+# Responsive
 
-Layout includes [flexbox](https://developer.mozilla.org/en-US/docs/Glossary/Flexbox) based responsive grid system with 12 columns.
+@svelkit/spectre provides a neat responsive layout grid system and responsive visibility utilities with [mobile-first design](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Responsive/Mobile_first) in mind.
 
-- https://getbootstrap.com/docs/4.5/layout/grid/#how-it-works
-- https://styled-system.com/responsive-styles
+There are `xs`, `sm`, `md`, `lg`, `xl` available for flexible grid across mobile, tablet and desktop viewport usage.
+
+- `xs` apply to window width smaller than or equal to `480px`.
+- `sm` apply to window width smaller than or equal to `600px`.
+- `md` apply to window width smaller than or equal to `840px`.
+- `lg` apply to window width smaller than or equal to `960px`.
+- `xl` apply to window width smaller than or equal to `1280px`.
+
 
 ```example
 <script>
-  import { container, row, col } from '@svelkit/spectre'
+  import { container, cols, col, bg } from '@svelkit/spectre'
 </script>
 
 <div use:container>
-  <div use:row>
-    <div use:col={6}>col-6</div>
-    <div use:col={3}>col-3</div>
-    <div use:col={2}>col-2</div>
-    <div use:col={1}>col-1</div>
+  <div use:cols>
+    <div use:col={{xs: 12, sm: 6, md: 4}} use:bg.success>col-xs-12 col-sm-6 col-md-4</div>
+    <div use:col={[12, 6, 4]} use:bg.primary>col-xs-12 col-sm-6 col-md-4</div>
+    <div use:col={{xs: 12, md: 4}} use:bg.warning>col-xs-12 col-sm-6 col-md-4</div>
+  </div>
+</div>
+```
+
+```example
+<script>
+  import { container, cols, col, bg } from '@svelkit/spectre'
+</script>
+
+<div use:container>
+  <div use:cols>
+    <div use:col={{xs: 12, md: 8, xl: 4}} use:bg.error>col-xs-12 col-md-8 col-xl-4</div>
   </div>
 </div>
 ```

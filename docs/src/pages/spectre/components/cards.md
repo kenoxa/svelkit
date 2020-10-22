@@ -13,7 +13,7 @@ Apply the `card` action on a container element and add `card.image`, `card.heade
 
 <div use:container>
   <div use:columns>
-    <div use:col={[6, 12]}>
+    <div use:col={[12, 6]}>
       <div use:card>
         <div use:card={'image'}>
           <img use:img={'responsive'} src="https://picturepan2.github.io/spectre/img/osx-el-capitan.jpg" alt="">
@@ -30,7 +30,7 @@ Apply the `card` action on a container element and add `card.image`, `card.heade
         </div>
       </div>
     </div>
-    <div use:col={[6, 12]}>
+    <div use:col={[12, 6]}>
       <div use:card={'shadow'}>
         <div use:card={'header'}>
           <div use:heading={5}>Apple</div>
