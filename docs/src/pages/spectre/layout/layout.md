@@ -52,14 +52,14 @@ You can add the action use:cols.gap and pass <1-12> as a parameter to have gaps 
 
 <div use:container>
   <div use:cols>
-    <div use:col={6} use:bg.warning>
+    <div use:col={6} use:bg.secondary>
       <div use:cols>
         <div use:col={6} use:bg.success>Col-6</div>
         <div use:col={3} use:bg.error>col-3</div>
         <div use:col={3} use:bg.primary>col-3</div>
       </div>
     </div>
-    <div use:col={3} use:bg.secondary>col-3</div>
+    <div use:col={3} use:bg.warning>col-3</div>
     <div use:col={2} use:bg.success>col-2</div>
     <div use:col={1} use:bg.error>col-1</div>
   </div>

@@ -1,127 +1,62 @@
 /**
  * Source: https://github.com/picturepan2/spectre/blob/0.5.10/src/_layout.scss
  */
-html {
-  box-sizing: border-box;
-}
-*,
-*:before,
-*:after {
-  box-sizing: inherit;
-}
+
 // Layout
 .container {
   // composes: container from global;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $layout-spacing;
+  padding-right: $layout-spacing;
   width: 100%;
 
   $grid-spacing: ($layout-spacing / ($layout-spacing * 0 + 1)) * $html-font-size;
 
-  &.grid-xl {
-    max-width: $grid-spacing * 2 + $size-xl;
+  @each $breakpoint, $size in $sizes {
+    &.grid-#{$breakpoint} {
+      max-width: $grid-spacing * 2 + $size;
+    }
   }
-
-  &.grid-lg {
-    max-width: $grid-spacing * 2 + $size-lg;
-  }
-
-  &.grid-md {
-    max-width: $grid-spacing * 2 + $size-md;
-  }
-
-  &.grid-sm {
-    max-width: $grid-spacing * 2 + $size-sm;
-  }
-
-  &.grid-xs {
-    max-width: $grid-spacing * 2 + $size-xs;
-  }
-}
-.grid-xs {
-  // composes: grid-xs from global;
-}
-.grid-sm {
-  // composes: grid-sm from global;
-}
-.grid-md {
-  // composes: grid-md from global;
-}
-.grid-lg {
-  // composes: grid-lg from global;
-}
-.grid-xl {
-  // composes: grid-xl from global;
 }
 
 // Responsive breakpoint system
-.show-xs,
-.show-sm,
-.show-md,
-.show-lg,
-.show-xl {
-  display: none !important;
-}
-.show-xs {
-  // composes: show-xs from global;
-}
-.show-sm {
-  // composes: show-sm from global;
-}
-.show-md {
-  // composes: show-md from global;
-}
-.show-lg {
-  // composes: show-lg from global;
-}
-.show-xl {
-  // composes: show-xl from global;
-}
-.hide-xs {
-  // composes: hide-xs from global;
-}
-.hide-sm {
-  // composes: hide-sm from global;
-}
-.hide-md {
-  // composes: hide-md from global;
-}
-.hide-lg {
-  // composes: hide-lg from global;
-}
-.hide-xl {
-  // composes: hide-xl from global;
+@each $breakpoint in $breakpoints {
+  .grid-#{$breakpoint} {
+    // composes: grid-#{$breakpoint} from global;
+  }
+  .show-#{$breakpoint} {
+    // composes: show-#{$breakpoint} from global;
+    display: none !important;
+  }
+  .hide-#{$breakpoint} {
+    // composes: hide-#{$breakpoint} from global;
+  }
 }
 
 // Responsive grid system
 .columns {
   // composes: columns from global;
+  box-sizing: border-box;
   display: flex;
-  flex-flow: row wrap;
-  flex: 0 1 100%;
+  flex-wrap: wrap;
+  margin-left: -$layout-spacing;
+  margin-right: -$layout-spacing;
 
   &.col-gapless {
     margin-left: 0;
     margin-right: 0;
+
+    & > .column {
+      padding: 0;
+    }
   }
   &.col-oneline {
     flex-wrap: nowrap;
     overflow-x: auto;
   }
-
-  @for $i from 1 through $columns {
-    &.col-gap-#{$i} {
-      flex-flow: row wrap;
-      justify-content: center;
-
-      @for $j from 1 through $columns {
-        & > [class*='col-#{$j}'] {
-          margin: $layout-spacing * $i / 4;
-          flex-basis: calc(#{$j} / #{$columns} * 100% - #{$layout-spacing} * #{$i} / 2);
-        }
-      }
-    }
-  }
 }
-
 .col-gapless {
   // composes: col-gapless from global;
 }
@@ -133,21 +68,32 @@ html {
 }
 /* [class~="col-"] => not needed as we add the column class to each col-* */
 .column {
+  box-sizing: border-box;
   display: flex;
-  flex: 0 1 auto;
-  min-width: 0;
+  flex: 1;
+  max-width: 100%;
   padding: $layout-spacing;
-}
 
-@for $i from 1 through $columns {
-  .col-#{$i} {
-    flex-basis: $i / $columns * 100%;
+  @each $column in $columns {
+    &.col-#{$column} {
+      flex: none;
+    }
+  }
+  &.col-auto {
+    flex: none;
   }
 }
 
+@each $column in $columns {
+  .col-#{$column} {
+    // composes: col-#{$column} from global;
+    width: ($column / length($columns) * 100%);
+  }
+}
 .col-auto {
   // composes: col-auto from global;
   flex: 0 0 auto;
+  max-width: none;
   width: auto;
 }
 .col-mx-auto {
@@ -163,132 +109,43 @@ html {
   // composes: col-mr-auto from global;
   margin-right: auto;
 }
-@media (max-width: $size-xl) {
-  @for $i from 1 through $columns {
-    .col-xl-#{$i} {
-      flex: 0 0 $i / $columns * 100%;
+
+@each $breakpoint, $size in $sizes {
+  @media (min-width: $size) {
+    @each $column in $columns {
+      .col-#{$breakpoint}-#{$column} {
+        flex: none;
+      }
+    }
+    .col-#{$breakpoint}-auto {
+      flex: none;
+    }
+    @each $column in $columns {
+      .col-#{$breakpoint}-#{$column} {
+        // composes: col-#{$column} from global;
+        width: ($column / length($columns) * 100%);
+      }
+    }
+
+    .col-#{$breakpoint}-auto {
+      width: auto;
+    }
+    .hide-#{$breakpoint} {
+      display: none !important;
+    }
+    .show-#{$breakpoint} {
+      display: block !important;
     }
   }
-  .col-xl-auto {
-    flex: 0 0 auto;
-  }
-  .hide-xl {
-    display: none !important;
-  }
-  .show-xl {
-    display: block !important;
-  }
-}
-
-@for $i from 1 through $columns {
-  .col-xl-#{$i} {
-    // composes: col-xl-#{$i} from global;
-  }
-}
-.col-xl-auto {
-  // composes: col-xs-auto from global;
-}
-
-@media (max-width: $size-lg) {
-  @for $i from 1 through $columns {
-    .col-lg-#{$i} {
-      flex: 0 0 $i / $columns * 100%;
+  @each $column in $columns {
+    .col-#{$breakpoint}-#{$column} {
+      .col-#{$breakpoint}-#{$column} {
+        // composes: col-#{$breakpoint}-#{$column} from global;
+      }
     }
   }
-  .col-lg-auto {
-    flex: 0 0 auto;
-  }
 
-  .hide-lg {
-    display: none !important;
+  .col-#{$breakpoint}-auto {
+    // composes: col-#{$breakpoint}-auto from global;
   }
-  .show-lg {
-    display: block !important;
-  }
-}
-@for $i from 1 through $columns {
-  .col-lg-#{$i} {
-    // composes: col-lg-#{$i} from global;
-  }
-}
-.col-lg-auto {
-  // composes: col-xs-auto from global;
-}
-
-@media (max-width: $size-md) {
-  @for $i from 1 through $columns {
-    .col-md-#{$i} {
-      flex: 0 0 $i / $columns * 100%;
-    }
-  }
-  .col-md-auto {
-    flex: 0 0 auto;
-  }
-
-  .hide-md {
-    display: none !important;
-  }
-  .show-md {
-    display: block !important;
-  }
-}
-@for $i from 1 through $columns {
-  .col-md-#{$i} {
-    // composes: col-md-#{$i} from global;
-  }
-}
-.col-md-auto {
-  // composes: col-xs-auto from global;
-}
-
-@media (max-width: $size-sm) {
-  @for $i from 1 through $columns {
-    .col-sm-#{$i} {
-      flex: 0 0 $i / $columns * 100%;
-    }
-  }
-  .col-sm-auto {
-    flex: 0 0 auto;
-  }
-
-  .hide-sm {
-    display: none !important;
-  }
-  .show-sm {
-    display: block !important;
-  }
-}
-@for $i from 1 through $columns {
-  .col-sm-#{$i} {
-    // composes: col-sm-#{$i} from global;
-  }
-}
-.col-sm-auto {
-  // composes: col-xs-auto from global;
-}
-
-@media (max-width: $size-xs) {
-  @for $i from 1 through $columns {
-    .col-xs-#{$i} {
-      flex: 0 0 $i / $columns * 100%;
-    }
-  }
-  .col-xs-auto {
-    flex: 0 0 auto;
-  }
-
-  .hide-xs {
-    display: none !important;
-  }
-  .show-xs {
-    display: block !important;
-  }
-}
-@for $i from 1 through $columns {
-  .col-xs-#{$i} {
-    // composes: col-xs-#{$i} from global;
-  }
-}
-.col-xs-auto {
-  // composes: col-xs-auto from global;
 }

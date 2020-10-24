@@ -14,6 +14,11 @@
     <button use:btn={"primary"}>primary button</button>
     <button use:btn={"link"}>link button</button>
   </div>
+  <div use:col={12}>
+    <button use:btn>default button</button>
+    <button use:btn.primary>primary button</button>
+    <button use:btn.link>link button</button>
+  </div>
 </div>
 ```
 
@@ -29,7 +34,7 @@ Add the `use:btn` action to `<buton>`, `<input>` or `<a>` elements for a default
 <!-- form input control -->
 <div use:cols>
   <div use:col={12}>
-    <button use:btn={"success"}>success button</button>
+    <button use:btn.success>success button</button>
     <button use:btn={"error"}>error button</button>
   </div>
 </div>

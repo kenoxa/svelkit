@@ -19,10 +19,11 @@
 
 // Layout
 @import 'layout';
-@import 'spectre.css/src/hero';
-@import 'spectre.css/src/navbar';
+@import 'heroes';
+@import 'navbars';
 
 // Components
+@import 'accordions';
 @import 'avatars';
 @import 'badges';
 @import 'bars';

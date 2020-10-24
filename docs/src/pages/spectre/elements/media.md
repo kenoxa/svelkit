@@ -62,7 +62,7 @@ You can use the element `<figure>` for an image with a caption. Add the figure c
 
 ## Video
 
-For responsive video, add a container with the `use:video.responsive action`.
+For responsive video, add a container with the `use:video.responsive` action.
 Insert any YouTube, Youku or other iframe/embed video inside the container. The ratio is 16:9 by default. You may pass `4-3` or `1-1` as a parameter for a 4:3 or 1:1 ratio video container.
 
 ```example

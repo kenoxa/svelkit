@@ -42,7 +42,7 @@ export const btn = define((
         ],
   ]
 }, {
-  ...classNamesToVariants([...STATES, ...BUTTON_VARIANTS, ...SIZES, 'block', 'action'], 'btn-'),
+  ...classNamesToVariants([...STATES, ...BUTTON_VARIANTS, ...SIZES, 'block', 'action'], 'btn btn-'),
 
   group: define((options: 'block' | ButtonGroupOptions = {}) => [
     'btn-group',

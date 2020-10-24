@@ -10,7 +10,10 @@
   - Layout
     - [Layout](spectre/layout/layout)
     - [Responsive](spectre/layout/responsive)
+    - [Hero](spectre/layout/hero)
+    - [Navbar](spectre/layout/navbar)
   - Components
+    - [Accordions](spectre/components/accordions)
     - [Avatars](spectre/components/avatars)
     - [Badges](spectre/components/badges)
     - [Bars](spectre/components/bars)
@@ -18,6 +21,11 @@
     - [Cards](spectre/components/cards)
     - [Chips](spectre/components/chips)
     - [Empty states](spectre/components/empty)
+    - [Menus](spectre/components/menus)
+    - [Modals](spectre/components/modals)
+    - [Navigations](spectre/components/navigations)
+    - [Paginations](spectre/components/paginations)
+    - [Panels](spectre/components/panels)
   - Utilities
     - [Baseline](spectre/utilities/baseline)
     - [Headings](spectre/utilities/headings)

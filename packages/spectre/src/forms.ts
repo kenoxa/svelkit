@@ -55,6 +55,7 @@ export const input = formField('input', {
     inline && 'input-inline',
   ]),
   groupInline: define(stable('input-group input-inline')),
+  inline: define(stable('input-inline')),
 
   groupAddon: define(({ size }: FormSizeOptions = {}) => [
     'input-group-addon',
