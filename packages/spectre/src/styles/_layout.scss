@@ -2,10 +2,21 @@
  * Source: https://github.com/picturepan2/spectre/blob/0.5.10/src/_layout.scss
  */
 
+html,
+.container,
+.columns,
+.column {
+  box-sizing: border-box;
+}
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
 // Layout
 .container {
   // composes: container from global;
-  box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
   padding-left: $layout-spacing;
@@ -35,30 +46,47 @@
   }
 }
 
+// gap
+@each $gap in $columns {
+  .columns {
+    &.gap-#{$gap},
+    &.gap-around-#{$gap} {
+      flex-basis: calc(100% + #{$layout-spacing} * #{$gap});
+      margin-top: calc(-#{$layout-spacing} * #{$gap});
+      margin-left: calc(-#{$layout-spacing} * #{$gap});
+
+      > * {
+        margin-top: calc(#{$layout-spacing} * #{$gap});
+        margin-left: calc(#{$layout-spacing} * #{$gap});
+        @for $column from 1 through length($columns)-1 {
+          &.col-#{$column} {
+            flex: 0
+              1
+              calc(#{$column} / #{length($columns)} * 100% - (#{$layout-spacing} * #{$gap}));
+          }
+        }
+      }
+    }
+    &.gap-around-#{$gap} {
+      padding: calc(#{$layout-spacing} * #{$gap});
+    }
+  }
+}
+
 // Responsive grid system
 .columns {
   // composes: columns from global;
   box-sizing: border-box;
   display: flex;
-  flex-wrap: wrap;
-  margin-left: -$layout-spacing;
-  margin-right: -$layout-spacing;
+  flex: 0 1 100%;
+  flex-flow: row wrap;
+  // margin-left: -$layout-spacing;
+  // margin-right: -$layout-spacing;
 
-  &.col-gapless {
-    margin-left: 0;
-    margin-right: 0;
-
-    & > .column {
-      padding: 0;
-    }
-  }
   &.col-oneline {
     flex-wrap: nowrap;
     overflow-x: auto;
   }
-}
-.col-gapless {
-  // composes: col-gapless from global;
 }
 .col-oneline {
   // composes: col-oneline from global;
@@ -70,24 +98,22 @@
 .column {
   box-sizing: border-box;
   display: flex;
-  flex: 1;
-  max-width: 100%;
+  flex: 0 1 100%;
   padding: $layout-spacing;
 
   @each $column in $columns {
     &.col-#{$column} {
-      flex: none;
+      flex: 0 1 ($column / length($columns) * 100%);
     }
   }
   &.col-auto {
-    flex: none;
+    flex: 0 0 auto;
   }
 }
 
 @each $column in $columns {
   .col-#{$column} {
     // composes: col-#{$column} from global;
-    width: ($column / length($columns) * 100%);
   }
 }
 .col-auto {
@@ -112,40 +138,51 @@
 
 @each $breakpoint, $size in $sizes {
   @media (min-width: $size) {
-    @each $column in $columns {
-      .col-#{$breakpoint}-#{$column} {
-        flex: none;
-      }
-    }
-    .col-#{$breakpoint}-auto {
-      flex: none;
-    }
-    @each $column in $columns {
-      .col-#{$breakpoint}-#{$column} {
-        // composes: col-#{$column} from global;
-        width: ($column / length($columns) * 100%);
-      }
-    }
-
-    .col-#{$breakpoint}-auto {
-      width: auto;
-    }
     .hide-#{$breakpoint} {
       display: none !important;
     }
     .show-#{$breakpoint} {
-      display: block !important;
+      display: flex !important;
     }
-  }
-  @each $column in $columns {
-    .col-#{$breakpoint}-#{$column} {
-      .col-#{$breakpoint}-#{$column} {
-        // composes: col-#{$breakpoint}-#{$column} from global;
+
+    // gaps
+    @each $gap in $columns {
+      .columns {
+        &.gap-#{$gap},
+        &.gap-around-#{$gap} {
+          > * {
+            @for $column from 1 through length($columns)-1 {
+              &.col-#{$breakpoint}-#{$column} {
+                flex: 0 1 calc(#{$column} / #{length($columns)} * 100% - (#{$layout-spacing} * #{$gap}));
+              }
+            }
+          }
+        }
       }
     }
-  }
 
-  .col-#{$breakpoint}-auto {
-    // composes: col-#{$breakpoint}-auto from global;
+    // column
+    .column {
+      @each $column in $columns {
+        &.col-#{$breakpoint}-#{$column} {
+          flex: 0 1 ($column / length($columns) * 100%);
+        }
+      }
+      &.col-#{$breakpoint}-auto {
+        flex: 0 0 auto;
+      }
+    }
+
+    @each $column in $columns {
+      .col-#{$breakpoint}-#{$column} {
+        .col-#{$breakpoint}-#{$column} {
+          // composes: col-#{$breakpoint}-#{$column} from global;
+        }
+      }
+    }
+
+    .col-#{$breakpoint}-auto {
+      // composes: col-#{$breakpoint}-auto from global;
+    }
   }
 }
