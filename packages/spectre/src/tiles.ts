@@ -1,8 +1,8 @@
-import { define, classNamesToVariants, withPrefix } from './internal'
+import { define, classNamesToVariants, stable } from './internal'
 
-const TILE_VARIANTS = ['centered', 'icon', 'content', 'title', 'subtitle', 'action'] as const
+const TILE_CHILDREN = ['centered', 'icon', 'content', 'title', 'subtitle', 'action'] as const
 
-export const tile = define((variant?: typeof TILE_VARIANTS[number]) => [
-  'tile',
-  withPrefix(variant === 'centered' ? 'tile tile-' : 'tile-', variant),
-], classNamesToVariants(TILE_VARIANTS, 'tile-'))
+export const tile = define(stable("tile"), {
+  ...classNamesToVariants(TILE_CHILDREN, 'tile-'),
+  centered: define(stable('tile tile-centered')),
+})

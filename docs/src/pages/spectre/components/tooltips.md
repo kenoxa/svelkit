@@ -7,20 +7,28 @@
   import { tooltip, btn, cols, col } from '@svelkit/spectre'
 </script>
 
+<br />
+<br />
+<br />
+
 <div use:cols>
-  <div use:col>
+    <div use:col={"auto"} use:col.margin={"auto"}>
     <button use:btn.primary use:tooltip={"Top Tooltip Text"}>top tooltip</button>
   </div>
-  <div use:col>
-    <button use:btn.primary use:tooltip.right={"Right Tooltip Text"}>right tooltip</button>
+  <div use:col={"auto"} use:col.margin={"auto"}>
+    <button use:btn.primary use:tooltip={{position: "right", value: "Right Tooltip Text"}}>right tooltip</button>
   </div>
-  <div use:col>
-    <button use:btn.primary use:tooltip.bottom={"Bottom Tooltip Text"}>bottom tooltip</button>
+  <div use:col={"auto"} use:col.margin={"auto"}>
+    <button use:btn.primary use:tooltip={{position: "bottom", value: "Bottom Tooltip Text"}}>bottom tooltip</button>
   </div>
-  <div use:col>
-    <button use:btn.primary use:tooltip.left={"Left Tooltip Text \n Multiline"}>left tooltip</button>
+  <div use:col={"auto"} use:col.margin={"auto"}>
+    <button use:btn.primary use:tooltip={{position: "left", value: `Left Tooltip Text \n Multiline`}}>left tooltip</button>
   </div>
 </div>
+
+<br />
+<br />
+<br />
 ```
 
 Add the `use:tooltip` action and pass a string value to the action, which contains the tooltip content, to a non-self closing elements.
@@ -34,14 +42,24 @@ And add the `right`, `bottom` or `left` property to define the position of a too
   import { tooltip, btn, cols, col } from '@svelkit/spectre'
 </script>
 
+<br />
+<br />
+<br />
+<br />
+<br />
+
 <div use:cols>
-  <div use:col>
-    <button use:btn.primary use:tooltip={"First Line Tooltip Text \n
-      Second Line Tooltip Text \n
-      Third Line Tooltip Text"}>multiline tooltip
+  <div use:col={"auto"} use:col.margin={"auto"}>
+    <button use:btn.primary use:tooltip={`First Line Tooltip Text
+      Second Line Tooltip Text
+      Third Line Tooltip Text`}>multiline tooltip
+    </button>
+  </div>
+  <div use:col={"auto"} use:col.margin={"auto"}>
+    <button use:btn.primary use:tooltip={"First Line Tooltip Text \n Second Line Tooltip Text \n Third Line Tooltip Text"}>multiline tooltip
     </button>
   </div>
 </div>
 ```
 
-Add the `\n` string between any text for multiline tooltips.
+Use [`template literals`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) or add the `\n` string between any text for multiline tooltips.

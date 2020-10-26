@@ -10,18 +10,34 @@
 <div use:cols>
   <div use:col>
     <ul use:step>
-      <li use:step.item><a use:tooltip href="#steps" data-tooltip="Step 1 Tooltip"></a></li>
-      <li use:step.item={{state: active}}><a use:tooltip href="#steps" data-tooltip="Step 2 Tooltip"></a></li>
-      <li use:step.item><a use:tooltip href="#steps" data-tooltip="Step 3 Tooltip"></a></li>
-      <li use:step.item><a use:tooltip href="#steps" data-tooltip="Step 4 Tooltip"></a></li>
+      <li use:step.item>
+        <a use:tooltip={"Step 1 Tooltip"} href="#"></a>
+      </li>
+      <li use:step.item={"active"}>
+        <a use:tooltip={"Step 2 Tooltip"} href="#"></a>
+      </li>
+      <li use:step.item>
+        <a use:tooltip={"Step 3 Tooltip"} href="#"></a>
+      </li>
+      <li use:step.item>
+        <a use:tooltip={"Step 4 Tooltip"} href="#"></a>
+      </li>
     </ul>
   </div>
-  <div class:col>
+  <div use:col>
     <ul use:step>
-      <li use:step.item><a use:tooltip href="#steps" data-tooltip="Step 1 Tooltip">Step 1</a></li>
-      <li use:step.item><a use:tooltip href="#steps" data-tooltip="Step 2 Tooltip">Step 2</a></li>
-      <li use:step.item={{state: active}}><a use:tooltip href="#steps" data-tooltip="Step 3 Tooltip">Step 3</a></li>
-      <li use:step.item><a use:tooltip href="#steps" data-tooltip="Step 4 Tooltip">Step 4</a></li>
+      <li use:step.item>
+        <a use:tooltip={"Step 1 Tooltip"} href="#">Step 1</a>
+      </li>
+      <li use:step.item>
+        <a use:tooltip={"Step 2 Tooltip"} href="#">Step 2</a>
+      </li>
+      <li use:step.item={"active"}>
+        <a use:tooltip={"Step 3 Tooltip"} href="#">Step 3</a>
+      </li>
+      <li use:step.item>
+        <a use:tooltip={"Step 4 Tooltip"} href="#">Step 4</a>
+      </li>
     </ul>
   </div>
 </div>

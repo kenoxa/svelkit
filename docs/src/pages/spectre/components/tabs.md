@@ -11,23 +11,23 @@
   <div use:col={[12,6]}>
     <ul use:tab>
       <li use:tab.item={{state: "active"}}>
-        <a href="#tabs">Music</a></li>
+        <a href="#tabs" on:click|preventDefault>Music</a></li>
       <li use:tab.item>
-        <a href="#tabs">Playlists</a></li>
+        <a href="#tabs" on:click|preventDefault>Playlists</a></li>
       <li use:tab.item>
-        <a href="#tabs">Radio</a></li>
+        <a href="#tabs" on:click|preventDefault>Radio</a></li>
       <li use:tab.item>
-        <a href="#tabs">Store</a></li>
+        <a href="#tabs" on:click|preventDefault>Store</a></li>
     </ul>
   </div>
   <div use:col={[12,6]}>
     <ul use:tab use:tab.block>
       <li use:tab.item={{state: "active"}}>
-        <a href="#tabs">Music</a></li>
+        <a href="#tabs" on:click|preventDefault>Music</a></li>
       <li use:tab.item>
-        <a href="#tabs">Playlists</a></li>
+        <a href="#tabs" on:click|preventDefault>Playlists</a></li>
       <li use:tab.item>
-        <a href="#tabs">Radio</a></li>
+        <a href="#tabs" on:click|preventDefault>Radio</a></li>
     </ul>
   </div>
 </div>
@@ -46,17 +46,17 @@ Add the `use:tab` action to a container element. And add the `use:tab.item` acti
       <li use:tab.item={{state: "active"}}>
         <a use:badge={"999"} href="#tabs">Music</a></li>
       <li use:tab.item>
-        <a href="#tabs">Playlists</a></li>
+        <a href="#tabs" on:click|preventDefault>Playlists</a></li>
       <li use:tab.item>
-        <a href="#tabs">Radio</a></li>
+        <a href="#tabs" on:click|preventDefault>Radio</a></li>
       <li use:tab.item>
-        <a href="#tabs">Store</a></li>
+        <a href="#tabs" on:click|preventDefault>Store</a></li>
     </ul>
   </div>
   <div use:col={[12,6]}>
     <ul use:tab use:tab.block>
       <li use:tab.item={{state: "active"}}>
-        <a href="#tabs">Music</a></li>
+        <a href="#tabs" on:click|preventDefault>Music</a></li>
       <li use:tab.item>
         <a use:badge={"9"} href="#tabs">Playlists</a></li>
       <li use:tab.item>
@@ -70,18 +70,20 @@ If you need `badges` on tabs, you can add the `use:badge` action to the element 
 
 ```example
 <script>
-  import { tab, cols, col } from '@svelkit/spectre'
+  import { tab, btn, input, form, cols, col } from '@svelkit/spectre'
 </script>
 
 <div use:cols>
-  <div use:col={[12,6]}>
+  <div use:col>
     <ul use:tab>
-      <li use:tab.item={{state: "active"}}><a href="#tabs">Music<span use:btn btn-clear"></span></a></li>
-      <li use:tab.item><a href="#tabs">Playlists</a></li>
-      <li use:tab.item><a href="#tabs">Radio</a></li>
-      <li use:tab.item><a href="#tabs">Store</a></li>
-      <li use:tab.item use:tab.action">
-        <div use:input.group use:input.inline">
+      <li use:tab.item={"active"}>
+        <a href="#tabs" on:click|preventDefault>Music<span use:btn.clear></span></a>
+      </li>
+      <li use:tab.item><a href="#tabs" on:click|preventDefault>Playlists</a></li>
+      <li use:tab.item><a href="#tabs" on:click|preventDefault>Radio</a></li>
+      <li use:tab.item><a href="#tabs" on:click|preventDefault>Store</a></li>
+      <li use:tab.item={"action"}>
+        <div use:input.group use:input.inline>
           <input use:form.input={{size: "sm"}} type="text">
           <button use:btn={{variant: "primary", size: "sm"}} use:input.groupBtn>Search</button>
         </div>

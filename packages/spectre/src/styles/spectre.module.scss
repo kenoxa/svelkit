@@ -34,8 +34,15 @@
 @import 'empty';
 @import 'menus';
 @import 'spectre.css/src/modals';
-@import 'spectre.css/src/navs';
-@import 'spectre.css/src/tooltips';
+@import 'navs';
+@import 'paginations';
+@import 'panels';
+@import 'popovers';
+@import 'steps';
+@import 'tabs';
+@import 'tiles';
+@import 'toasts';
+@import 'tooltips';
 
 // Utility classes
 @import 'utilities';

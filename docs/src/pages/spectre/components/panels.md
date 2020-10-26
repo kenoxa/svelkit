@@ -4,22 +4,22 @@
 
 ```example
 <script>
-  import { panel, tab, tile, form, input, avatar, h5, h6, text, cols, col, spectre } from "@svelkit/spectre";
+  import { panel, tab, tile, btn, tooltip, form, input, avatar, h5, h6, text, cols, col, spectre } from "@svelkit/spectre";
 </script>
 
 <div use:cols>
-  <div use:col={[12,6]}>
-    <div use:panel>
+  <div use:col>
+    <div use:panel use:spectre={"mr-2"}>
       <div use:panel.header use:text.center>
-        <figure use:avatar use:avatar.lg>
+        <figure use:avatar.lg>
           <img src="https://picturepan2.github.io/spectre/img/avatar-2.png" alt="Avatar">
         </figure>
         <div use:panel.title use:h5 use:spectre={"mt-10"}>Bruce Banner</div>
         <div use:panel.subtitle>THE HULK</div>
       </div>
       <nav use:panel.nav>
-        <ul use:tab.block>
-          <li use:tab.itema={{active: true}}>
+        <ul use:tab use:tab.block>
+          <li use:tab.item={"active"}>
               <a href="#panels">Profile</a>
           </li>
           <li use:tab.item>
@@ -37,7 +37,7 @@
             <div use:tile.subtitle>bruce.banner@hulk.com</div>
           </div>
           <div use:tile.action>
-            <button use:btn btn-link btn-action btn-lg tooltip use:tooltip.left={"Edit E-mail"}>
+            <button use:btn={{variant: "link", size: "lg", action:true}} use:tooltip={{position: "left", value: "Edit E-mail"}}>
                 <i class="icon icon-edit"></i>
               </button>
           </div>
@@ -65,12 +65,7 @@
           </div>
         </div>
       </div>
-      <div use:panel.footer>
-        <button use:btn={{variant: "primary", block: true}}>Save</button>
-      </div>
     </div>
-  </div>
-  <div use:col={[12,6]}>
     <div use:panel>
       <div use:panel.header>
         <div use:panel.title use:h6>Comments</div>
@@ -100,9 +95,7 @@
         </div>
         <div use:tile>
           <div use:tile.icon>
-            <figure use:avatar={"TS"}>
-
-            </figure>
+            <figure use:avatar.md={"TS"}></figure>
           </div>
           <div use:tile.content>
             <p use:tile.title use:text.bold>Tony Stark</p>
@@ -141,6 +134,8 @@
     </div>
   </div>
 </div>
+
+
 ```
 
 Add the `use:panel` action to a container element. And add `use:panel.header`, `use:panel.nav`, `use:panel.body` and/or `use:panel.footer` to the child elements. The `panel.body` can be auto expanded and vertically scrollable.

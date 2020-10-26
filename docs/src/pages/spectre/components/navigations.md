@@ -10,17 +10,17 @@
 <div use:cols>
   <div use:col={[12,6]}>
     <ul use:nav>
-      <li use:nav.item><a href="#nav">Elements</a></li>
-      <li use:nav.item={"active"}><a href="#nav">Layout</a>
+      <li use:nav.item><a href="#nav" on:click|preventDefault>Elements</a></li>
+      <li use:nav.item={"active"}><a href="#nav" on:click|preventDefault>Layout</a>
         <ul use:nav>
-          <li use:nav.item><a href="#nav">Flexbox grid</a></li>
-          <li use:nav.item><a href="#nav">Responsive</a></li>
-          <li use:nav.item><a href="#nav">Navbar</a></li>
-          <li use:nav.item><a href="#nav">Empty states</a></li>
+          <li use:nav.item><a href="#nav" on:click|preventDefault>Flexbox grid</a></li>
+          <li use:nav.item><a href="#nav" on:click|preventDefault>Responsive</a></li>
+          <li use:nav.item><a href="#nav" on:click|preventDefault>Navbar</a></li>
+          <li use:nav.item><a href="#nav" on:click|preventDefault>Empty states</a></li>
         </ul>
       </li>
-      <li use:nav.item><a href="#nav">Components</a></li>
-      <li use:nav.item><a href="#nav">Utilities</a></li>
+      <li use:nav.item><a href="#nav" on:click|preventDefault>Components</a></li>
+      <li use:nav.item><a href="#nav" on:click|preventDefault>Utilities</a></li>
     </ul>
   </div>
 </div>

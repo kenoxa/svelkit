@@ -4,7 +4,7 @@
 
 ```example
 <script>
-  import { toast, cols, col, spectre } from '@svelkit/spectre'
+  import { toast, cols, col, btn, spectre } from '@svelkit/spectre'
 </script>
 
 <div use:cols>
@@ -28,7 +28,7 @@ Add the `use:toast` to a container element. You can add any text within the cont
 
 ```example
 <script>
-  import { toast, cols, col, spectre } from '@svelkit/spectre'
+  import { toast, cols, col, btn, spectre } from '@svelkit/spectre'
 </script>
 
 <div use:cols>
@@ -38,13 +38,13 @@ Add the `use:toast` to a container element. You can add any text within the cont
       <p>Toast success</p>
     </div>
   </div>
-  <div use:column>
+  <div use:col>
     <div use:toast.warning>
       <button use:btn.clear use:spectre={"float-right"}></button>
       <p>Toast warning</p>
     </div>
   </div>
-  <div use:column>
+  <div use:col>
     <div use:toast.error>
       <button use:btn.clear use:spectre={"float-right"}></button>
       <p>Toast error</p>

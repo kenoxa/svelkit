@@ -4,7 +4,7 @@
 
 ```example
 <script>
-  import { tile, avatar, cols, col } from '@svelkit/spectre'
+  import { tile, avatar, cols, col, btn } from '@svelkit/spectre'
 </script>
 
 <div use:cols>
@@ -12,7 +12,7 @@
     <div use:tile>
       <div use:tile.icon>
         <figure use:avatar.lg>
-          <img src="../img/avatar-3.png" alt="Avatar"></figure>
+          <img src="https://picturepan2.github.io/spectre/img/avatar-3.png" alt="Avatar"></figure>
       </div>
       <div use:tile.content>
         <p use:tile.title>The Avengers</p>
@@ -23,12 +23,13 @@
         <button use:btn>Contact</button>
       </div>
     </div>
-  </div>
+  </div>  
   <div use:col={[12,9]}>
     <div use:tile>
       <div use:tile.icon>
         <figure use:avatar.lg>
-          <img src="../img/avatar-2.png" alt="Avatar"></figure>
+          <img src="https://picturepan2.github.io/spectre/img/avatar-4.png" alt="Avatar">
+        </figure>
       </div>
       <div use:tile.content>
         <p use:tile.title>The S.H.I.E.L.D.</p>
@@ -39,7 +40,7 @@
         </p>
       </div>
     </div>
-  </div>
+  </div>  
 </div>
 ```
 
