@@ -108,7 +108,7 @@ The dropdown is a combination of buttons and menus.
   </div>
   <div use:col>
     <div use:dropdown>
-      <button use:btn.link use:dropdown.toggle>dropdown button 
+      <button use:btn.link use:dropdown.toggle>dropdown button
         <i class="icon icon-caret"></i>
       </button>
       <ul use:menu>

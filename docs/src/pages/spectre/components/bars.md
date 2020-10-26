@@ -2,7 +2,6 @@
 
 [Bars](https://picturepan2.github.io/spectre/components/bars.html) represent the progress of a task or the value within the known range. Bars are custom components for displaying HTML5 [`<progress>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress), [`<meter>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meter) and input range elements.
 
-
 ## Normal Bars
 
 ```example
@@ -35,7 +34,6 @@
 Add the `use:bar` action on a container element. And add child elements with the `use:bar.item` action. The width percentage value is needed for every bar-item.
 
 There is the `sm` property for thinner Bars. Also, you could use Tooltips for any bar-item.
-
 
 ## Slider Bar
 

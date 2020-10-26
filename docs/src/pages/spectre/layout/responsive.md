@@ -11,7 +11,6 @@ There are `xs`, `sm`, `md`, `lg`, `xl` available for flexible grid across mobile
 - `xl` applies to window width from `960px` and up.
 - `xxl` applies to window width from `1280px` and up.
 
-
 ```example
 <script>
   import { container, cols, col, bg } from '@svelkit/spectre'
@@ -25,7 +24,6 @@ There are `xs`, `sm`, `md`, `lg`, `xl` available for flexible grid across mobile
   </div>
 </div>
 ```
-
 
 ```example
 <script>

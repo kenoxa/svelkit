@@ -26,6 +26,12 @@
     - [Navigations](spectre/components/navigations)
     - [Paginations](spectre/components/paginations)
     - [Panels](spectre/components/panels)
+    - [Popovers](spectre/components/popovers)
+    - [Steps](spectre/components/steps)
+    - [Tabs](spectre/components/tabs)
+    - [Tiles](spectre/components/tiles)
+    - [Toasts](spectre/components/toasts)
+    - [Tooltips](spectre/components/tooltips)
   - Utilities
     - [Baseline](spectre/utilities/baseline)
     - [Headings](spectre/utilities/headings)

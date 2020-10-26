@@ -61,7 +61,6 @@
 
 Add the `use:pagination` action to a container element. And add the `use:page.item` to the child elements. The `page.item` with the `active` property will be highlighted. You can pass the `disabled` property to the `page.item` action to have unclickable page links.
 
-
 ```example
 <script>
   import { pagination, page, cols, col } from "@svelkit/spectre";

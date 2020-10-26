@@ -14,7 +14,7 @@
     <span use:chip>Biography <button use:btn={'clear'} aria-label="Close"></button></span>
     <span use:chip>Mystery <button use:btn={'clear'} aria-label="Close"></button></span>
   </div>
-  <div use:col>  
+  <div use:col>
     <span use:chip>
       <figure use:avatar={{size: 'sm', initial: 'TS'}}></figure>
       Tony Stark

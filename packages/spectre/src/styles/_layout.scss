@@ -153,7 +153,9 @@ html,
           > * {
             @for $column from 1 through length($columns)-1 {
               &.col-#{$breakpoint}-#{$column} {
-                flex: 0 1 calc(#{$column} / #{length($columns)} * 100% - (#{$layout-spacing} * #{$gap}));
+                flex: 0
+                  1
+                  calc(#{$column} / #{length($columns)} * 100% - (#{$layout-spacing} * #{$gap}));
               }
             }
           }

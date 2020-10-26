@@ -1,6 +1,5 @@
 # Nav
 
-
 <!-- #TODO: fix links -->
 
 ```example
@@ -12,7 +11,7 @@
   <div use:col={[12,6]}>
     <ul use:nav>
       <li use:nav.item><a href="#nav">Elements</a></li>
-      <li use:nav.item use:active><a href="#nav">Layout</a>
+      <li use:nav.item={"active"}><a href="#nav">Layout</a>
         <ul use:nav>
           <li use:nav.item><a href="#nav">Flexbox grid</a></li>
           <li use:nav.item><a href="#nav">Responsive</a></li>

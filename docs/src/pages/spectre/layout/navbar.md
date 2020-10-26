@@ -25,6 +25,7 @@
   </div>
 </div>
 ```
+
 <!-- #TODO: add text-bold mr-2 to brand in the example above -->
 
 You can use `use:navbar.center` class to have a centered section.

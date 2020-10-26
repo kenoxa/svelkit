@@ -133,4 +133,3 @@ Use the `size: sm` property for a smaller modal dialog. The container max width 
 ```
 
 Use the `size: lg` property for a full size modal. The container max width is `960px`. -->
-

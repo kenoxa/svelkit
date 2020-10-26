@@ -64,7 +64,28 @@ Add the action `use:cols` or `use:columns` to an element. And add the `use:col` 
 
 You can use the `use:cols.gap` action to have gaps in between the columns.
 Or you can use the `use:cols.gapAround` action to have gap between and around the columns.
+
+```example
+<script>
+  import { cols, col, bg } from '@svelkit/spectre'
+</script>
+
+<div use:cols use:cols.gap={2}>
+  <div use:col={12} use:bg.warning>col-12</div>
+  <div use:col={6} use:bg.success>Col-6</div>
+  <div use:col={3} use:bg.error>col-3</div>
+  <div use:col={3} use:bg.dark>col-3</div>
+</div>
+<div use:cols use:cols.gapAround={2}>
+  <div use:col={12} use:bg.warning>col-12</div>
+  <div use:col={6} use:bg.success>Col-6</div>
+  <div use:col={3} use:bg.error>col-3</div>
+  <div use:col={3} use:bg.dark>col-3</div>
+</div>
+```
+
 You can pass a number `<1-12>` as a parameter to the action to specify the gap size.
+The `default` value is `1`.
 
 ## Nested grid gap
 
@@ -93,26 +114,28 @@ You can pass a number `<1-12>` as a parameter to the action to specify the gap s
 </div>
 ```
 
-You can use gaps on nested grids. Gaps are only effecting the `direct children`.
+You can use gaps on nested grids. Gaps are affecting `direct children`.
 
 ## Column offset
 
 ```example
 <script>
-  import { container, cols, col, bg } from '@svelkit/spectre'
+  import { cols, col, bg } from '@svelkit/spectre'
 </script>
 
-<div use:container>
-  <div use:cols>
-    <div use:col={2} use:bg.warning>col-2</div>
-    <div use:col={4} use:col.margin={"left"} use:bg.primary>col-4 left</div>
-  </div>
-  <div use:cols>
-    <div use:col={4} use:col.margin={"right"} use:bg.success>col-4 right</div>
-    <div use:col={2} use:bg.error>col-2</div>
-  </div>
-  <div use:cols>
-    <div use:col={2} use:col.margin={"auto"} use:bg.secondary>col-2 auto</div>
-  </div>
+
+<div use:cols>
+  <div use:col={2} use:bg.warning>col-2</div>
+  <div use:col={4} use:col.margin={"left"} use:bg.primary>col-4 left</div>
 </div>
+<div use:cols>
+  <div use:col={4} use:col.margin={"right"} use:bg.success>col-4 right</div>
+  <div use:col={2} use:bg.error>col-2</div>
+</div>
+<div use:cols>
+  <div use:col={2} use:col.margin={"auto"} use:bg.secondary>col-2 auto</div>
+</div>
+
 ```
+
+The `use.col` action provides margin auto utilities to set offset. There are `left`, `auto` and `right` available to set margins between columns without using empty columns.

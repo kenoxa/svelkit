@@ -2,7 +2,6 @@
 
 [Avatars](https://picturepan2.github.io/spectre/components/avatars.html) are user profile pictures..
 
-
 ```example
 <script>
   import { avatar, cols, col, bg } from '@svelkit/spectre'
@@ -52,10 +51,6 @@ There are `xs`, `sm`, `lg`, `xl` available:
 - `xs`: 16px.
 
 By `default`, the avatar size is 32px
-
-
-
-
 
 ## Avatar icons
 
@@ -109,7 +104,6 @@ Use the `use:avatar.icon` action on an element to display a small `icon` at the 
 ```
 
 Avatars support presence indicators. You can add an `<i>` element with the `presence` variant, and add `online`, `busy` or `away` class for different status colors. The default is gray which means offline.
-
 
 ## Playground
 

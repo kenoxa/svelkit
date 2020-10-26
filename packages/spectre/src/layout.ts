@@ -41,8 +41,7 @@ export const container = define((breakpoint?: Breakpoint) => [
   withPrefix('grid-', breakpoint),
 ], classNamesToVariants(BREAKPOINTS, 'container grid-'))
 
-
-export type GapOptions = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | "auto"
+export type GapOptions = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 'auto'
 
 export interface ColumnsOptions {
   gap?: GapOptions
@@ -54,10 +53,9 @@ export const columns = define((options: 'gapless' | 'oneline' | ColumnsOptions =
   withPrefix('col-', options as ClassValue),
 ], {
   oneline: define(stable('columns', 'col-oneline')),
-  gap: define((gap: GapOptions = "auto") => `gap-${gap === "auto" ? `${1}` : gap}`),
-  gapAround: define((gap: GapOptions = "auto") => `gap-around-${gap === "auto" ? `${1}` : gap}`),
+  gap: define((gap: GapOptions = 'auto') => `gap-${gap === 'auto' ? `${1}` : gap}`),
+  gapAround: define((gap: GapOptions = 'auto') => `gap-around-${gap === 'auto' ? `${1}` : gap}`),
 })
-
 
 export const cols = columns
 export const row = columns
