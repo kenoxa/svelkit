@@ -130,19 +130,18 @@ $responsive-breakpoint: $size-xs !default;
 
 // Map of responsive breakpoints
 $sizes: (
-  'xs': $size-xs,
-  'sm': $size-sm,
-  'md': $size-md,
-  'lg': $size-lg,
   'xl': $size-xl,
-  'xxl': $size-xxl,
+  'lg': $size-lg,
+  'md': $size-md,
+  'sm': $size-sm,
+  'xs': $size-xs,
 );
 
 // List of breakpoints
-$breakpoints: 'xs', 'sm', 'md', 'lg', 'xl', 'xxl';
+$breakpoints: 'xl', 'lg', 'md', 'sm', 'xs';
 
 // List of columns
-$columns: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12;
+$columns: 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1;
 
 // Z-index
 $zindex-0: 1 !default;

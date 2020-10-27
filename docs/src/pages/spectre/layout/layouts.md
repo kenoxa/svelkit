@@ -1,6 +1,6 @@
-# Layout
+# Layouts
 
-Layout includes [flexbox](https://developer.mozilla.org/en-US/docs/Glossary/Flexbox) based responsive grid system with 12 columns.
+Layouts include [flexbox](https://developer.mozilla.org/en-US/docs/Glossary/Flexbox) based responsive grid system with 12 columns.
 
 - https://getbootstrap.com/docs/4.5/layout/grid/#how-it-works
 - https://styled-system.com/responsive-styles
@@ -48,13 +48,13 @@ Add the action `use:cols` or `use:columns` to an element. And add the `use:col` 
   import { cols, col, bg } from '@svelkit/spectre'
 </script>
 
-<div use:cols use:cols.gap>
+<div use:cols.gap>
   <div use:col={12} use:bg.warning>col-12</div>
   <div use:col={6} use:bg.success>Col-6</div>
   <div use:col={3} use:bg.error>col-3</div>
   <div use:col={3} use:bg.dark>col-3</div>
 </div>
-<div use:cols use:cols.gapAround>
+<div use:cols.gapAround>
   <div use:col={12} use:bg.warning>col-12</div>
   <div use:col={6} use:bg.success>Col-6</div>
   <div use:col={3} use:bg.error>col-3</div>

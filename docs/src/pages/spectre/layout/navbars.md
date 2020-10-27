@@ -1,10 +1,10 @@
-# Navbar
+# Navbars
 
-[Navbar](https://picturepan2.github.io/spectre/layout/navbar.html) is a layout container that appears in the header of apps and websites.
+[Navbars](https://picturepan2.github.io/spectre/layout/navbar.html) are layout containers that appears in the header of apps and websites.
 
 ```example
 <script>
-  import { navbar, cols, col, btn, form, input, text } from '@svelkit/spectre'
+  import { navbar, cols, col, btn, form, input, text, display } from '@svelkit/spectre'
 </script>
 
 <div use:cols>

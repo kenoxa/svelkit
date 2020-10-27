@@ -1,8 +1,5 @@
 // Empty states (or Blank slates)
 .empty {
-  display: flex;
-  flex-flow: column;
-  flex: 0 1 100%;
   box-sizing: border-box;
   background: $bg-color;
   border-radius: $border-radius;

@@ -8,7 +8,7 @@
 </script>
 
 <div use:cols>
-  <div use:col={[12,6,,4]}>
+  <div use:col={[,12,6,4]}>
     <div use:card.shadow>
       <div use:card.image>
         <img use:img.responsive src="https://picturepan2.github.io/spectre/img/osx-el-capitan.jpg" alt="OS X El Capitan">
@@ -23,7 +23,7 @@
       </div>
     </div>
   </div>
-  <div use:col={[12,6,,4]}>
+  <div use:col={[,12,6,4]}>
     <div use:card.shadow>
       <div use:card.header>
         <div use:h5>Apple</div>
@@ -42,7 +42,7 @@
       </div>
     </div>
   </div>
-  <div use:col={[12,6,,4]}>
+  <div use:col={[,12,6,4]}>
     <div use:card.shadow>
       <div use:card.image>
         <img use:img.responsive src="https://picturepan2.github.io/spectre/img/macos-sierra-2.jpg" alt="macOS Sierra">
@@ -59,7 +59,7 @@
       <div use:card.body>An immersive, three-day experience focused on exploring the next generation of technology, mobile and beyond.</div>
     </div>
   </div>
-  <div use:col={[12,6,,4]}>
+  <div use:col={[,12,6,4]}>
     <div use:card.shadow>
       <div use:card.image>
         <img use:img.responsive src="https://picturepan2.github.io/spectre/img/osx-el-capitan-2.jpg" alt="OS X El Capitan">
@@ -72,7 +72,7 @@
         <strong>Surface Studio</strong>. Turn your desk into a Studio. Surface Studio is designed for the creative process.</div>
     </div>
   </div>
-  <div use:col={[12,6,,4]}>
+  <div use:col={[,12,6,4]}>
     <div use:card.shadow>
       <div use:card.header>
         <div use:h5>Apple</div>
@@ -84,7 +84,7 @@
       </div>
     </div>
   </div>
-  <div use:col={[12,6,,4]}>
+  <div use:col={[,12,6,4]}>
     <div use:card.shadow>
       <div use:card.header>
         <div use:h5>Google</div>

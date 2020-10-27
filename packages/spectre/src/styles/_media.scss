@@ -10,12 +10,12 @@
 // https://developer.microsoft.com/en-us/microsoft-edge/platform/status/objectfitandobjectposition/
 .img-fit-cover {
   object-fit: cover;
-  max-width: 100%;
+  width: 100%;
 }
 
 .img-fit-contain {
   object-fit: contain;
-  max-width: 100%;
+  width: 100%;
 }
 
 // Video responsive

@@ -4,11 +4,11 @@
 
 ```example
 <script>
-  import { accordion, menu, cols, col } from '@svelkit/spectre'
+  import { accordion, menu, cols, col, baseline } from '@svelkit/spectre'
 </script>
 
 <div use:cols>
-  <div use:col={[12,,6]}>
+  <div use:col={[,,12,6]}>
     <div use:accordion>
       <label use:accordion.header for="accordion-1">
         <i class="icon icon-arrow-right mr-1"></i>Elements
@@ -46,7 +46,7 @@
       </div>
     </div>
   </div>
-  <div use:col={[12,,6]}>
+  <div use:col={[,,12,6]}>
     <div use:accordion>
       <input id="accordion-4" type="checkbox" name="accordion-checkbox" hidden checked>
       <label use:accordion.header for="accordion-4">#Elements</label>
@@ -90,7 +90,7 @@ Alternatively, you can use `details` and `summary` instead of `input` `radio` or
 
 <!-- details and summary Accordions example -->
 <div use:cols>
-  <div use:col={[12,,6]}>
+  <div use:col={[,,12,6]}>
     <details use:accordion open>
       <summary use:accordion.header>
         <i class="icon icon-arrow-right mr-1"></i>

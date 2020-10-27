@@ -8,7 +8,7 @@
 </script>
 
 <div use:cols>
-  <div use:col>
+  <div use:col={12}>
     <div use:empty>
       <div class="empty-icon"><i class="icon icon-3x icon-mail"></i></div>
       <p use:empty.title use:h5>You have no new messages</p>
@@ -18,7 +18,7 @@
       </div>
     </div>
   </div>
-  <div use:col>
+  <div use:col={12}>
     <div use:empty>
       <div class="empty-icon"><i class="icon icon-3x icon-mail"></i></div>
       <p use:empty.title use:h5>You've successfully signed up</p>
@@ -31,7 +31,7 @@
       </div>
     </div>
   </div>
-  <div use:col>
+  <div use:col={12}>
     <div use:empty>
       <div class="empty-icon"><i class="icon icon-3x icon-people"></i></div>
       <p use:empty.title use:h5>You are not following anyone</p>

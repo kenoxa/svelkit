@@ -8,7 +8,7 @@
 </script>
 
 <div use:cols>
-  <div use:col>
+  <div use:col={12}>
     <ul use:breadcrumb>
       <li use:breadcrumb.item>
         <a use:tooltip={"Home"} href="#breadcrumbs" on:click|preventDefault>Home</a>
@@ -18,7 +18,7 @@
       </li>
     </ul>
   </div>
-  <div use:col>
+  <div use:col={12}>
     <ul use:breadcrumb>
       <li use:breadcrumb.item>
         <a use:tooltip={"Home"} href="#breadcrumbs" on:click|preventDefault>Home</a>
@@ -31,7 +31,7 @@
       </li>
     </ul>
   </div>
-  <div use:col>
+  <div use:col={12}>
     <ul use:breadcrumb>
       <li use:breadcrumb.item>
         <a use:tooltip={"Home"} href="#breadcrumbs" on:click|preventDefault>Home</a>

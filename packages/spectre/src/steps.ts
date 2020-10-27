@@ -8,7 +8,6 @@ export interface StepItemOptions {
 
 export const step = define(stable('step'), {
   item: define((options: string | StepItemOptions = {}) => {
-      return ['step-item', isString(options) ? options : options.state]
-    }),
-
+    return ['step-item', isString(options) ? options : options.state]
+  }),
 })

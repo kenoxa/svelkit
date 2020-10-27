@@ -1,15 +1,15 @@
 # Responsive
 
-@svelkit/spectre provides a neat responsive layout grid system and responsive visibility utilities with [mobile-first design](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Responsive/Mobile_first) in mind.
+@svelkit/spectre provides a neat responsive layout grid system and responsive visibility utilities.
 
-There are `xs`, `sm`, `md`, `lg`, `xl` available for flexible grid across mobile, tablet and desktop viewport usage.
+There are `xs`, `sm`, `md`, `lg`, `xl`, and `default | df` available for flexible grid across mobile, tablet and desktop viewport usage.
 
-- `xs` or `default` applies to window width from `0px` and up.
-- `sm` applies to window width from `480px` and up.
-- `md` applies to window width from `600px` and up.
-- `lg` applies to window width from `840px` and up.
-- `xl` applies to window width from `960px` and up.
-- `xxl` applies to window width from `1280px` and up.
+- `xs` applies to window width smaller than or equal to `480px`.
+- `sm` applies to window width smaller than or equal to `600px`.
+- `md` applies to window width smaller than or equal to `840px`.
+- `lg` applies to window width smaller than or equal to `960px`.
+- `xl` applies to window width smaller than or equal to `1280px`.
+- `df` or `default` applies to any unspecified window width.
 
 ```example
 <script>
@@ -17,33 +17,36 @@ There are `xs`, `sm`, `md`, `lg`, `xl` available for flexible grid across mobile
 </script>
 <div use:container>
   <div use:cols>
-    <div use:col={{xs: 12, sm: 6, xxl: 3}} use:bg.success>col-12 col-sm-6 col-xxl-3</div>
-    <div use:col={{default: 12, sm: 6, xxl: 3}} use:bg.error>col-12 col-sm-6 col-xxl-3</div>
-    <div use:col={[12, 6, , , , 3]} use:bg.primary>col-12 col-sm-6 col-xxl-3</div>
-    <div use:col={[ , 6, , , , 3]} use:bg.warning>col col-sm-6 col-xxl-3</div>
+    <div use:col={{xs: 12, sm: 4, df: 3}} use:bg.success>col-xs-12 col-sm-4 col-3</div>
+    <div use:col={{xs: 12, sm: 4, default: 3}} use:bg.primary>col-xs-12 col-sm-4 col-3</div>
+    <div use:col={[12, 4, 3]} use:bg.warning>col-xs-12 col-sm-4 col-3</div>
   </div>
 </div>
 ```
 
-```example
-<script>
-  import { container, cols, col, bg } from '@svelkit/spectre'
-</script>
-<div use:container>
-  <div use:cols>
-    <div use:col={{xs: 12, sm: 6, md: 4}} use:bg.success>col-xs-12 col-sm-6 col-md-4</div>
-    <div use:col={[12, 6, 4]} use:bg.primary>col-12 col-sm-6 col-md-4</div>
-  </div>
-</div>
-```
 
 ```example
 <script>
   import { container, cols, col, bg } from '@svelkit/spectre'
 </script>
 <div use:container>
-  <div use:cols>
-    <div use:col={{xs: 12, md: 8, xl: 4}} use:bg.error>col-xs-12 col-md-8 col-xl-4</div>
+  <div use:cols.gap={2}>
+    <div use:bg.primary use:col={[12, 6, 3]}>col-xs-12, col-sm-6, col-3</div>
+    <div use:bg.primary use:col={[12, 6, 3]}>col-xs-12, col-sm-6, col-3</div>
+    <div use:bg.primary use:col={[12, 6, 3]}>col-xs-12, col-sm-6, col-3</div>
+    <div use:bg.primary use:col={[12, 6, 3]}>col-xs-12, col-sm-6, col-3</div>
+    <div use:bg.primary use:col={[12, 6, 4, 3, 2, 1]}>col-xs-12, col-sm6, col-md-4, col-lg-3, col-xl-2, col-1</div>
+    <div use:bg.primary use:col={[12, 6, 4, 3, 2, 1]}>col-xs-12, col-sm6, col-md-4, col-lg-3, col-xl-2, col-1</div>
+    <div use:bg.primary use:col={[12, 6, 4, 3, 2, 1]}>col-xs-12, col-sm6, col-md-4, col-lg-3, col-xl-2, col-1</div>
+    <div use:bg.primary use:col={[12, 6, 4, 3, 2, 1]}>col-xs-12, col-sm6, col-md-4, col-lg-3, col-xl-2, col-1</div>
+    <div use:bg.primary use:col={[12, 6, 4, 3, 2, 1]}>col-xs-12, col-sm6, col-md-4, col-lg-3, col-xl-2, col-1</div>
+    <div use:bg.primary use:col={[12, 6, 4, 3, 2, 1]}>col-xs-12, col-sm6, col-md-4, col-lg-3, col-xl-2, col-1</div>
+    <div use:bg.primary use:col={[12, 6, 4, 3, 2, 1]}>col-xs-12, col-sm6, col-md-4, col-lg-3, col-xl-2, col-1</div>
+    <div use:bg.primary use:col={[12, 6, 4, 3, 2, 1]}>col-xs-12, col-sm6, col-md-4, col-lg-3, col-xl-2, col-1</div>
+    <div use:bg.primary use:col={[12, 6, 4, 3, 2, 1]}>col-xs-12, col-sm6, col-md-4, col-lg-3, col-xl-2, col-1</div>
+    <div use:bg.primary use:col={[12, 6, 4, 3, 2, 1]}>col-xs-12, col-sm6, col-md-4, col-lg-3, col-xl-2, col-1</div>
+    <div use:bg.primary use:col={[12, 6, 4, 3, 2, 1]}>col-xs-12, col-sm6, col-md-4, col-lg-3, col-xl-2, col-1</div>
+    <div use:bg.primary use:col={[12, 6, 4, 3, 2, 1]}>col-xs-12, col-sm6, col-md-4, col-lg-3, col-xl-2, col-1</div>
   </div>
 </div>
 ```

@@ -1,6 +1,6 @@
-# Hero
+# Heroes
 
-The [Hero container](https://picturepan2.github.io/spectre/layout/hero.html) shows key featured content or information.
+[Heroes](https://picturepan2.github.io/spectre/layout/hero.html) show key featured content or information.
 
 ```example
 <script>

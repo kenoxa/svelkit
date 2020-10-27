@@ -8,7 +8,9 @@ export interface ToastOptions {
 
 export const toast = define((options: typeof TOAST_VARIANTS[number] | ToastOptions = {}) => [
   'toast',
-  isString(options) || Array.isArray(options) ? options : [withPrefix('toast toast-', options.variant)],
+  isString(options) || Array.isArray(options)
+    ? options
+    : [withPrefix('toast toast-', options.variant)],
 ], {
   ...classNamesToVariants(TOAST_VARIANTS, 'toast toast-'),
 })

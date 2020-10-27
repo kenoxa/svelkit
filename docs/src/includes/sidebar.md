@@ -8,10 +8,10 @@
     - [Media](spectre/elements/media)
     - [Tables](spectre/elements/tables)
   - Layout
-    - [Layout](spectre/layout/layout)
+    - [Layouts](spectre/layout/layouts)
     - [Responsive](spectre/layout/responsive)
-    - [Hero](spectre/layout/hero)
-    - [Navbar](spectre/layout/navbar)
+    - [Heroes](spectre/layout/heroes)
+    - [Navbars](spectre/layout/navbars)
   - Components
     - [Accordions](spectre/components/accordions)
     - [Avatars](spectre/components/avatars)
@@ -34,6 +34,13 @@
     - [Tooltips](spectre/components/tooltips)
   - Utilities
     - [Baseline](spectre/utilities/baseline)
+    - [Colors](spectre/utilities/colors)
+    - [Cursors](spectre/utilities/cursors)
+    - [Display](spectre/utilities/display)
+    - [Dividers](spectre/utilities/dividers)
     - [Headings](spectre/utilities/headings)
+    - [Loading](spectre/utilities/loading)
+    - [Position](spectre/utilities/position)
+    - [Shapes](spectre/utilities/shapes)
     - [Text](spectre/utilities/text)
 - [Github](https://github.com/kenoxa/svelkit)
