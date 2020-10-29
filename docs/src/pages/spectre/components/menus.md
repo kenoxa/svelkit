@@ -8,7 +8,7 @@
 </script>
 
 <div use:cols>
-  <div use:col={[12,4]}>
+  <div use:col use:col.margin>
     <ul use:menu>
       <li use:menu.item>
         <div use:tile.centered>

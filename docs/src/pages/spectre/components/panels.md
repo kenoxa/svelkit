@@ -8,8 +8,8 @@
 </script>
 
 <div use:cols>
-  <div use:col>
-    <div use:panel use:spectre={"mr-2"}>
+  <div use:col={[12,6]}>
+    <div use:panel>
       <div use:panel.header use:text.center>
         <figure use:avatar.lg>
           <img src="https://picturepan2.github.io/spectre/img/avatar-2.png" alt="Avatar">
@@ -66,6 +66,8 @@
         </div>
       </div>
     </div>
+  </div>
+  <div use:col={[12,6]}>
     <div use:panel>
       <div use:panel.header>
         <div use:panel.title use:h6>Comments</div>

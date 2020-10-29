@@ -52,7 +52,7 @@
 
 ```example
 <script>
-  import { form } from '@svelkit/spectre'
+  import { form, baseline } from '@svelkit/spectre'
 </script>
 
 <!-- form radio control -->

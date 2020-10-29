@@ -40,7 +40,6 @@
   // composes: columns from global;
   box-sizing: border-box;
   display: flex;
-  flex: 0 1 100%;
   flex-wrap: wrap;
   // Instead of .col-gapless, we'll use .gap-<-12>
   // margin-left: -$layout-spacing;
@@ -73,7 +72,6 @@
 /* [class~="col-"] => not needed as we add the column class to each col-* */
 .column {
   box-sizing: border-box;
-  display: flex;
   flex: 1;
   max-width: 100%;
   padding: $layout-spacing;
@@ -118,27 +116,25 @@
 
 // gap
 @each $gap in $columns {
+  .col-gap-#{$gap},
+  .col-gap-around-#{$gap} {
+    width: calc(100% + #{$layout-spacing} * #{$gap});
+    margin-top: calc(-#{$layout-spacing} * #{$gap});
+    margin-left: calc(-#{$layout-spacing} * #{$gap});
 
-    .col-gap-#{$gap},
-    .col-gap-around-#{$gap} {
-      width: calc(100% + #{$layout-spacing} * #{$gap});
-      margin-top: calc(-#{$layout-spacing} * #{$gap});
-      margin-left: calc(-#{$layout-spacing} * #{$gap});
-
-      > * {
-        margin-top: calc(#{$layout-spacing} * #{$gap});
-        margin-left: calc(#{$layout-spacing} * #{$gap});
-        @each $column in $columns{
-          &.col-#{$column} {
-            width: calc(#{$column} / #{length($columns)} * 100% - (#{$layout-spacing} * #{$gap}));
-          }
+    > * {
+      margin-top: calc(#{$layout-spacing} * #{$gap});
+      margin-left: calc(#{$layout-spacing} * #{$gap});
+      @each $column in $columns {
+        &.col-#{$column} {
+          width: calc(#{$column} / #{length($columns)} * 100% - (#{$layout-spacing} * #{$gap}));
         }
       }
     }
-    .col-gap-around-#{$gap} {
-      padding: calc(#{$layout-spacing} * #{$gap});
-    }
-
+  }
+  .col-gap-around-#{$gap} {
+    padding: calc(#{$layout-spacing} * #{$gap});
+  }
 }
 
 @each $breakpoint, $size in $sizes {

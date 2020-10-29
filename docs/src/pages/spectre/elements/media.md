@@ -32,7 +32,7 @@ Add the action `use:img` with the property `responsive:true` to `<img>` elements
   </div>
   <div use:col={[12, 6]}>
     <figure use:figure>
-      <img use:img.fit={"cover"} use:shape.rounded src="https://picsum.photos/id/1074/400/300" alt="closeup of proud lioness from lorem picsum">
+      <img use:img.fit={"cover"} use:shape.rounded src="https://picsum.photos/id/1074/500/500" alt="closeup of proud lioness from lorem picsum">
       <figcaption use:figure.caption use:text={"center"}>img-fit-cover</figcaption>
     </figure>
   </div>

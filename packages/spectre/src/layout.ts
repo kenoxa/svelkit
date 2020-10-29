@@ -46,11 +46,13 @@ export const columns = define((options: 'gapless' | 'oneline' | ColumnsOptions =
 ], {
   oneline: define(stable('columns', 'col-oneline')),
   gap: define((gap: GapOptions = 'auto') => [
-    "columns",
-    withPrefix("col-gap-", gap === "auto" ? 1 : gap)]),
+    'columns',
+    withPrefix('col-gap-', gap === 'auto' ? 1 : gap),
+  ]),
   gapAround: define((gap: GapOptions = 'auto') => [
-    "columns",
-    withPrefix("col-gap-around-", gap === "auto" ? 1 : gap)]),
+    'columns',
+    withPrefix('col-gap-around-', gap === 'auto' ? 1 : gap),
+  ]),
 })
 
 export const cols = columns

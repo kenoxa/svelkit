@@ -71,11 +71,11 @@ export const cursor = define(stable(), {
       'move',
       'auto',
     ] as const,
-    'cursor-',
+    'c-',
   ),
-  zoomIn: define(stable('cursor-zoom-in')),
-  zoomOut: define(stable('cursor-zoom-out')),
-  notAllowed: define(stable('cursor-not-allowed')),
+  zoomIn: define(stable('c-zoom-in')),
+  zoomOut: define(stable('c-zoom-out')),
+  notAllowed: define(stable('c-not-allowed')),
 })
 
 // Use:centered('p') || Use:centered('flex')
@@ -108,10 +108,10 @@ export const display = define(stable(), {
       'visible',
       'invisible',
     ] as const,
-    'display-',
+    'd-',
   ),
-  inlineBlock: define(stable('display-inline-block')),
-  inlineFlex: define(stable('display-inline-flex')),
+  inlineBlock: define(stable('d-inline-block')),
+  inlineFlex: define(stable('d-inline-flex')),
 })
 
 export const loading = define((options: boolean | 'lg' | LoadingOptions = {}) => {

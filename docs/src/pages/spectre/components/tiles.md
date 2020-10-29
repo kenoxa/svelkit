@@ -54,17 +54,16 @@ There is compact version of Tiles component, which is often used as contact and 
 
 ```example
 <script>
-  import { tile, text, cols, col } from '@svelkit/spectre'
+  import { tile, text, cols, col, btn } from '@svelkit/spectre'
 </script>
 
 <div use:cols>
-  <div use:col={[12,9,6]}>
+  <div use:col={[12,,9,6]}>
     <div use:tile.centered>
       <div use:tile.icon>
         <div class="example-tile-icon">
-          <i class="icon icon-mail centered">
-        </i>
-      </div>
+          <i class="icon icon-mail centered"></i>
+        </div>
       </div>
       <div use:tile.content>
         <div use:tile.title>spectre-docs.pdf</div>

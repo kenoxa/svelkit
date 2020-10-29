@@ -8,7 +8,7 @@
 </script>
 
 <div use:cols>
-  <div use:col>
+  <div use:col={12}>
     <ul use:step>
       <li use:step.item>
         <a use:tooltip={"Step 1 Tooltip"} href="#"></a>
@@ -24,7 +24,7 @@
       </li>
     </ul>
   </div>
-  <div use:col>
+  <div use:col={12}>
     <ul use:step>
       <li use:step.item>
         <a use:tooltip={"Step 1 Tooltip"} href="#">Step 1</a>

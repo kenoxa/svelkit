@@ -9,40 +9,52 @@
 // Reset and dependencies
 @import 'baseline';
 
-// Elements
-@import 'typography';
-@import 'spectre.css/src/tables';
-@import 'buttons';
-@import 'forms';
-@import 'spectre.css/src/labels';
-@import 'media';
-
-// Layout
-@import 'layout';
-@import 'hero';
-@import 'navbar';
-
-// Components
-@import 'accordions';
+@import 'spectre.css/src/accordions';
+@import 'spectre.css/src/animations';
+@import 'spectre.css/src/asian';
+@import 'spectre.css/src/autocomplete';
 @import 'avatars';
 @import 'badges';
 @import 'bars';
+// baseline: see Reset and dependencies
 @import 'breadcrumbs';
+@import 'buttons';
+@import 'spectre.css/src/calendars';
 @import 'cards';
+@import 'spectre.css/src/carousels';
 @import 'chips';
+@import 'codes';
+@import 'spectre.css/src/comparison-sliders';
 @import 'spectre.css/src/dropdowns';
-@import 'empty';
+@import 'spectre.css/src/empty';
+@import 'spectre.css/src/filters';
+@import 'forms';
+@import 'spectre.css/src/hero';
+@import 'spectre.css/src/icons';
+@import 'spectre.css/src/labels';
+@import 'layout';
+@import 'spectre.css/src/media';
 @import 'menus';
+@import 'spectre.css/src/meters';
+// mixins: see Variables and mixins
 @import 'spectre.css/src/modals';
-@import 'navs';
-@import 'pagination';
-@import 'panels';
-@import 'popovers';
-@import 'steps';
-@import 'tabs';
-@import 'tiles';
-@import 'toasts';
-@import 'tooltips';
-
-// Utility classes
+@import 'spectre.css/src/navbar';
+@import 'spectre.css/src/navs';
+@import 'spectre.css/src/off-canvas';
+@import 'spectre.css/src/pagination';
+@import 'spectre.css/src/panels';
+@import 'spectre.css/src/parallax';
+@import 'spectre.css/src/popovers';
+@import 'spectre.css/src/progress';
+@import 'spectre.css/src/sliders';
+@import 'spectre.css/src/steps';
+@import 'spectre.css/src/tables';
+@import 'spectre.css/src/tabs';
+@import 'spectre.css/src/tiles';
+@import 'spectre.css/src/timelines';
+@import 'spectre.css/src/toasts';
+@import 'spectre.css/src/tooltips';
+@import 'typography';
 @import 'utilities';
+// variables: see Variables and mixins
+@import 'spectre.css/src/viewer-360';
