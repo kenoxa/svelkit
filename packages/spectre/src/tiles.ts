@@ -4,5 +4,5 @@ const TILE_CHILDREN = ['centered', 'icon', 'content', 'title', 'subtitle', 'acti
 
 export const tile = define(stable('tile'), {
   ...classNamesToVariants(TILE_CHILDREN, 'tile-'),
-  centered: define(() => ["tile", withPrefix("tile tile-", "centered")]),
+  centered: define(() => ['tile', withPrefix('tile tile-', 'centered')]),
 })

@@ -35,14 +35,14 @@
         margin-left: 0;
         margin-top: 0;
         top: 40%;
-        transform: translate(-50%,-50%) rotate(45deg);
+        transform: translate(-50%, -50%) rotate(45deg);
       }
     }
   }
 }
 
 // #TODO: fix inconsistent radio buttons
-.form-radio input:checked+.form-icon::before {
+.form-radio input:checked + .form-icon::before {
   height: 50%;
   width: 50%;
   min-height: 7px;

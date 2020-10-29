@@ -24,7 +24,6 @@ There are `xs`, `sm`, `md`, `lg`, `xl`, and `default | df` available for flexibl
 </div>
 ```
 
-
 ```example
 <script>
   import { container, cols, col, bg } from '@svelkit/spectre'

@@ -23,7 +23,7 @@
         <button use:btn>Contact</button>
       </div>
     </div>
-  </div>  
+  </div>
   <div use:col={[12,9]}>
     <div use:tile>
       <div use:tile.icon>
@@ -40,7 +40,7 @@
         </p>
       </div>
     </div>
-  </div>  
+  </div>
 </div>
 ```
 

@@ -2,8 +2,6 @@
 
 [Position utilities](https://picturepan2.github.io/spectre/utilities/position.html) are used for useful layout and position things, including clearfix, float, position and margin/padding utilities.
 
-
-
 ```example
 <script>
   import { cols, col, margin, clearfix, float, position, padding, bg, spectre } from '@svelkit/spectre'
