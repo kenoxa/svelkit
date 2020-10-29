@@ -1,5 +1,9 @@
 @import 'spectre.css/src/buttons';
 
+[class*='btn-'] {
+  height: 100%;
+}
+
 button.btn-clear {
   height: auto;
   width: auto;

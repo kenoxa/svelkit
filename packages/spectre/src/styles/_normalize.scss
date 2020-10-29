@@ -1,7 +1,3 @@
-/**
- * Source: https://github.com/picturepan2/spectre/blob/0.5.10/src/_normalize.scss
- */
-
 /* Manually forked from Normalize.css */
 /* normalize.css v5.0.0 | MIT License | github.com/necolas/normalize.css */
 
@@ -15,12 +11,11 @@
 /* Document
    ========================================================================== */
 
-// Set in _baseline
-//  html {
-//   font-family: sans-serif; /* 1 */
-//   -ms-text-size-adjust: 100%; /* 3 */
-//   -webkit-text-size-adjust: 100%; /* 3 */
-// }
+html {
+  font-family: sans-serif; /* 1 */
+  -ms-text-size-adjust: 100%; /* 3 */
+  -webkit-text-size-adjust: 100%; /* 3 */
+}
 
 /* Sections
      ========================================================================== */
@@ -29,10 +24,9 @@
    * Remove the margin in all browsers (opinionated).
    */
 
-// Set in _baseline
-// body {
-//   margin: 0;
-// }
+body {
+  margin: 0;
+}
 
 /**
    * Add the correct display in IE 9-.

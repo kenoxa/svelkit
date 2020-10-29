@@ -1,5 +1,15 @@
 # Svelkit
 
+## Quick start
+
+Clone the repository and cd into the project directory.
+
+Run `yarn install` then `yarn build`
+
+Cd into the package that you'd like to make progress on.
+
+## Overview
+
 > Collection of packages to create [svelte] apps.
 
 [![License](https://badgen.net/github/license/kenoxa/svelkit)](https://github.com/kenoxa/svelkit/blob/main/LICENSE)
@@ -63,7 +73,7 @@ We are following the [Conventional Commits](https://www.conventionalcommits.org)
 
 - `yarn test`: Run test suite including linting
 - `yarn format`: Ensure consistent code style
-- `yarn storybook`: Start the component showroom
+- ~~`yarn storybook`: Start the component showroom~~
 - `yarn publish`: To publish all changed packages
 
 ## License

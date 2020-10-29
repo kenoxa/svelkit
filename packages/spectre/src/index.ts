@@ -17,9 +17,11 @@ export * from './media'
 
 // Layout
 export * from './layout'
-export * from './hero'
+export * from './heroes'
+export * from './navbars'
 
 // Components
+export * from './accordions'
 export * from './avatars'
 export * from './badges'
 export * from './bars'
@@ -30,7 +32,14 @@ export * from './dropdowns'
 export * from './empty'
 export * from './menus'
 export * from './modals'
-export * from './navs'
+export * from './navigations'
+export * from './paginations'
+export * from './panels'
+export * from './popovers'
+export * from './steps'
+export * from './tabs'
+export * from './tiles'
+export * from './toasts'
 export * from './tooltips'
 
 // Utility classes

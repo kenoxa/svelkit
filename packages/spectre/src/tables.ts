@@ -5,6 +5,9 @@ export interface TableOptions {
   hover?: boolean
   scroll?: boolean
 }
+export interface TableRowOptions {
+  active?: boolean
+}
 
 export const table = define(({ striped, hover, scroll }: TableOptions = {}) => [
   'table',

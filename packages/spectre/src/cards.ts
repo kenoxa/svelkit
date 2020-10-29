@@ -1,6 +1,6 @@
 import { define, stable, classNamesToVariants, isString, withPrefix } from './internal'
 
-const CARD_VARIANTS = ['image', 'header', 'body', 'footer'] as const
+const CARD_VARIANTS = ['image', 'header', 'body', 'footer', 'title', 'subtitle'] as const
 
 export interface CardOptions {
   shadow?: boolean

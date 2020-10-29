@@ -118,14 +118,30 @@ $control-width-lg: 960px !default;
 $control-width-xl: 1280px !default;
 
 // Responsive breakpoints
+
 $size-xs: 480px !default;
 $size-sm: 600px !default;
 $size-md: 840px !default;
 $size-lg: 960px !default;
 $size-xl: 1280px !default;
-$size-2x: 1440px !default;
+$size-xxl: 1440px !default;
 
 $responsive-breakpoint: $size-xs !default;
+
+// Map of responsive breakpoints
+$sizes: (
+  'xl': $size-xl,
+  'lg': $size-lg,
+  'md': $size-md,
+  'sm': $size-sm,
+  'xs': $size-xs,
+);
+
+// List of breakpoints
+$breakpoints: 'xl', 'lg', 'md', 'sm', 'xs';
+
+// List of columns
+$columns: 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1;
 
 // Z-index
 $zindex-0: 1 !default;

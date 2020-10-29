@@ -5,6 +5,7 @@ import {
   withPrefix,
   ensureButtonType,
   updateAttribute,
+  stable,
 } from './internal'
 
 import type { ButtonOptions } from './buttons'
@@ -33,7 +34,6 @@ export const bar = define((options: BarOptions['size'] | 'slider' | BarOptions =
     : withPrefix('bar-', options.size, options.slider && 'slider'),
 ], {
   slider: define((size?: BarOptions['size']) => ['bar bar-slider', withPrefix('bar-', size)]),
-
   btn: define(({ state, variant }: BarSliderButtonOptions = {}, node?: Element) => {
     ensureButtonType(node)
     updateAttribute(node, 'role', 'slider')
@@ -58,4 +58,5 @@ export const bar = define((options: BarOptions['size'] | 'slider' | BarOptions =
 
     return 'bar-item'
   }),
+  sm: define(stable('bar bar-sm')),
 })

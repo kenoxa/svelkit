@@ -82,11 +82,10 @@ export const toClassNames = (
   mapper?: string | ((className: string) => string),
 ): string[] => {
   let classNames = clsxArray(classValue)
-
   if (mapper) classNames = classNames.map((key) => mapClassName(key, mapper))
 
   classNames.forEach((className) => {
-    if (className === 'col' || className.startsWith('col-')) {
+    if (className === 'col' || (className.startsWith('col-') && !className.startsWith('col-gap'))) {
       classNames.push('column')
     } else if (className === 'row' || className === 'cols') {
       classNames.push('columns')

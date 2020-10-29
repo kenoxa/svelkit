@@ -1,6 +1,7 @@
 <script lang="js">
   import { useAutoId } from '@svelkit/hooks'
   import { baseline, row, col, form } from '@svelkit/spectre'
+  import 'spectre.css/dist/spectre-icons.css'
 
   const autoId = useAutoId('knobs')
 
@@ -16,7 +17,6 @@
       <div use:col={'auto'}>
         <div use:form.group>
           <label use:form.label for={autoId(key)}>{config[key].label || key}</label>
-
           {#if config[key].options}
             <select bind:value={state[key]} use:form.select id={autoId(key)}>
               {#each config[key].options as value}

@@ -7,22 +7,24 @@ const BREAKPOINTS = ['xs', 'sm', 'md', 'lg', 'xl'] as const
 export type Breakpoint = typeof BREAKPOINTS[number]
 
 export interface Breakpoints<Config> extends Partial<Record<Breakpoint, Config>> {
+  xxl?: Config
   default?: Config
+  df?: Config
 }
 
 export type Responsive<Config> =
   | [/* default: */ Config]
-  | [/* default: */ Config, /* xs: */ Config]
-  | [/* default: */ Config, /* xs: */ Config, /* sm: */ Config]
-  | [/* default: */ Config, /* xs: */ Config, /* sm: */ Config, /* md: */ Config]
-  | [/* default: */ Config, /* xs: */ Config, /* sm: */ Config, /* md: */ Config, /* lg: */ Config]
+  | [/* xs: */ Config, /* Default: */ Config]
+  | [/* xs: */ Config, /* sm: */ Config, /* Default: */ Config]
+  | [/* xs: */ Config, /* sm: */ Config, /* md: */ Config, /* Default: */ Config]
+  | [/* xs: */ Config, /* sm: */ Config, /* md: */ Config, /* lg: */ Config, /* Default: */ Config]
   | [
-      /* Default: */ Config,
       /* Xs: */ Config,
       /* Sm: */ Config,
       /* Md: */ Config,
       /* Lg: */ Config,
       /* Xl: */ Config,
+      /* Default: */ Config,
     ]
   | Config[]
 
@@ -31,20 +33,26 @@ export const container = define((breakpoint?: Breakpoint) => [
   withPrefix('grid-', breakpoint),
 ], classNamesToVariants(BREAKPOINTS, 'container grid-'))
 
+export type GapOptions = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 | 'auto'
+
 export interface ColumnsOptions {
-  gapless?: boolean
+  gap?: GapOptions
   oneline?: boolean
 }
-
-const gapless = stable('columns', 'col-gapless')
-const oneline = stable('columns', 'col-oneline')
 
 export const columns = define((options: 'gapless' | 'oneline' | ColumnsOptions = {}) => [
   'columns',
   withPrefix('col-', options as ClassValue),
 ], {
-  gapless: define(gapless, { oneline: define(oneline) }),
-  oneline: define(oneline, { gapless: define(gapless) }),
+  oneline: define(stable('columns', 'col-oneline')),
+  gap: define((gap: GapOptions = 'auto') => [
+    'columns',
+    withPrefix('col-gap-', gap === 'auto' ? 1 : gap),
+  ]),
+  gapAround: define((gap: GapOptions = 'auto') => [
+    'columns',
+    withPrefix('col-gap-around-', gap === 'auto' ? 1 : gap),
+  ]),
 })
 
 export const cols = columns
@@ -56,13 +64,27 @@ export type ColumnMargin = 'auto' | 'left' | 'right'
 const applyColumnClasses = (breakpoint: string, size?: ColumnSize): ClassValue =>
   size === 'hide' || size === 'show' ? size + breakpoint : size && `col${breakpoint}-${size}`
 
+const findLastUndefined = (breakpoints: Array<ColumnSize | undefined>): number => {
+  const index = breakpoints.slice().reverse().findIndex(Boolean)
+  const count = breakpoints.length - 1
+  const finalIndex = index >= 0 ? count - index : index
+  return finalIndex + 1
+}
+
 const updateColumnClasses = (
   breakpoints: undefined | Responsive<ColumnSize | undefined>,
-): ClassValue =>
-  breakpoints && [
-    applyColumnClasses('', breakpoints[0]),
-    BREAKPOINTS.map((key, index) => applyColumnClasses('-' + key, breakpoints[index + 1])),
-  ]
+): ClassValue => {
+  const bp = breakpoints && breakpoints.slice(0, findLastUndefined(breakpoints))
+  const lastBp = bp && bp.pop()
+  return (
+    bp && [
+      BREAKPOINTS.map((key, index) => {
+        return applyColumnClasses('-' + key, bp[index])
+      }),
+      applyColumnClasses('', lastBp),
+    ]
+  )
+}
 
 const columnBreakpoint = (key: string): Action<ColumnSize> =>
   define((size?: ColumnSize) => ['column', applyColumnClasses('-' + key, size)])
@@ -76,7 +98,7 @@ export const column = define((
       ? size
       : isNumber(size) || isString(size)
       ? [size]
-      : size && [size.default, size.xs, size.sm, size.md, size.lg, size.xl],
+      : size && [size.xs, size.sm, size.md, size.lg, size.xl, size.xxl || size.df || size.default],
   ),
 ], {
   xs: columnBreakpoint('xs'),

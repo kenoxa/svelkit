@@ -37,6 +37,7 @@ export const avatar = define((options: AvatarParameter = {}, node?: Element) => 
     updateDatasetKey(node, 'initial')
 
     return [
+      'avatar',
       (AVATAR_SIZES as readonly string[]).includes(options) && 'avatar',
       withPrefix('avatar-', options),
     ]
