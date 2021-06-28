@@ -41,7 +41,7 @@
   "devDependencies": {
     "nps": "^5.9.12",
     "spectre.css": "^0.5.9",
-    "typedoc": "^0.19.2"
+    "typedoc": "^0.21.2"
   },
   "publishConfig": {
     "access": "public"
